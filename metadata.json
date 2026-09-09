@@ -1,0 +1,6 @@
+{
+  "name": "Portfolio Jasmijn Mesu - Futureproof met AI",
+  "description": "Portfolio van Jasmijn Mesu voor de minor Futureproof met AI aan de Hogeschool Utrecht. Bewijzen en reflecties per sprint voor de 5 leeruitkomsten.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
