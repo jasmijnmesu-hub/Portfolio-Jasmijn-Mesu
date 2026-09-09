@@ -15,17 +15,17 @@ export const ContactPage: React.FC = () => {
     <div className="space-y-12 py-6 md:py-10">
       
       {/* Page Header */}
-      <div className="border-b border-[#3D2B2F]/10 pb-8 max-w-3xl">
+      <div className="border-b border-[#1B2A24]/10 pb-8 max-w-3xl">
         <div className="flex items-center gap-2 mb-2">
-          <span className="h-[1px] w-8 bg-[#B3543C]" />
-          <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#B3543C]">
+          <span className="h-[1px] w-8 bg-[#9C4A32]" />
+          <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#9C4A32]">
             Contact en Verantwoording
           </span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-4xl text-[#3D2B2F] tracking-tight">
+        <h1 className="font-serif text-3xl sm:text-4xl text-[#1B2A24] tracking-tight">
           Contact
         </h1>
-        <p className="mt-3 text-sm sm:text-base text-[#3D2B2F]/80 leading-relaxed font-sans">
+        <p className="mt-3 text-sm sm:text-base text-[#1B2A24]/80 leading-relaxed font-sans">
           Heb je vragen over mijn onderzoek, feedback tijdens de Show &amp; Grow-sessies, of wil je van gedachten wisselen over de inzet van AI binnen facilitaire en organisatorische processen? Neem gerust contact op.
         </p>
       </div>
@@ -34,25 +34,25 @@ export const ContactPage: React.FC = () => {
         
         {/* Left Column: Direct Contact Card (7 cols) */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="bg-[#E7DFCF] border border-[#3D2B2F]/10 p-6 sm:p-8 space-y-6">
-            <h2 className="font-serif text-2xl text-[#3D2B2F]">
+          <div className="bg-[#CEC5B5] border border-[#1B2A24]/10 p-6 sm:p-8 space-y-6">
+            <h2 className="font-serif text-2xl text-[#1B2A24]">
               {studentProfile.name}
             </h2>
 
-            <p className="text-sm font-sans text-[#3D2B2F]/85 leading-relaxed">
+            <p className="text-sm font-sans text-[#1B2A24]/85 leading-relaxed">
               Derdejaars studente Facility Management (Zuyd Hogeschool) &amp; minorstudente Futureproof met AI (Hogeschool Utrecht).
             </p>
 
-            <div className="space-y-4 pt-2 border-t border-[#3D2B2F]/10 text-sm font-sans">
+            <div className="space-y-4 pt-2 border-t border-[#1B2A24]/10 text-sm font-sans">
               {/* E-mailadres */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3.5 bg-[#F7F2E9] border border-[#3D2B2F]/10">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3.5 bg-[#EDE6D8] border border-[#1B2A24]/10">
                 <div className="flex items-center gap-3">
-                  <Mail className="w-4 h-4 text-[#B3543C]" />
+                  <Mail className="w-4 h-4 text-[#9C4A32]" />
                   <div>
-                    <span className="block text-[10px] uppercase tracking-wider text-[#3D2B2F]/60 font-bold">E-mailadres</span>
+                    <span className="block text-[10px] uppercase tracking-wider text-[#1B2A24]/60 font-bold">E-mailadres</span>
                     <a 
                       href={`mailto:${studentProfile.email}`} 
-                      className="font-medium text-[#3D2B2F] hover:text-[#B3543C] transition-colors"
+                      className="font-medium text-[#1B2A24] hover:text-[#9C4A32] transition-colors"
                     >
                       {studentProfile.email}
                     </a>
@@ -61,11 +61,11 @@ export const ContactPage: React.FC = () => {
 
                 <button
                   onClick={handleCopyEmail}
-                  className="text-xs px-3 py-1.5 bg-[#E7DFCF] hover:bg-[#D8CEBC] text-[#3D2B2F] border border-[#3D2B2F]/15 transition-colors cursor-pointer self-start sm:self-auto inline-flex items-center gap-1 uppercase tracking-wider font-medium"
+                  className="text-xs px-3 py-1.5 bg-[#CEC5B5] hover:bg-[#C7BFAE] text-[#1B2A24] border border-[#1B2A24]/15 transition-colors cursor-pointer self-start sm:self-auto inline-flex items-center gap-1 uppercase tracking-wider font-medium"
                 >
                   {copiedEmail ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-[#B3543C]" />
+                      <Check className="w-3.5 h-3.5 text-[#9C4A32]" />
                       <span>Gekopieerd!</span>
                     </>
                   ) : (
@@ -75,32 +75,32 @@ export const ContactPage: React.FC = () => {
               </div>
 
               {/* LinkedIn */}
-              <div className="flex items-center justify-between p-3.5 bg-[#F7F2E9] border border-[#3D2B2F]/10">
+              <div className="flex items-center justify-between p-3.5 bg-[#EDE6D8] border border-[#1B2A24]/10">
                 <div className="flex items-center gap-3">
-                  <Linkedin className="w-4 h-4 text-[#B3543C]" />
+                  <Linkedin className="w-4 h-4 text-[#9C4A32]" />
                   <div>
-                    <span className="block text-[10px] uppercase tracking-wider text-[#3D2B2F]/60 font-bold">LinkedIn profiel</span>
-                    <span className="font-medium text-[#3D2B2F]">linkedin.com/in/jasmijn-mesu</span>
+                    <span className="block text-[10px] uppercase tracking-wider text-[#1B2A24]/60 font-bold">LinkedIn profiel</span>
+                    <span className="font-medium text-[#1B2A24]">linkedin.com/in/jasmijn-mesu-385551350</span>
                   </div>
                 </div>
                 <a
                   href={studentProfile.linkedInUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs px-3 py-1.5 bg-[#E7DFCF] hover:bg-[#D8CEBC] text-[#3D2B2F] border border-[#3D2B2F]/15 transition-colors inline-flex items-center gap-1 uppercase tracking-wider font-medium"
+                  className="text-xs px-3 py-1.5 bg-[#CEC5B5] hover:bg-[#C7BFAE] text-[#1B2A24] border border-[#1B2A24]/15 transition-colors inline-flex items-center gap-1 uppercase tracking-wider font-medium"
                 >
                   <span>Bekijk</span>
-                  <ExternalLink className="w-3 h-3 text-[#B3543C]" />
+                  <ExternalLink className="w-3 h-3 text-[#9C4A32]" />
                 </a>
               </div>
 
               {/* Integraal Logboek */}
-              <div className="flex items-center justify-between p-3.5 bg-[#F7F2E9] border border-[#3D2B2F]/10">
+              <div className="flex items-center justify-between p-3.5 bg-[#EDE6D8] border border-[#1B2A24]/10">
                 <div className="flex items-center gap-3">
-                  <Download className="w-4 h-4 text-[#B3543C]" />
+                  <Download className="w-4 h-4 text-[#9C4A32]" />
                   <div>
-                    <span className="block text-[10px] uppercase tracking-wider text-[#3D2B2F]/60 font-bold">Integraal Sprint Logboek (Excel)</span>
-                    <span className="font-medium text-[#3D2B2F]">Direct downloadbaar (sprintlogboek.xlsx)</span>
+                    <span className="block text-[10px] uppercase tracking-wider text-[#1B2A24]/60 font-bold">Integraal Sprint Logboek (Excel)</span>
+                    <span className="font-medium text-[#1B2A24]">Direct downloadbaar (sprintlogboek.xlsx)</span>
                   </div>
                 </div>
                 <a
@@ -121,22 +121,22 @@ export const ContactPage: React.FC = () => {
         <div className="lg:col-span-5 space-y-6">
           
           {/* Begeleiders / Coaches */}
-          <div className="bg-[#E7DFCF] border border-[#3D2B2F]/10 p-6 space-y-4">
-            <h3 className="font-serif text-lg text-[#3D2B2F] flex items-center gap-2">
-              <GraduationCap className="w-5 h-5 text-[#B3543C]" />
+          <div className="bg-[#CEC5B5] border border-[#1B2A24]/10 p-6 space-y-4">
+            <h3 className="font-serif text-lg text-[#1B2A24] flex items-center gap-2">
+              <GraduationCap className="w-5 h-5 text-[#9C4A32]" />
               Coach Minor HU
             </h3>
-            <p className="text-xs text-[#3D2B2F]/80 leading-relaxed">
+            <p className="text-xs text-[#1B2A24]/80 leading-relaxed">
               Mijn coach voor begeleiding, Show &amp; Grow feedback en toetsing:
             </p>
 
             <ul className="space-y-3 pt-1 text-xs">
               {studentProfile.coaches.map((coach) => (
-                <li key={coach.name} className="p-3 bg-[#F7F2E9] border border-[#3D2B2F]/10">
-                  <span className="block font-medium text-[#3D2B2F] text-sm">
+                <li key={coach.name} className="p-3 bg-[#EDE6D8] border border-[#1B2A24]/10">
+                  <span className="block font-medium text-[#1B2A24] text-sm">
                     {coach.name}
                   </span>
-                  <span className="text-[#3D2B2F]/70">
+                  <span className="text-[#1B2A24]/70">
                     {coach.role} · {coach.institution}
                   </span>
                 </li>
@@ -145,17 +145,17 @@ export const ContactPage: React.FC = () => {
           </div>
 
           {/* Onderwijsinstellingen */}
-          <div className="bg-[#E7DFCF] border border-[#3D2B2F]/10 p-6 space-y-3 text-xs">
-            <h3 className="font-serif text-lg text-[#3D2B2F] flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-[#B3543C]" />
+          <div className="bg-[#CEC5B5] border border-[#1B2A24]/10 p-6 space-y-3 text-xs">
+            <h3 className="font-serif text-lg text-[#1B2A24] flex items-center gap-2">
+              <MapPin className="w-4 h-4 text-[#9C4A32]" />
               Onderwijsinstellingen
             </h3>
-            <div className="space-y-2 text-[#3D2B2F]/80 leading-relaxed">
+            <div className="space-y-2 text-[#1B2A24]/80 leading-relaxed">
               <p>
-                <strong className="text-[#3D2B2F]">Minor:</strong> Futureproof met AI (Hogeschool Utrecht, Padualaan 99, Utrecht)
+                <strong className="text-[#1B2A24]">Minor:</strong> Futureproof met AI (Hogeschool Utrecht, Padualaan 99, Utrecht)
               </p>
               <p>
-                <strong className="text-[#3D2B2F]">Hoofdopleiding:</strong> Facility Management (Zuyd Hogeschool, Nieuw Eyckholt 300, Heerlen)
+                <strong className="text-[#1B2A24]">Hoofdopleiding:</strong> Facility Management (Zuyd Hogeschool, Nieuw Eyckholt 300, Heerlen)
               </p>
             </div>
           </div>

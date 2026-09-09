@@ -54,7 +54,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F7F2E9] text-[#3D2B2F] font-sans antialiased selection:bg-[#CE9FA0] selection:text-[#3D2B2F]">
+    <div className="min-h-screen flex flex-col bg-[#EDE6D8] text-[#1B2A24] font-sans antialiased selection:bg-[#D8B7A6] selection:text-[#1B2A24]">
       {/* Fixed top navigation */}
       <Navbar activeTab={activeTab} onSelectTab={handleSelectTab} />
 

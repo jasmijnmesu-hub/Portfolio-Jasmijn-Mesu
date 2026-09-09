@@ -3,26 +3,26 @@
 @theme {
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Work Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --color-sand: #F7F2E9;
-  --color-aubergine: #3D2B2F;
-  --color-terracotta: #B3543C;
-  --color-terracotta-hover: #9E452E;
-  --color-greige: #E7DFCF;
-  --color-greige-subtle: #F0ECE2;
-  --color-greige-border: #D8CEBC;
-  --color-ochre: #D3A24C;
-  --color-rose: #CE9FA0;
+  --color-sand: #EDE6D8;
+  --color-aubergine: #1B2A24;
+  --color-terracotta: #9C4A32;
+  --color-terracotta-hover: #7E3A26;
+  --color-greige: #CEC5B5;
+  --color-greige-subtle: #E4DECF;
+  --color-greige-border: #C7BFAE;
+  --color-ochre: #C9A56B;
+  --color-rose: #D8B7A6;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #F7F2E9;
+  background-color: #EDE6D8;
 }
 
 body {
   font-family: var(--font-sans);
-  background-color: #F7F2E9;
-  color: #3D2B2F;
+  background-color: #EDE6D8;
+  color: #1B2A24;
   min-height: 100vh;
 }
 
@@ -31,8 +31,8 @@ h1, h2, h3, h4, .font-serif {
 }
 
 .sleek-card {
-  background-color: #E7DFCF;
-  border: 1px solid rgba(61, 43, 47, 0.08);
+  background-color: #CEC5B5;
+  border: 1px solid rgba(27, 42, 36, 0.1);
 }
 
 .nav-item {
@@ -49,12 +49,12 @@ h1, h2, h3, h4, .font-serif {
   left: 0;
   width: 100%;
   height: 1.5px;
-  background-color: #B3543C;
+  background-color: #9C4A32;
 }
 
 .accent-btn {
-  background-color: #B3543C;
-  color: #F7F2E9;
+  background-color: #9C4A32;
+  color: #EDE6D8;
   transition: opacity 0.2s ease, background-color 0.2s ease;
 }
 
