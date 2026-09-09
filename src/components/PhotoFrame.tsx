@@ -15,13 +15,7 @@ export const PhotoFrame: React.FC<PhotoFrameProps> = ({
   caption = 'Facility Management Zuyd Hogeschool · Minor Futureproof met AI',
   aspectRatio = 'portrait',
 }) => {
-  const [imageSrc, setImageSrc] = useState<string>(() => {
-    if (typeof window !== 'undefined') {
-      const cached = localStorage.getItem('jasmijn_profile_photo');
-      if (cached) return cached;
-    }
-    return defaultSrc;
-  });
+  const [imageSrc, setImageSrc] = useState<string>(defaultSrc);
 
   const aspectClass = {
     square: 'aspect-square',
@@ -30,9 +24,7 @@ export const PhotoFrame: React.FC<PhotoFrameProps> = ({
   }[aspectRatio];
 
   const handleImageError = () => {
-    if (imageSrc === '/IMG_1185.jpg') {
-      setImageSrc('/IMG_1185.svg');
-    } else if (imageSrc !== '/jasmijn-mesu.jpg') {
+    if (imageSrc !== '/jasmijn-mesu.jpg') {
       setImageSrc('/jasmijn-mesu.jpg');
     }
   };

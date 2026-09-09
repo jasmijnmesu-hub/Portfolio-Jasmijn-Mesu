@@ -1,25 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { studentProfile } from '../data/portfolioData';
 import { PhotoFrame } from '../components/PhotoFrame';
-import { Edit3, Check, Heart, Compass, Sparkles, FolderKanban, Users } from 'lucide-react';
+import { Sparkles, FolderKanban, Users } from 'lucide-react';
+
+const personalBio = `Ik ben Jasmijn Mesu, 23 jaar oud. Momenteel zit ik in het derde jaar van mijn opleiding Facility Management aan Zuyd Hogeschool. Vanaf het begin van mijn studie wist ik dat mijn interesse niet ligt in de klassieke facilitaire hoek zoals schoonmaakbeheer, cateringcontracten of technisch gebouwbeheer. Waar mijn hart wél sneller van gaat kloppen is de organisatorische kant: processen analyseren en stroomlijnen, projecten van A tot Z coördineren, en vooral: mensen, taken en belangen met elkaar verbinden.`;
+
+const whereFrom = `[Hier vul ik zelf aan: Waar kom ik vandaan, mijn persoonlijke achtergrond, wat mij heeft gevormd en waarom ik voor deze richting heb gekozen. Ruimte voor Jasmijn om haar eigen verhaal te vertellen.]`;
+
+const whatMakesMeHappy = `[Hier vul ik zelf aan: Waar word ik blij van in het dagelijks leven en in mijn werk? Denk aan passies, specifieke talenten, dromen voor de toekomst na mijn afstuderen en wat mij energie geeft in samenwerkingen.]`;
 
 export const AboutPage: React.FC = () => {
-  // Let Jasmijn edit these placeholder text blocks directly in the UI if desired,
-  // while also keeping default prompt-aligned placeholders!
-  const [personalBio, setPersonalBio] = useState(
-    `Ik ben Jasmijn Mesu, 23 jaar oud. Momenteel zit ik in het derde jaar van mijn opleiding Facility Management aan Zuyd Hogeschool. Vanaf het begin van mijn studie wist ik dat mijn interesse niet ligt in de klassieke facilitaire hoek zoals schoonmaakbeheer, cateringcontracten of technisch gebouwbeheer. Waar mijn hart wél sneller van gaat kloppen is de organisatorische kant: processen analyseren en stroomlijnen, projecten van A tot Z coördineren, en vooral: mensen, taken en belangen met elkaar verbinden.`
-  );
-
-  const [whereFrom, setWhereFrom] = useState(
-    `[Hier vul ik zelf aan: Waar kom ik vandaan, mijn persoonlijke achtergrond, wat mij heeft gevormd en waarom ik voor deze richting heb gekozen. Ruimte voor Jasmijn om haar eigen verhaal te vertellen.]`
-  );
-
-  const [whatMakesMeHappy, setWhatMakesMeHappy] = useState(
-    `[Hier vul ik zelf aan: Waar word ik blij van in het dagelijks leven en in mijn werk? Denk aan passies, specifieke talenten, dromen voor de toekomst na mijn afstuderen en wat mij energie geeft in samenwerkingen.]`
-  );
-
-  const [editingSection, setEditingSection] = useState<string | null>(null);
-
   return (
     <div className="space-y-14 py-6 md:py-10">
       
@@ -47,116 +37,35 @@ export const AboutPage: React.FC = () => {
           
           {/* Section 1: Wie ben ik & Studieachtergrond */}
           <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <h2 className="font-serif text-2xl text-[#3D2B2F] flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#B3543C]" />
-                Wie ik ben &amp; mijn achtergrond
-              </h2>
-              <button
-                onClick={() => setEditingSection(editingSection === 'bio' ? null : 'bio')}
-                className="text-xs text-[#B3543C] hover:underline flex items-center gap-1 cursor-pointer font-sans"
-              >
-                <Edit3 className="w-3.5 h-3.5" />
-                {editingSection === 'bio' ? 'Sluiten' : 'Tekst bewerken'}
-              </button>
+            <h2 className="font-serif text-2xl text-[#3D2B2F] flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#B3543C]" />
+              Wie ik ben &amp; mijn achtergrond
+            </h2>
+            <div className="text-sm sm:text-base font-sans text-[#3D2B2F]/85 leading-relaxed bg-[#E7DFCF] p-5 border border-[#3D2B2F]/10">
+              <p>{personalBio}</p>
             </div>
-
-            {editingSection === 'bio' ? (
-              <div className="space-y-2">
-                <textarea
-                  value={personalBio}
-                  onChange={(e) => setPersonalBio(e.target.value)}
-                  rows={6}
-                  className="w-full text-sm font-sans p-3 bg-[#F7F2E9] border border-[#3D2B2F]/20 text-[#3D2B2F] focus:outline-hidden focus:border-[#B3543C]"
-                />
-                <button
-                  onClick={() => setEditingSection(null)}
-                  className="accent-btn inline-flex items-center gap-1.5 px-4 py-2 text-xs uppercase tracking-wider font-medium cursor-pointer"
-                >
-                  <Check className="w-3.5 h-3.5" /> Opslaan in weergave
-                </button>
-              </div>
-            ) : (
-              <div className="text-sm sm:text-base font-sans text-[#3D2B2F]/85 leading-relaxed bg-[#E7DFCF] p-5 border border-[#3D2B2F]/10">
-                <p>{personalBio}</p>
-              </div>
-            )}
           </div>
 
           {/* Section 2: Waar ik vandaan kom (Placeholder voor Jasmijn) */}
           <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <h2 className="font-serif text-2xl text-[#3D2B2F] flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#B3543C]" />
-                Waar ik vandaan kom
-              </h2>
-              <button
-                onClick={() => setEditingSection(editingSection === 'where' ? null : 'where')}
-                className="text-xs text-[#B3543C] hover:underline flex items-center gap-1 cursor-pointer font-sans uppercase tracking-wider"
-              >
-                <Edit3 className="w-3.5 h-3.5" />
-                {editingSection === 'where' ? 'Sluiten' : 'Tekst bewerken'}
-              </button>
+            <h2 className="font-serif text-2xl text-[#3D2B2F] flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#B3543C]" />
+              Waar ik vandaan kom
+            </h2>
+            <div className="text-sm sm:text-base font-sans text-[#3D2B2F]/85 leading-relaxed bg-[#E7DFCF] p-5 border border-[#3D2B2F]/10 border-dashed">
+              <p className="italic text-[#3D2B2F]/75">{whereFrom}</p>
             </div>
-
-            {editingSection === 'where' ? (
-              <div className="space-y-2">
-                <textarea
-                  value={whereFrom}
-                  onChange={(e) => setWhereFrom(e.target.value)}
-                  rows={4}
-                  className="w-full text-sm font-sans p-3 bg-[#F7F2E9] border border-[#3D2B2F]/20 text-[#3D2B2F] focus:outline-hidden focus:border-[#B3543C]"
-                />
-                <button
-                  onClick={() => setEditingSection(null)}
-                  className="accent-btn inline-flex items-center gap-1.5 px-4 py-2 text-xs uppercase tracking-wider font-medium cursor-pointer"
-                >
-                  <Check className="w-3.5 h-3.5" /> Opslaan in weergave
-                </button>
-              </div>
-            ) : (
-              <div className="text-sm sm:text-base font-sans text-[#3D2B2F]/85 leading-relaxed bg-[#E7DFCF] p-5 border border-[#3D2B2F]/10 border-dashed">
-                <p className="italic text-[#3D2B2F]/75">{whereFrom}</p>
-              </div>
-            )}
           </div>
 
           {/* Section 3: Waar word ik blij van (Talenten, passies, dromen) */}
           <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <h2 className="font-serif text-2xl text-[#3D2B2F] flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#B3543C]" />
-                Waar ik blij van word (talenten, passies &amp; dromen)
-              </h2>
-              <button
-                onClick={() => setEditingSection(editingSection === 'happy' ? null : 'happy')}
-                className="text-xs text-[#B3543C] hover:underline flex items-center gap-1 cursor-pointer font-sans uppercase tracking-wider"
-              >
-                <Edit3 className="w-3.5 h-3.5" />
-                {editingSection === 'happy' ? 'Sluiten' : 'Tekst bewerken'}
-              </button>
+            <h2 className="font-serif text-2xl text-[#3D2B2F] flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#B3543C]" />
+              Waar ik blij van word (talenten, passies &amp; dromen)
+            </h2>
+            <div className="text-sm sm:text-base font-sans text-[#3D2B2F]/85 leading-relaxed bg-[#E7DFCF] p-5 border border-[#3D2B2F]/10 border-dashed">
+              <p className="italic text-[#3D2B2F]/75">{whatMakesMeHappy}</p>
             </div>
-
-            {editingSection === 'happy' ? (
-              <div className="space-y-2">
-                <textarea
-                  value={whatMakesMeHappy}
-                  onChange={(e) => setWhatMakesMeHappy(e.target.value)}
-                  rows={4}
-                  className="w-full text-sm font-sans p-3 bg-[#F7F2E9] border border-[#3D2B2F]/20 text-[#3D2B2F] focus:outline-hidden focus:border-[#B3543C]"
-                />
-                <button
-                  onClick={() => setEditingSection(null)}
-                  className="accent-btn inline-flex items-center gap-1.5 px-4 py-2 text-xs uppercase tracking-wider font-medium cursor-pointer"
-                >
-                  <Check className="w-3.5 h-3.5" /> Opslaan in weergave
-                </button>
-              </div>
-            ) : (
-              <div className="text-sm sm:text-base font-sans text-[#3D2B2F]/85 leading-relaxed bg-[#E7DFCF] p-5 border border-[#3D2B2F]/10 border-dashed">
-                <p className="italic text-[#3D2B2F]/75">{whatMakesMeHappy}</p>
-              </div>
-            )}
           </div>
 
           {/* Werkstijl: Excel & Canva */}

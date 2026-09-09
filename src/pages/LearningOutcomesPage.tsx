@@ -1,57 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { learningOutcomes as initialOutcomes, initialEvidenceItems } from '../data/portfolioData';
-import { ArrowRight, CheckCircle2, Award, Plus, Minus, ExternalLink } from 'lucide-react';
+import React, { useState } from 'react';
+import { learningOutcomes as outcomes, initialEvidenceItems } from '../data/portfolioData';
+import { ArrowRight, CheckCircle2, Award, ExternalLink } from 'lucide-react';
 
 interface LearningOutcomesPageProps {
   onNavigateToEvidence: (luFilter?: string) => void;
 }
 
-const STORAGE_KEY = 'jasmijn_portfolio_lu_counts';
-
 export const LearningOutcomesPage: React.FC<LearningOutcomesPageProps> = ({ onNavigateToEvidence }) => {
-  // Initialize outcomes with saved counts from localStorage if available, otherwise defaults (which are 0)
-  const [outcomes, setOutcomes] = useState(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
-        const parsed = JSON.parse(saved) as Record<string, number>;
-        return initialOutcomes.map((item) => ({
-          ...item,
-          currentCount: typeof parsed[item.id] === 'number' ? parsed[item.id] : item.currentCount,
-        }));
-      }
-    } catch {
-      // Ignore localStorage errors
-    }
-    return initialOutcomes;
-  });
-
   const [expandedLu, setExpandedLu] = useState<string | null>(null);
-
-  // Manual counter adjustment with working persistence in localStorage
-  const handleAdjustCount = (id: string, delta: number) => {
-    setOutcomes((prev) => {
-      const updated = prev.map((item) => {
-        if (item.id === id) {
-          const newCount = Math.max(0, item.currentCount + delta);
-          return { ...item, currentCount: newCount };
-        }
-        return item;
-      });
-
-      try {
-        const countsMap: Record<string, number> = {};
-        updated.forEach((item) => {
-          countsMap[item.id] = item.currentCount;
-        });
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(countsMap));
-      } catch {
-        // Ignore localStorage error
-      }
-
-      return updated;
-    });
-  };
 
   const totalDemonstrated = outcomes.reduce((acc, curr) => acc + curr.currentCount, 0);
   const totalTarget = outcomes.reduce((acc, curr) => acc + curr.targetCount, 0); // 2 + 4 + 2 + 4 + 6 = 18
@@ -164,32 +120,6 @@ export const LearningOutcomesPage: React.FC<LearningOutcomesPageProps> = ({ onNa
                     </div>
                   </div>
 
-                  {/* Working plus/minus counter adjustment (persisted in localStorage) */}
-                  <div className="mt-4 pt-3 border-t border-[#3D2B2F]/10 flex items-center justify-between text-xs">
-                    <span className="text-[#3D2B2F]/70 text-[11px]">Pas teller aan:</span>
-                    <div className="flex items-center gap-1.5">
-                      <button
-                        onClick={() => handleAdjustCount(lu.id, -1)}
-                        className="w-7 h-7 border border-[#3D2B2F]/20 bg-white hover:bg-[#E7DFCF] text-[#3D2B2F] flex items-center justify-center cursor-pointer transition-colors"
-                        title="Aantal met 1 verlagen"
-                        aria-label={`Verlaag teller voor ${lu.code}`}
-                      >
-                        <Minus className="w-3.5 h-3.5" />
-                      </button>
-                      <span className="font-semibold text-xs px-1 text-[#3D2B2F]">
-                        {lu.currentCount}
-                      </span>
-                      <button
-                        onClick={() => handleAdjustCount(lu.id, 1)}
-                        className="w-7 h-7 border border-[#3D2B2F]/20 bg-white hover:bg-[#E7DFCF] text-[#3D2B2F] flex items-center justify-center cursor-pointer transition-colors"
-                        title="Aantal met 1 verhogen"
-                        aria-label={`Verhoog teller voor ${lu.code}`}
-                      >
-                        <Plus className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  </div>
-
                   {/* Button: Bekijk bewijs voor deze LU */}
                   <button
                     onClick={() => onNavigateToEvidence(lu.id)}
@@ -299,7 +229,7 @@ export const LearningOutcomesPage: React.FC<LearningOutcomesPageProps> = ({ onNa
 
         <div className="pt-3 border-t border-[#3D2B2F]/10 text-[11px] text-[#3D2B2F]/80 leading-relaxed bg-[#F7F2E9] p-3.5">
           <p>
-            <strong>Hoe pas je de cijfers aan?</strong> Je kunt de tellers direct met de plus- en minknoppen op deze pagina aanpassen; de nieuwe waarden worden automatisch in je browser bewaard. Om de standaard beginwaarden permanent in te stellen in de code, pas je eenvoudig het veld <code className="bg-[#E7DFCF] px-1 py-0.5 border border-[#3D2B2F]/10">currentCount</code> aan in het bestand <code className="bg-[#E7DFCF] px-1 py-0.5 border border-[#3D2B2F]/10">src/data/portfolioData.ts</code>.
+            <strong>Hoe pas je de cijfers aan?</strong> Geef aan welke leeruitkomst een update nodig heeft, dan pas ik het veld <code className="bg-[#E7DFCF] px-1 py-0.5 border border-[#3D2B2F]/10">currentCount</code> voor je aan in het bestand <code className="bg-[#E7DFCF] px-1 py-0.5 border border-[#3D2B2F]/10">src/data/portfolioData.ts</code>, zodat de wijziging permanent zichtbaar is voor iedereen.
           </p>
         </div>
       </div>

@@ -1,51 +1,12 @@
-import React, { useState } from 'react';
-import { sprintsData as initialSprints, initialEvidenceItems, SPRINT_LOGBOEK_DOWNLOAD } from '../data/portfolioData';
-import { Sprint } from '../types';
-import { Download, ExternalLink, Calendar, ArrowRight, Presentation, Edit3, Check, Flag, Sparkles } from 'lucide-react';
+import React from 'react';
+import { sprintsData as sprints, initialEvidenceItems, SPRINT_LOGBOEK_DOWNLOAD } from '../data/portfolioData';
+import { Download, ExternalLink, Calendar, ArrowRight, Presentation, Flag, Sparkles } from 'lucide-react';
 
 interface SprintsPageProps {
   onNavigateToEvidence: (sprintId?: number) => void;
 }
 
 export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }) => {
-  const [sprints, setSprints] = useState<Sprint[]>(initialSprints);
-  const [editingSprintId, setEditingSprintId] = useState<number | null>(null);
-
-  // Quick edit buffers for Jasmijn
-  const [editFields, setEditFields] = useState({
-    researched: '',
-    created: '',
-    learned: '',
-    presentationUrl: '',
-  });
-
-  const startEditing = (sprint: Sprint) => {
-    setEditingSprintId(sprint.id);
-    setEditFields({
-      researched: sprint.researched,
-      created: sprint.created,
-      learned: sprint.learned,
-      presentationUrl: sprint.presentationUrl || '',
-    });
-  };
-
-  const saveEditing = (sprintId: number) => {
-    setSprints((prev) =>
-      prev.map((s) =>
-        s.id === sprintId
-          ? {
-              ...s,
-              researched: editFields.researched,
-              created: editFields.created,
-              learned: editFields.learned,
-              presentationUrl: editFields.presentationUrl,
-            }
-          : s
-      )
-    );
-    setEditingSprintId(null);
-  };
-
   return (
     <div className="space-y-12 py-6 md:py-10">
       
@@ -140,7 +101,6 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
         {sprints.map((sprint) => {
           const isCurrent = sprint.status === 'bezig';
           const isPlanned = sprint.status === 'gepland';
-          const isEditing = editingSprintId === sprint.id;
           const evidenceCount = initialEvidenceItems.filter((e) => e.sprintId === sprint.id).length;
 
           return (
@@ -221,133 +181,53 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
                 </div>
 
                 {/* Focus / Kernvraagstuk Header */}
-                <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-3 border-b border-[#3D2B2F]/10 pb-4">
-                  <div>
-                    <span className="text-[10px] uppercase tracking-widest font-bold text-[#3D2B2F]/60 block mb-1">
-                      Focus van deze sprint
-                    </span>
-                    <h3 className="font-serif text-xl sm:text-2xl text-[#3D2B2F] leading-snug">
-                      {sprint.focus}
-                    </h3>
-                  </div>
-
-                  {/* Edit button */}
-                  <button
-                    onClick={() => (isEditing ? setEditingSprintId(null) : startEditing(sprint))}
-                    className="self-start sm:self-auto p-1.5 text-[#3D2B2F]/70 hover:text-[#B3543C] bg-[#F7F2E9] border border-[#3D2B2F]/10 hover:border-[#B3543C] cursor-pointer transition-colors"
-                    title="Bewerk teksten of presentatielink van deze sprint"
-                  >
-                    <Edit3 className="w-4 h-4" />
-                  </button>
+                <div className="border-b border-[#3D2B2F]/10 pb-4">
+                  <span className="text-[10px] uppercase tracking-widest font-bold text-[#3D2B2F]/60 block mb-1">
+                    Focus van deze sprint
+                  </span>
+                  <h3 className="font-serif text-xl sm:text-2xl text-[#3D2B2F] leading-snug">
+                    {sprint.focus}
+                  </h3>
                 </div>
 
                 {/* Agile Breakdown: Onderzocht, Gemaakt, Geleerd */}
-                {isEditing ? (
-                  <div className="space-y-4 pt-1">
-                    <div className="space-y-1">
-                      <label className="block text-xs font-bold uppercase tracking-wider text-[#B3543C]">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                  {/* 1. Onderzocht */}
+                  <div className="bg-[#F7F2E9] p-4 border border-[#3D2B2F]/10 space-y-1.5 flex flex-col justify-between">
+                    <div>
+                      <span className="block font-sans text-[10px] font-bold uppercase tracking-widest text-[#B3543C]">
                         1. Onderzocht &amp; Verdiept
-                      </label>
-                      <textarea
-                        value={editFields.researched}
-                        onChange={(e) => setEditFields({ ...editFields, researched: e.target.value })}
-                        rows={3}
-                        className="w-full text-xs font-sans p-3 bg-[#F7F2E9] border border-[#3D2B2F]/20 text-[#3D2B2F] focus:outline-hidden focus:border-[#B3543C]"
-                      />
+                      </span>
+                      <p className={`text-xs text-[#3D2B2F]/85 leading-relaxed mt-1 ${isPlanned ? 'italic text-[#3D2B2F]/60' : ''}`}>
+                        {sprint.researched}
+                      </p>
                     </div>
+                  </div>
 
-                    <div className="space-y-1">
-                      <label className="block text-xs font-bold uppercase tracking-wider text-[#B3543C]">
+                  {/* 2. Gemaakt */}
+                  <div className="bg-[#F7F2E9] p-4 border border-[#3D2B2F]/10 space-y-1.5 flex flex-col justify-between">
+                    <div>
+                      <span className="block font-sans text-[10px] font-bold uppercase tracking-widest text-[#B3543C]">
                         2. Gemaakt &amp; Opgeleverd
-                      </label>
-                      <textarea
-                        value={editFields.created}
-                        onChange={(e) => setEditFields({ ...editFields, created: e.target.value })}
-                        rows={3}
-                        className="w-full text-xs font-sans p-3 bg-[#F7F2E9] border border-[#3D2B2F]/20 text-[#3D2B2F] focus:outline-hidden focus:border-[#B3543C]"
-                      />
+                      </span>
+                      <p className={`text-xs text-[#3D2B2F]/85 leading-relaxed mt-1 ${isPlanned ? 'italic text-[#3D2B2F]/60' : ''}`}>
+                        {sprint.created}
+                      </p>
                     </div>
+                  </div>
 
-                    <div className="space-y-1">
-                      <label className="block text-xs font-bold uppercase tracking-wider text-[#B3543C]">
+                  {/* 3. Geleerd */}
+                  <div className="bg-[#F7F2E9] p-4 border border-[#3D2B2F]/10 space-y-1.5 flex flex-col justify-between">
+                    <div>
+                      <span className="block font-sans text-[10px] font-bold uppercase tracking-widest text-[#B3543C]">
                         3. Geleerd &amp; Reflectie
-                      </label>
-                      <textarea
-                        value={editFields.learned}
-                        onChange={(e) => setEditFields({ ...editFields, learned: e.target.value })}
-                        rows={3}
-                        className="w-full text-xs font-sans p-3 bg-[#F7F2E9] border border-[#3D2B2F]/20 text-[#3D2B2F] focus:outline-hidden focus:border-[#B3543C]"
-                      />
-                    </div>
-
-                    <div className="space-y-1">
-                      <label className="block text-xs font-bold uppercase tracking-wider text-[#B3543C]">
-                        Show &amp; Grow Presentatie URL
-                      </label>
-                      <input
-                        type="url"
-                        placeholder="https://canva.com/... of PowerPoint presentatielink"
-                        value={editFields.presentationUrl}
-                        onChange={(e) => setEditFields({ ...editFields, presentationUrl: e.target.value })}
-                        className="w-full text-xs font-sans p-2.5 bg-[#F7F2E9] border border-[#3D2B2F]/20 text-[#3D2B2F] focus:outline-hidden focus:border-[#B3543C]"
-                      />
-                    </div>
-
-                    <div className="flex justify-end gap-2 pt-2">
-                      <button
-                        onClick={() => setEditingSprintId(null)}
-                        className="px-4 py-2 text-xs font-sans uppercase tracking-wider border border-[#3D2B2F]/20 bg-[#F7F2E9] cursor-pointer"
-                      >
-                        Annuleren
-                      </button>
-                      <button
-                        onClick={() => saveEditing(sprint.id)}
-                        className="accent-btn px-4 py-2 text-xs font-sans uppercase tracking-wider inline-flex items-center gap-1.5 cursor-pointer"
-                      >
-                        <Check className="w-3.5 h-3.5" />
-                        <span>Opslaan</span>
-                      </button>
+                      </span>
+                      <p className={`text-xs text-[#3D2B2F]/85 leading-relaxed mt-1 ${isPlanned ? 'italic text-[#3D2B2F]/60' : ''}`}>
+                        {sprint.learned}
+                      </p>
                     </div>
                   </div>
-                ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                    {/* 1. Onderzocht */}
-                    <div className="bg-[#F7F2E9] p-4 border border-[#3D2B2F]/10 space-y-1.5 flex flex-col justify-between">
-                      <div>
-                        <span className="block font-sans text-[10px] font-bold uppercase tracking-widest text-[#B3543C]">
-                          1. Onderzocht &amp; Verdiept
-                        </span>
-                        <p className={`text-xs text-[#3D2B2F]/85 leading-relaxed mt-1 ${isPlanned ? 'italic text-[#3D2B2F]/60' : ''}`}>
-                          {sprint.researched}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* 2. Gemaakt */}
-                    <div className="bg-[#F7F2E9] p-4 border border-[#3D2B2F]/10 space-y-1.5 flex flex-col justify-between">
-                      <div>
-                        <span className="block font-sans text-[10px] font-bold uppercase tracking-widest text-[#B3543C]">
-                          2. Gemaakt &amp; Opgeleverd
-                        </span>
-                        <p className={`text-xs text-[#3D2B2F]/85 leading-relaxed mt-1 ${isPlanned ? 'italic text-[#3D2B2F]/60' : ''}`}>
-                          {sprint.created}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* 3. Geleerd */}
-                    <div className="bg-[#F7F2E9] p-4 border border-[#3D2B2F]/10 space-y-1.5 flex flex-col justify-between">
-                      <div>
-                        <span className="block font-sans text-[10px] font-bold uppercase tracking-widest text-[#B3543C]">
-                          3. Geleerd &amp; Reflectie
-                        </span>
-                        <p className={`text-xs text-[#3D2B2F]/85 leading-relaxed mt-1 ${isPlanned ? 'italic text-[#3D2B2F]/60' : ''}`}>
-                          {sprint.learned}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                </div>
 
                 {/* Card Footer: Gekoppelde Leeruitkomsten + Knoppen voor Presentatie en Bewijs */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-[#3D2B2F]/10">
@@ -379,15 +259,13 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
                         <ExternalLink className="w-3 h-3 opacity-60" />
                       </a>
                     ) : (
-                      <button
-                        onClick={() => startEditing(sprint)}
-                        className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#F7F2E9] hover:bg-[#E7DFCF] text-[#3D2B2F]/80 hover:text-[#3D2B2F] border border-[#3D2B2F]/15 text-xs font-medium uppercase tracking-wider transition-colors cursor-pointer"
-                        title="Vul de presentatielink in zodra de Show & Grow presentatie klaar is"
+                      <span
+                        className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#F7F2E9] text-[#3D2B2F]/60 border border-[#3D2B2F]/15 text-xs font-medium uppercase tracking-wider"
+                        title="Presentatielink volgt zodra de Show & Grow presentatie klaar is"
                       >
-                        <Presentation className="w-3.5 h-3.5 text-[#B3543C]" />
-                        <span>Bekijk presentatie</span>
-                        <span className="text-[10px] text-[#B3543C] lowercase font-normal italic">[link toevoegen]</span>
-                      </button>
+                        <Presentation className="w-3.5 h-3.5 text-[#B3543C]/60" />
+                        <span>Presentatie volgt</span>
+                      </span>
                     )}
 
                     {/* Knop: Bekijk bewijs */}
@@ -407,26 +285,6 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
         })}
       </div>
 
-      {/* Direct download sprint logbook note banner */}
-      <div className="p-5 bg-[#E7DFCF] border border-[#3D2B2F]/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-[#3D2B2F]">
-        <div className="space-y-1">
-          <span className="font-semibold text-[#3D2B2F] uppercase tracking-wider text-[10px] block">
-            Uren- en sprintverantwoording
-          </span>
-          <p className="text-[#3D2B2F]/80">
-            Het integrale Excel-logboek met alle sprintdetails staat lokaal op de site opgeslagen als <code className="bg-[#F7F2E9] px-1 py-0.5 border border-[#3D2B2F]/10">/sprintlogboek.xlsx</code>.
-          </p>
-        </div>
-
-        <a
-          href={SPRINT_LOGBOEK_DOWNLOAD}
-          download="sprintlogboek.xlsx"
-          className="accent-btn inline-flex items-center gap-2 px-4 py-2 text-xs font-medium uppercase tracking-wider shrink-0 cursor-pointer"
-        >
-          <Download className="w-3.5 h-3.5" />
-          <span>Download Excel Logboek</span>
-        </a>
-      </div>
     </div>
   );
 };
