@@ -258,11 +258,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           Mijn uitgangspunt voor deze minor
         </h3>
         <p className="text-sm text-[#3D2B2F]/85 leading-relaxed max-w-3xl italic bg-[#F7F2E9] p-4 border border-[#3D2B2F]/10">
-          [Hier schrijf ik zelf mijn eigen visie op AI en mijn vakgebied.]
+          AI neemt in hoog tempo taken over die voorheen vanzelfsprekend mensenwerk waren, en die ontwikkeling gaat razendsnel. Zelf gebruik ik AI al dagelijks om slimmer en efficiënter te werken, maar de technische kant, het daadwerkelijk programmeren en bouwen van AI-oplossingen, is voor mij nog relatief onbekend terrein. En juist dát is wat ik tijdens deze minor wil leren: niet alleen AI toepassen als gebruiker, maar ook begrijpen en zelf kunnen bouwen wat er achter de schermen gebeurt.
         </p>
-        <div className="pt-2 text-xs font-medium text-[#B3543C] uppercase tracking-wider">
-          Jasmijn Mesu, Minor Futureproof met AI (September 2026 tot en met Januari 2027)
-        </div>
       </section>
     </div>
   );

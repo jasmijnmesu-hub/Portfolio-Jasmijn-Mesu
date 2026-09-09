@@ -226,12 +226,6 @@ export const LearningOutcomesPage: React.FC<LearningOutcomesPageProps> = ({ onNa
             <span className="text-[10px] text-[#3D2B2F]/70">Zelfstandig en Zelfsturend</span>
           </div>
         </div>
-
-        <div className="pt-3 border-t border-[#3D2B2F]/10 text-[11px] text-[#3D2B2F]/80 leading-relaxed bg-[#F7F2E9] p-3.5">
-          <p>
-            <strong>Hoe pas je de cijfers aan?</strong> Geef aan welke leeruitkomst een update nodig heeft, dan pas ik het veld <code className="bg-[#E7DFCF] px-1 py-0.5 border border-[#3D2B2F]/10">currentCount</code> voor je aan in het bestand <code className="bg-[#E7DFCF] px-1 py-0.5 border border-[#3D2B2F]/10">src/data/portfolioData.ts</code>, zodat de wijziging permanent zichtbaar is voor iedereen.
-          </p>
-        </div>
       </div>
     </div>
   );
