@@ -28,7 +28,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-[#EDE6D8]/95 backdrop-blur-xs border-b border-[#1B2A24]/10">
+    <header className="bg-[#EDE6D8]/95 backdrop-blur-xs border-b border-[#1B2A24]/10">
       <div className="w-full pl-2 sm:pl-4 lg:pl-5 2xl:pl-6 pr-4 sm:pr-8 lg:pr-12 2xl:pr-16">
         <div className="flex items-center justify-between h-20 sm:h-20 2xl:h-24">
           

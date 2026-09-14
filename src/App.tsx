@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { NavTab } from './types';
 import { Navbar } from './components/Navbar';
+import { CountdownBar } from './components/CountdownBar';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
@@ -58,8 +59,11 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#EDE6D8] text-[#1B2A24] font-sans antialiased selection:bg-[#D8B7A6] selection:text-[#1B2A24]">
-      {/* Fixed top navigation */}
-      <Navbar activeTab={activeTab} onSelectTab={handleSelectTab} />
+      {/* Fixed top navigation, with the Show & Grow countdown pinned above it */}
+      <div className="sticky top-0 z-50">
+        <CountdownBar />
+        <Navbar activeTab={activeTab} onSelectTab={handleSelectTab} />
+      </div>
 
       {/* Main Page Content */}
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8">
