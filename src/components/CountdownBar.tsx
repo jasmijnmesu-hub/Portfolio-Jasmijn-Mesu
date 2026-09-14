@@ -59,7 +59,7 @@ export const CountdownBar: React.FC = () => {
           <span className="hidden sm:inline">Volgende Show &amp; Grow &middot; {next.sprint.title}:</span>
           <span className="sm:hidden">Show &amp; Grow:</span>
         </span>
-        <span className="font-serif font-bold tabular-nums tracking-wide">
+        <span className="font-sans font-bold tabular-nums tracking-wide">
           {days > 0 && `${days}d `}
           {String(hours).padStart(2, '0')}u {String(minutes).padStart(2, '0')}m {String(seconds).padStart(2, '0')}s
         </span>
