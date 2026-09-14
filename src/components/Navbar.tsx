@@ -14,6 +14,7 @@ const navItems: { id: NavTab; label: string }[] = [
   { id: 'leeruitkomsten', label: 'Leeruitkomsten' },
   { id: 'sprints', label: 'Sprints' },
   { id: 'bewijzen', label: 'Bewijzen' },
+  { id: 'geleerd', label: 'Wat heb ik geleerd' },
   { id: 'contact', label: 'Contact' },
 ];
 

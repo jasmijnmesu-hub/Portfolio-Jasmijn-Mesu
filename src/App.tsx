@@ -7,6 +7,7 @@ import { AboutPage } from './pages/AboutPage';
 import { LearningOutcomesPage } from './pages/LearningOutcomesPage';
 import { SprintsPage } from './pages/SprintsPage';
 import { EvidencePage } from './pages/EvidencePage';
+import { LearningLogPage } from './pages/LearningLogPage';
 import { ContactPage } from './pages/ContactPage';
 import { GeminiChatbot } from './components/GeminiChatbot';
 
@@ -19,7 +20,7 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '').toLowerCase();
-      if (['home', 'over-mij', 'leeruitkomsten', 'sprints', 'bewijzen', 'contact'].includes(hash)) {
+      if (['home', 'over-mij', 'leeruitkomsten', 'sprints', 'bewijzen', 'geleerd', 'contact'].includes(hash)) {
         setActiveTab(hash as NavTab);
       }
     };
@@ -83,6 +84,10 @@ export default function App() {
             initialLuFilter={evidenceLuFilter} 
             initialSprintFilter={evidenceSprintFilter} 
           />
+        )}
+
+        {activeTab === 'geleerd' && (
+          <LearningLogPage />
         )}
 
         {activeTab === 'contact' && (

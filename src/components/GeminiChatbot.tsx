@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Bot, LoaderCircle, MessageCircle, Send, X } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
 interface ChatMessage {
   role: 'user' | 'model';
@@ -13,13 +14,55 @@ export const GeminiChatbot: React.FC = () => {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isHistoryLoading, setIsHistoryLoading] = useState(true);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    const loadChatHistory = async () => {
+      if (!supabase) {
+        setIsHistoryLoading(false);
+        return;
+      }
+
+      const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+      let userId = sessionData.session?.user.id;
+      let authError = null;
+
+      if (!userId) {
+        const { data: authData, error } = await supabase.auth.signInAnonymously();
+        userId = authData.user?.id;
+        authError = error;
+      }
+
+      if (sessionError || authError || !userId) {
+        setError('De chat kon niet veilig worden gestart.');
+        setIsHistoryLoading(false);
+        return;
+      }
+
+      const { data, error: historyError } = await supabase
+        .from('chat_messages')
+        .select('role, message')
+        .eq('user_id', userId)
+        .order('created_at', { ascending: true })
+        .order('id', { ascending: true });
+
+      if (historyError) {
+        setError('De opgeslagen chat kon niet worden geladen.');
+      } else {
+        setMessages((data || []).map((message) => ({ role: message.role, text: message.message })));
+      }
+      setIsHistoryLoading(false);
+    };
+
+    void loadChatHistory();
+  }, []);
 
   const sendMessage = async (event: React.FormEvent) => {
     event.preventDefault();
     const prompt = input.trim();
 
-    if (!apiKey.trim() || !prompt || isLoading) return;
+    if (!apiKey.trim() || !prompt || isLoading || isHistoryLoading) return;
 
     const nextMessages = [...messages, { role: 'user' as const, text: prompt }];
     setMessages(nextMessages);
@@ -55,6 +98,17 @@ export const GeminiChatbot: React.FC = () => {
 
       const answer = data.candidates?.[0]?.content?.parts?.[0]?.text;
       if (!answer) throw new Error('Gemini gaf geen antwoord terug.');
+      if (supabase) {
+        const { data: sessionData } = await supabase.auth.getSession();
+        const userId = sessionData.session?.user.id;
+        if (!userId) throw new Error('De veilige chatsessie ontbreekt.');
+
+        const { error: saveError } = await supabase.from('chat_messages').insert([
+          { user_id: userId, role: 'user', message: prompt },
+          { user_id: userId, role: 'model', message: answer },
+        ]);
+        if (saveError) throw new Error('Het antwoord kon niet in de chatgeschiedenis worden opgeslagen.');
+      }
       setMessages((current) => [...current, { role: 'model', text: answer }]);
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : 'Er ging iets mis bij het versturen.');
@@ -81,8 +135,9 @@ export const GeminiChatbot: React.FC = () => {
           </div>
 
           <div className="flex-1 space-y-3 overflow-y-auto p-4">
-            {messages.length === 0 && (
-              <p className="text-xs leading-relaxed text-[#1B2A24]/70">Stel een vraag over dit portfolio. De chatbot gebruikt de Gemini-key uit de lokale configuratie.</p>
+            {isHistoryLoading && <p className="text-xs text-[#1B2A24]/60">Opgeslagen chat laden...</p>}
+            {!isHistoryLoading && messages.length === 0 && (
+              <p className="text-xs leading-relaxed text-[#1B2A24]/70">Stel een vraag over dit portfolio. Je chat wordt bewaard voor je volgende bezoek.</p>
             )}
             {messages.map((message, index) => (
               <div key={`${message.role}-${index}`} className={`max-w-[90%] p-3 text-xs leading-relaxed ${message.role === 'user' ? 'ml-auto bg-[#9C4A32] text-[#EDE6D8]' : 'bg-[#CEC5B5]'}`}>
@@ -100,15 +155,15 @@ export const GeminiChatbot: React.FC = () => {
                 value={input}
                 onChange={(event) => setInput(event.target.value)}
                 placeholder={apiKey ? 'Stel een vraag...' : 'Gemini-key ontbreekt in .env'}
-                disabled={!apiKey || isLoading}
+                disabled={!apiKey || isLoading || isHistoryLoading}
                 className="min-w-0 flex-1 border border-[#1B2A24]/15 bg-white/30 px-3 py-2 text-xs outline-none focus:border-[#9C4A32] disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label="Chatbericht"
               />
-              <button type="submit" disabled={!apiKey || !input.trim() || isLoading} className="accent-btn p-2 disabled:cursor-not-allowed disabled:opacity-40" aria-label="Bericht versturen">
+              <button type="submit" disabled={!apiKey || !input.trim() || isLoading || isHistoryLoading} className="accent-btn p-2 disabled:cursor-not-allowed disabled:opacity-40" aria-label="Bericht versturen">
                 <Send className="h-4 w-4" />
               </button>
             </form>
-            <p className="text-[10px] leading-relaxed text-[#1B2A24]/50">De chatbot leest GEMINI_API_KEY uit .env. Zet deze niet in een publieke repository.</p>
+            <p className="text-[10px] leading-relaxed text-[#1B2A24]/50">Je chat wordt lokaal herkenbaar opgeslagen, zodat je geschiedenis bij een volgend bezoek terugkomt.</p>
           </div>
         </section>
       )}

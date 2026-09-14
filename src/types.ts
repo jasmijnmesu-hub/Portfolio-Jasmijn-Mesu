@@ -1,4 +1,4 @@
-export type NavTab = 'home' | 'over-mij' | 'leeruitkomsten' | 'sprints' | 'bewijzen' | 'contact';
+export type NavTab = 'home' | 'over-mij' | 'leeruitkomsten' | 'sprints' | 'bewijzen' | 'geleerd' | 'contact';
 
 export interface LearningOutcome {
   id: 'LU1' | 'LU2' | 'LU3' | 'LU4' | 'LU5';

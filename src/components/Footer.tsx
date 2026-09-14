@@ -65,11 +65,19 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
                 </button>
               </li>
               <li>
-                <button 
+                <button
                   onClick={() => { onSelectTab('bewijzen'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                   className="hover:text-[#9C4A32] transition-colors cursor-pointer"
                 >
                   Bewijzen
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => { onSelectTab('geleerd'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                  className="hover:text-[#9C4A32] transition-colors cursor-pointer"
+                >
+                  Wat heb ik geleerd
                 </button>
               </li>
               <li>
