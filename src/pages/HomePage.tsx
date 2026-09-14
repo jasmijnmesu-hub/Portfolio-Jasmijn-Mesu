@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavTab } from '../types';
-import { studentProfile, learningOutcomes, sprintsData, SPRINT_LOGBOEK_DOWNLOAD } from '../data/portfolioData';
+import { studentProfile, learningOutcomes, sprintsData, initialEvidenceItems, SPRINT_LOGBOEK_DOWNLOAD } from '../data/portfolioData';
 import { PhotoFrame } from '../components/PhotoFrame';
 import { ArrowRight, Download, Calendar, Award } from 'lucide-react';
 
@@ -10,6 +10,10 @@ interface HomePageProps {
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   const currentSprint = sprintsData.find((s) => s.status === 'bezig') || sprintsData[0];
+  const currentSprintEvidence = initialEvidenceItems.filter((item) => currentSprint.evidenceIds.includes(item.id));
+  const evidenceSummary = currentSprintEvidence.length > 0
+    ? currentSprintEvidence.map((item) => item.summary || item.description).join(' ')
+    : `Voor ${currentSprint.title} zijn nog geen bewijzen toegevoegd.`;
   const totalDemonstrated = learningOutcomes.reduce((acc, curr) => acc + curr.currentCount, 0); // At 0
   const totalTarget = learningOutcomes.reduce((acc, curr) => acc + curr.targetCount, 0); // 18
 
@@ -102,7 +106,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               </div>
               <div className="p-4 bg-[#CEC5B5] border border-[#1B2A24]/10">
                 <div className="text-2xl sm:text-3xl font-serif mb-1 text-[#1B2A24]">
-                  Sprint 1
+                  {currentSprint.title}
                 </div>
                 <div className="text-[10px] uppercase tracking-wider font-bold opacity-60 text-[#1B2A24]">
                   Huidige Sprint
@@ -118,7 +122,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#EDE6D8] border border-[#1B2A24]/10 text-[11px] font-sans font-medium text-[#1B2A24]">
                   <Calendar className="w-3 h-3 text-[#9C4A32]" />
-                  Sprint 1
+                  {currentSprint.title}
                 </span>
               </div>
 
@@ -145,13 +149,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 </div>
               </div>
 
-              {/* Placeholder voor 2 tot 3 zinnen van Jasmijn */}
               <div className="pt-2 border-t border-[#1B2A24]/10">
                 <span className="block text-[10px] uppercase tracking-wider font-bold text-[#1B2A24]/70 mb-1">
                   Waar ik nu mee bezig ben:
                 </span>
                 <p className="text-xs text-[#1B2A24]/75 italic bg-[#EDE6D8] p-3 border border-[#1B2A24]/10 leading-relaxed">
-                  [Hier beschrijf ik in 2 tot 3 zinnen waar ik op dit moment concreet mee bezig ben binnen Sprint 1.]
+                  {evidenceSummary}
                 </p>
               </div>
             </div>

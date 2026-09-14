@@ -35,6 +35,7 @@ export interface EvidenceItem {
   id: string;
   title: string;
   description: string;
+  summary?: string;
   type: EvidenceType;
   platform: string; // e.g., 'OneDrive', 'YouTube', 'SharePoint', 'Canva'
   externalUrl: string;
