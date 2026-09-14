@@ -1,8 +1,19 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { NavTab } from '../types';
 import { studentProfile, learningOutcomes, sprintsData, initialEvidenceItems, SPRINT_LOGBOEK_DOWNLOAD } from '../data/portfolioData';
 import { PhotoFrame } from '../components/PhotoFrame';
 import { ArrowRight, Download, Calendar, Award } from 'lucide-react';
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0 },
+};
+
+const cardStagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.12 } },
+};
 
 interface HomePageProps {
   onNavigate: (tab: NavTab) => void;
@@ -18,13 +29,19 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   const totalTarget = learningOutcomes.reduce((acc, curr) => acc + curr.targetCount, 0); // 18
 
   return (
-    <div className="space-y-16 py-6 md:py-10">
+    <div className="space-y-10 py-4 md:py-6">
       {/* Hero Section */}
-      <section id="hero-section" className="border-b border-[#1B2A24]/10 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          
+      <section id="hero-section" className="border-b border-[#1B2A24]/10 pb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+
           {/* Left / Main Text column (7 cols) */}
-          <div className="lg:col-span-7 space-y-6">
+          <motion.div
+            initial="hidden"
+            animate="show"
+            variants={fadeUp}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7 space-y-5"
+          >
             <div className="flex items-center gap-2 mb-2">
               <span className="h-[1px] w-8 bg-[#9C4A32]" />
               <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#9C4A32]">
@@ -80,50 +97,53 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <span>Download Sprint Logboek</span>
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right column: Photo Frame & Status Snapshot */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="max-w-sm mx-auto lg:max-w-none">
+          <motion.div
+            initial="hidden"
+            animate="show"
+            variants={fadeUp}
+            transition={{ duration: 0.55, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 space-y-5"
+          >
+            <div className="max-w-[360px] mx-auto lg:mx-0 transition-transform duration-500 ease-out hover:-translate-y-1">
               <PhotoFrame
                 id="hero-jasmijn-photo"
                 defaultSrc={studentProfile.photoUrl || '/IMG_1185.jpg'}
                 alt="Portretfoto van Jasmijn Mesu"
                 caption="Facility Management Zuyd Hogeschool · Minor HU"
-                aspectRatio="portrait"
+                aspectRatio="square"
               />
             </div>
 
-            {/* Stat cards: Real current status at 0 */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 bg-[#CEC5B5] border border-[#1B2A24]/10">
-                <div className="text-2xl sm:text-3xl font-serif mb-1 text-[#1B2A24]">
-                  {String(totalDemonstrated).padStart(2, '0')}<span className="text-xs opacity-50 ml-1">/ {totalTarget}</span>
-                </div>
-                <div className="text-[10px] uppercase tracking-wider font-bold opacity-60 text-[#1B2A24]">
-                  LU Aangetoond (Nu 0)
-                </div>
-              </div>
-              <div className="p-4 bg-[#CEC5B5] border border-[#1B2A24]/10">
-                <div className="text-2xl sm:text-3xl font-serif mb-1 text-[#1B2A24]">
-                  {currentSprint.title}
-                </div>
-                <div className="text-[10px] uppercase tracking-wider font-bold opacity-60 text-[#1B2A24]">
-                  Huidige Sprint
-                </div>
-              </div>
-            </div>
-
-            {/* Actuele Status Blok (Punt 5) */}
-            <div className="bg-[#CEC5B5] border border-[#1B2A24]/10 p-5 space-y-3.5">
-              <div className="flex items-center justify-between border-b border-[#1B2A24]/10 pb-2.5">
-                <span className="text-[10px] uppercase tracking-widest font-bold text-[#9C4A32]">
+            {/* Actuele Status Blok (Punt 5) — inclusief compacte kernstats */}
+            <div className="bg-[#CEC5B5] border border-[#1B2A24]/10 p-4 sm:p-5 space-y-3">
+              <div className="flex items-center gap-2 border-b border-[#1B2A24]/10 pb-2.5">
+                <span className="h-[1px] w-5 bg-[#9C4A32]" />
+                <Calendar className="w-3 h-3 text-[#9C4A32]" />
+                <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#9C4A32]">
                   Actuele Status
                 </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#EDE6D8] border border-[#1B2A24]/10 text-[11px] font-sans font-medium text-[#1B2A24]">
-                  <Calendar className="w-3 h-3 text-[#9C4A32]" />
-                  {currentSprint.title}
-                </span>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 pb-3 border-b border-[#1B2A24]/10">
+                <div>
+                  <div className="text-xl sm:text-2xl font-serif text-[#1B2A24]">
+                    {String(totalDemonstrated).padStart(2, '0')}<span className="text-xs opacity-50 ml-1">/ {totalTarget}</span>
+                  </div>
+                  <div className="text-[10px] uppercase tracking-wider font-bold opacity-60 text-[#1B2A24]">
+                    LU Aangetoond
+                  </div>
+                </div>
+                <div>
+                  <div className="text-xl sm:text-2xl font-serif text-[#1B2A24]">
+                    {currentSprint.title}
+                  </div>
+                  <div className="text-[10px] uppercase tracking-wider font-bold opacity-60 text-[#1B2A24]">
+                    Huidige Sprint
+                  </div>
+                </div>
               </div>
 
               <div className="space-y-2 text-xs">
@@ -153,12 +173,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                 <span className="block text-[10px] uppercase tracking-wider font-bold text-[#1B2A24]/70 mb-1">
                   Waar ik nu mee bezig ben:
                 </span>
-                <p className="text-xs text-[#1B2A24]/75 italic bg-[#EDE6D8] p-3 border border-[#1B2A24]/10 leading-relaxed">
+                <p className="font-serif text-xs sm:text-[13px] text-[#1B2A24]/75 italic bg-[#EDE6D8] p-3 border border-[#1B2A24]/10 leading-relaxed">
                   {evidenceSummary}
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </section>
@@ -180,11 +200,22 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Card 1: Leeruitkomsten (bolletje verwijderd) */}
-          <div 
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={cardStagger}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
+          {/* Card 1: Leeruitkomsten */}
+          <motion.div
+            variants={fadeUp}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            role="button"
+            tabIndex={0}
             onClick={() => onNavigate('leeruitkomsten')}
-            className="p-6 sm:p-7 bg-[#CEC5B5] border border-[#1B2A24]/10 hover:border-[#9C4A32]/50 transition-all cursor-pointer group flex flex-col justify-between"
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate('leeruitkomsten'); } }}
+            className="p-6 sm:p-7 bg-[#CEC5B5] border border-[#1B2A24]/10 hover:border-[#9C4A32]/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer group flex flex-col justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9C4A32] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EDE6D8]"
           >
             <div className="space-y-3">
               <span className="text-xs uppercase tracking-widest font-bold text-[#9C4A32] block">
@@ -201,12 +232,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <span>Bekijk voortgang</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </div>
-          </div>
+          </motion.div>
 
-          {/* Card 2: Sprints (bolletje verwijderd) */}
-          <div 
+          {/* Card 2: Sprints */}
+          <motion.div
+            variants={fadeUp}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            role="button"
+            tabIndex={0}
             onClick={() => onNavigate('sprints')}
-            className="p-6 sm:p-7 bg-[#CEC5B5] border border-[#1B2A24]/10 hover:border-[#9C4A32]/50 transition-all cursor-pointer group flex flex-col justify-between"
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate('sprints'); } }}
+            className="p-6 sm:p-7 bg-[#CEC5B5] border border-[#1B2A24]/10 hover:border-[#9C4A32]/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer group flex flex-col justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9C4A32] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EDE6D8]"
           >
             <div className="space-y-3">
               <span className="text-xs uppercase tracking-widest font-bold text-[#9C4A32] block">
@@ -223,12 +259,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <span>Bekijk sprints</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </div>
-          </div>
+          </motion.div>
 
-          {/* Card 3: Bewijzen (bolletje verwijderd) */}
-          <div 
+          {/* Card 3: Bewijzen */}
+          <motion.div
+            variants={fadeUp}
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            role="button"
+            tabIndex={0}
             onClick={() => onNavigate('bewijzen')}
-            className="p-6 sm:p-7 bg-[#CEC5B5] border border-[#1B2A24]/10 hover:border-[#9C4A32]/50 transition-all cursor-pointer group flex flex-col justify-between"
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate('bewijzen'); } }}
+            className="p-6 sm:p-7 bg-[#CEC5B5] border border-[#1B2A24]/10 hover:border-[#9C4A32]/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer group flex flex-col justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9C4A32] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EDE6D8]"
           >
             <div className="space-y-3">
               <span className="text-xs uppercase tracking-widest font-bold text-[#9C4A32] block">
@@ -245,12 +286,18 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <span>Bekijk bewijsstukken</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Quote / Vision Banner (Punt 4: Placeholder voor Jasmijn en geen streepjes) */}
-      <section className="bg-[#CEC5B5] border-l-2 border-[#9C4A32] border-y border-r border-[#1B2A24]/10 p-6 sm:p-8 space-y-3">
+      <motion.section
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+        className="bg-[#CEC5B5] border-l-2 border-[#9C4A32] border-y border-r border-[#1B2A24]/10 p-6 sm:p-8 space-y-3"
+      >
         <div className="flex items-center gap-2">
           <span className="h-[1px] w-6 bg-[#9C4A32]" />
           <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#9C4A32]">
@@ -263,7 +310,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         <p className="text-sm text-[#1B2A24]/85 leading-relaxed max-w-3xl italic bg-[#EDE6D8] p-4 border border-[#1B2A24]/10">
           AI neemt in hoog tempo taken over die voorheen vanzelfsprekend mensenwerk waren, en die ontwikkeling gaat razendsnel. Zelf gebruik ik AI al dagelijks om slimmer en efficiënter te werken, maar de technische kant, het daadwerkelijk programmeren en bouwen van AI-oplossingen, is voor mij nog relatief onbekend terrein. En juist dát is wat ik tijdens deze minor wil leren: niet alleen AI toepassen als gebruiker, maar ook begrijpen en zelf kunnen bouwen wat er achter de schermen gebeurt.
         </p>
-      </section>
+      </motion.section>
     </div>
   );
 };

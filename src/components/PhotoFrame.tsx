@@ -31,13 +31,13 @@ export const PhotoFrame: React.FC<PhotoFrameProps> = ({
 
   return (
     <figure id={id} className="relative block">
-      <div 
-        className={`w-full ${aspectClass} bg-[#CEC5B5] border border-[#1B2A24]/15 overflow-hidden flex flex-col items-center justify-center relative shadow-xs`}
+      <div
+        className={`group w-full ${aspectClass} bg-[#CEC5B5] border border-[#1B2A24]/15 overflow-hidden flex flex-col items-center justify-center relative shadow-xs`}
       >
         <img
           src={imageSrc}
           alt={alt}
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.04]"
           referrerPolicy="no-referrer"
           onError={handleImageError}
         />

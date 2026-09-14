@@ -29,19 +29,19 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
 
   return (
     <header className="sticky top-0 z-50 bg-[#EDE6D8]/95 backdrop-blur-xs border-b border-[#1B2A24]/10">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
-        <div className="flex items-center justify-between h-20 sm:h-24">
+      <div className="w-full pl-2 sm:pl-4 lg:pl-5 2xl:pl-6 pr-4 sm:pr-8 lg:pr-12 2xl:pr-16">
+        <div className="flex items-center justify-between h-20 sm:h-20 2xl:h-24">
           
           {/* Brand / Name shifted to the far left with guaranteed margin to the right */}
-          <div className="shrink-0 mr-4 md:mr-6 lg:mr-8 xl:mr-12">
+          <div className="shrink-0 mr-1 md:mr-2 lg:mr-3 2xl:mr-5">
             <button 
               onClick={() => handleNavClick('home')}
               className="text-left group cursor-pointer focus:outline-hidden block"
             >
-              <span className="block font-serif text-xl sm:text-2xl font-bold tracking-tight text-[#1B2A24] group-hover:text-[#9C4A32] transition-colors">
+              <span className="block font-serif text-xl sm:text-2xl 2xl:text-3xl font-bold tracking-tight text-[#1B2A24] group-hover:text-[#9C4A32] transition-colors">
                 {studentProfile.name}
               </span>
-              <span className="block text-[10px] sm:text-xs uppercase tracking-[0.12em] sm:tracking-[0.14em] text-[#1B2A24]/65 font-sans font-medium mt-0.5 whitespace-nowrap">
+              <span className="block text-[10px] sm:text-xs 2xl:text-sm uppercase tracking-[0.08em] sm:tracking-[0.1em] 2xl:tracking-[0.14em] text-[#1B2A24]/65 font-sans font-medium mt-0.5 whitespace-nowrap">
                 Portfolio · Minor Futureproof met AI
               </span>
             </button>
@@ -50,7 +50,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
           {/* Right section: Navigation Tabs + Sprint Logboek Button with generous spacing */}
           <div className="flex items-center ml-auto">
             {/* Desktop Navigation Tabs */}
-            <nav className="hidden md:flex items-center gap-3.5 lg:gap-5 xl:gap-7 text-xs lg:text-[13px] xl:text-sm font-medium uppercase tracking-wider lg:tracking-widest flex-nowrap">
+            <nav className="hidden md:flex items-center gap-3 lg:gap-5 xl:gap-6 2xl:gap-8 text-[11px] lg:text-xs xl:text-[13px] 2xl:text-[15px] font-medium uppercase tracking-[0.08em] 2xl:tracking-widest flex-nowrap">
               {navItems.map((item) => {
                 const isActive = activeTab === item.id;
                 return (
@@ -70,11 +70,11 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
             </nav>
 
             {/* Quick Direct Download Logbook Link on the far right with separator */}
-            <div className="hidden xl:flex items-center ml-6 xl:ml-8 pl-5 xl:pl-6 border-l border-[#1B2A24]/15 shrink-0">
+            <div className="hidden xl:flex items-center ml-2 2xl:ml-4 pl-2 2xl:pl-3 border-l border-[#1B2A24]/15 shrink-0">
               <a
                 href={SPRINT_LOGBOEK_DOWNLOAD}
                 download="sprintlogboek.xlsx"
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 xl:px-4 xl:py-2 text-xs font-sans uppercase tracking-wider font-medium text-[#1B2A24] bg-[#CEC5B5] hover:bg-[#C7BFAE] border border-[#1B2A24]/10 transition-colors cursor-pointer whitespace-nowrap"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 2xl:px-3.5 2xl:py-2 text-[11px] 2xl:text-sm font-sans uppercase tracking-[0.08em] 2xl:tracking-wider font-medium text-[#1B2A24] bg-[#CEC5B5] hover:bg-[#C7BFAE] border border-[#1B2A24]/10 transition-colors cursor-pointer whitespace-nowrap"
                 title="Download sprintlogboek.xlsx rechtstreeks"
               >
                 <Download className="w-3.5 h-3.5 text-[#9C4A32]" />

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import { NavTab } from './types';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -62,37 +63,47 @@ export default function App() {
 
       {/* Main Page Content */}
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8">
-        {activeTab === 'home' && (
-          <HomePage onNavigate={handleSelectTab} />
-        )}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {activeTab === 'home' && (
+              <HomePage onNavigate={handleSelectTab} />
+            )}
 
-        {activeTab === 'over-mij' && (
-          <AboutPage />
-        )}
+            {activeTab === 'over-mij' && (
+              <AboutPage />
+            )}
 
-        {activeTab === 'leeruitkomsten' && (
-          <LearningOutcomesPage onNavigateToEvidence={handleNavigateToEvidenceWithLu} />
-        )}
+            {activeTab === 'leeruitkomsten' && (
+              <LearningOutcomesPage onNavigateToEvidence={handleNavigateToEvidenceWithLu} />
+            )}
 
-        {activeTab === 'sprints' && (
-          <SprintsPage onNavigateToEvidence={handleNavigateToEvidenceWithSprint} />
-        )}
+            {activeTab === 'sprints' && (
+              <SprintsPage onNavigateToEvidence={handleNavigateToEvidenceWithSprint} />
+            )}
 
-        {activeTab === 'bewijzen' && (
-          <EvidencePage 
-            key={`${evidenceLuFilter}-${evidenceSprintFilter}`} 
-            initialLuFilter={evidenceLuFilter} 
-            initialSprintFilter={evidenceSprintFilter} 
-          />
-        )}
+            {activeTab === 'bewijzen' && (
+              <EvidencePage
+                key={`${evidenceLuFilter}-${evidenceSprintFilter}`}
+                initialLuFilter={evidenceLuFilter}
+                initialSprintFilter={evidenceSprintFilter}
+              />
+            )}
 
-        {activeTab === 'geleerd' && (
-          <LearningLogPage />
-        )}
+            {activeTab === 'geleerd' && (
+              <LearningLogPage />
+            )}
 
-        {activeTab === 'contact' && (
-          <ContactPage />
-        )}
+            {activeTab === 'contact' && (
+              <ContactPage />
+            )}
+          </motion.div>
+        </AnimatePresence>
       </main>
 
       {/* Persistent Footer */}

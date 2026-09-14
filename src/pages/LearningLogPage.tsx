@@ -1,10 +1,11 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { BookOpen, ChevronLeft, ChevronRight, Plus, Trash2, Check } from 'lucide-react';
+import { BookOpen, ChevronLeft, ChevronRight, Plus, Trash2, Check, ZoomIn, X } from 'lucide-react';
 import {
   LessonPage,
   buildLessonPage,
   generateScheduledLessons,
+  getLessonImage,
   loadStoredData,
   saveStoredData,
   todayISO,
@@ -20,6 +21,7 @@ export const LearningLogPage: React.FC = () => {
   const [newDate, setNewDate] = useState(todayISO());
   const [newLabel, setNewLabel] = useState('');
   const [saved, setSaved] = useState(true);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const saveTimeout = useRef<number | undefined>(undefined);
 
   const pages = useMemo<LessonPage[]>(() => {
@@ -44,15 +46,22 @@ export const LearningLogPage: React.FC = () => {
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (currentIndex === null) return;
+      if (e.key === 'Escape') { setLightboxOpen(false); return; }
+      if (lightboxOpen) return;
       if (e.key === 'ArrowLeft') goToPage(currentIndex - 1, -1);
       if (e.key === 'ArrowRight') goToPage(currentIndex + 1, 1);
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentIndex, pages.length]);
+  }, [currentIndex, pages.length, lightboxOpen]);
+
+  useEffect(() => {
+    setLightboxOpen(false);
+  }, [currentIndex]);
 
   const currentPage = currentIndex !== null ? pages[currentIndex] : undefined;
+  const currentImage = currentPage ? getLessonImage(currentPage.dateISO) : undefined;
   const todayId = todayISO();
 
   const handleNoteChange = (value: string) => {
@@ -106,13 +115,13 @@ export const LearningLogPage: React.FC = () => {
           Wat heb ik geleerd
         </h1>
         <p className="mt-3 text-sm sm:text-base text-[#1B2A24]/80 leading-relaxed font-sans max-w-2xl">
-          Na elke les blader ik een pagina verder in dit notitieboek en schrijf ik kort op wat ik heb geleerd.
+          Na elke les blader ik een pagina verder in dit notitieboek en werk ik mijn aantekeningen uit wat ik heb geleerd.
           Zo bouw ik stap voor stap een overzicht op van mijn groei door de minor heen.
         </p>
       </div>
 
       {/* Notebook */}
-      <div className="max-w-3xl mx-auto">
+      <div className={`mx-auto transition-[max-width] duration-300 ${currentImage ? 'max-w-[1000px]' : 'max-w-3xl'}`}>
 
         {/* Page navigation strip */}
         <div className="flex items-center justify-between mb-4 px-1">
@@ -160,10 +169,12 @@ export const LearningLogPage: React.FC = () => {
                 exit={{ opacity: 0, rotateY: direction === 1 ? -35 : 35 }}
                 transition={{ duration: 0.32, ease: 'easeInOut' }}
                 style={{ transformStyle: 'preserve-3d', transformOrigin: direction === 1 ? 'left center' : 'right center' }}
-                className="bg-[#EDE6D8] border border-[#1B2A24]/15 p-6 sm:p-10 min-h-[440px] flex flex-col shadow-xs"
+                className={`bg-[#EDE6D8] border border-[#1B2A24]/15 flex flex-col shadow-xs ${
+                  currentImage ? 'p-2 sm:p-3' : 'p-6 sm:p-10 min-h-[440px]'
+                }`}
               >
                 {/* Page header */}
-                <div className="flex items-start justify-between gap-4 border-b border-[#1B2A24]/10 pb-4 mb-5">
+                <div className={`flex items-start justify-between gap-4 border-b border-[#1B2A24]/10 pb-3 mb-3 ${currentImage ? 'px-1 pt-1' : ''}`}>
                   <div>
                     <span className="block text-[10px] uppercase tracking-widest font-bold text-[#1B2A24]/50">
                       Les {currentPage.lessonNumber}{currentPage.label ? ` · ${currentPage.label}` : ''}
@@ -190,28 +201,53 @@ export const LearningLogPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Ruled note area */}
-                <textarea
-                  value={notes[currentPage.id] ?? ''}
-                  onChange={(e) => handleNoteChange(e.target.value)}
-                  placeholder="Wat heb ik deze les geleerd? Schrijf hier je aantekeningen..."
-                  className="flex-1 w-full min-h-[220px] resize-none bg-transparent outline-none font-sans text-sm sm:text-base text-[#1B2A24] leading-8 placeholder:text-[#1B2A24]/40"
-                  style={{
-                    backgroundImage: 'repeating-linear-gradient(to bottom, transparent, transparent 31px, rgba(27,42,36,0.14) 32px)',
-                    backgroundPositionY: '4px',
-                  }}
-                />
+                {currentImage ? (
+                  <>
+                    {/* Handgemaakte aantekeningenpagina, op echt formaat */}
+                    <button
+                      onClick={() => setLightboxOpen(true)}
+                      className="group relative block w-full cursor-zoom-in"
+                    >
+                      <img
+                        src={currentImage.src}
+                        alt={currentImage.alt}
+                        className="block w-full h-auto"
+                      />
+                      <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#1B2A24]/80 text-[#EDE6D8] text-[10px] uppercase tracking-widest font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                        <ZoomIn className="w-3.5 h-3.5" />
+                        Uitvergroten
+                      </span>
+                    </button>
+                    <div className="pt-3 flex items-center justify-end gap-1.5 text-[10px] uppercase tracking-widest font-medium text-[#1B2A24]/40 px-1">
+                      <span>Eigen aantekeningenpagina</span>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    {/* Ruled note area */}
+                    <textarea
+                      value={notes[currentPage.id] ?? ''}
+                      onChange={(e) => handleNoteChange(e.target.value)}
+                      placeholder="Wat heb ik deze les geleerd? Schrijf hier je aantekeningen..."
+                      className="flex-1 w-full min-h-[220px] resize-none bg-transparent outline-none font-sans text-sm sm:text-base text-[#1B2A24] leading-8 placeholder:text-[#1B2A24]/40"
+                      style={{
+                        backgroundImage: 'repeating-linear-gradient(to bottom, transparent, transparent 31px, rgba(27,42,36,0.14) 32px)',
+                        backgroundPositionY: '4px',
+                      }}
+                    />
 
-                <div className="pt-4 mt-2 border-t border-[#1B2A24]/10 flex items-center justify-end gap-1.5 text-[10px] uppercase tracking-widest font-medium text-[#1B2A24]/40">
-                  {saved ? (
-                    <>
-                      <Check className="w-3 h-3 text-[#9C4A32]" />
-                      <span>Opgeslagen op dit apparaat</span>
-                    </>
-                  ) : (
-                    <span>Bezig met opslaan...</span>
-                  )}
-                </div>
+                    <div className="pt-4 mt-2 border-t border-[#1B2A24]/10 flex items-center justify-end gap-1.5 text-[10px] uppercase tracking-widest font-medium text-[#1B2A24]/40">
+                      {saved ? (
+                        <>
+                          <Check className="w-3 h-3 text-[#9C4A32]" />
+                          <span>Opgeslagen op dit apparaat</span>
+                        </>
+                      ) : (
+                        <span>Bezig met opslaan...</span>
+                      )}
+                    </div>
+                  </>
+                )}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -280,6 +316,34 @@ export const LearningLogPage: React.FC = () => {
           )}
         </div>
       </div>
+
+      {/* Lightbox: uitvergrote aantekeningenpagina */}
+      <AnimatePresence>
+        {lightboxOpen && currentImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setLightboxOpen(false)}
+            className="fixed inset-0 z-50 bg-[#1B2A24]/90 flex items-center justify-center p-4 sm:p-8 cursor-zoom-out"
+          >
+            <button
+              onClick={() => setLightboxOpen(false)}
+              title="Sluiten"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 text-[#EDE6D8]/80 hover:text-[#EDE6D8] transition-colors cursor-pointer"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <img
+              src={currentImage.src}
+              alt={currentImage.alt}
+              onClick={(e) => e.stopPropagation()}
+              className="max-w-full max-h-full object-contain shadow-2xl cursor-default"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -20,6 +20,23 @@ export interface LessonPage {
 const FIRST_LESSON_ISO = '2026-08-31';
 const STORAGE_KEY = 'jm-portfolio-notitieboek-v1';
 
+/**
+ * Gescande aantekeningenpagina's: voor deze lesdata bestaat een eigen
+ * handgemaakte pagina (afbeelding in /public/lesson-notes). Voor alle
+ * andere lesdata valt het notitieboek terug op het typvak.
+ */
+export const LESSON_NOTE_IMAGES: Record<string, { src: string; alt: string }> = {
+  '2026-08-31': { src: '/lesson-notes/2026-08-31.png', alt: 'Aantekeningen maandag 31 augustus — Hoe generatieve AI werkt' },
+  '2026-09-02': { src: '/lesson-notes/2026-09-02.png', alt: 'Aantekeningen woensdag 2 september — Werken met stories' },
+  '2026-09-07': { src: '/lesson-notes/2026-09-07.png', alt: 'Aantekeningen maandag 7 september — Vibe coding' },
+  '2026-09-09': { src: '/lesson-notes/2026-09-09.png', alt: 'Aantekeningen woensdag 9 september — Online sessie vanwege staking treinen' },
+  '2026-09-14': { src: '/lesson-notes/2026-09-14.png', alt: 'Aantekeningen maandag 14 september — Werken op de pc' },
+};
+
+export function getLessonImage(dateISO: string) {
+  return LESSON_NOTE_IMAGES[dateISO];
+}
+
 const DUTCH_WEEKDAYS = ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'];
 const DUTCH_MONTHS = [
   'januari', 'februari', 'maart', 'april', 'mei', 'juni',
