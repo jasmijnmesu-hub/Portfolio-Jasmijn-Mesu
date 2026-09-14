@@ -1,6 +1,8 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { studentProfile } from '../data/portfolioData';
 import { PhotoFrame } from '../components/PhotoFrame';
+import { fadeUp, fadeUpTransition } from '../lib/motionVariants';
 import { Sparkles, FolderKanban, Users } from 'lucide-react';
 
 const personalBio = `Ik ben Jasmijn Mesu, 23 jaar oud. Momenteel zit ik in het derde jaar van mijn opleiding Facility Management aan Zuyd Hogeschool. Vanaf het begin van mijn studie wist ik dat mijn interesse niet ligt in de klassieke facilitaire hoek zoals schoonmaakbeheer, cateringcontracten of technisch gebouwbeheer. Waar mijn hart wél sneller van gaat kloppen is de organisatorische kant: processen analyseren en stroomlijnen, projecten van A tot Z coördineren, en vooral: mensen, taken en belangen met elkaar verbinden.`;
@@ -20,7 +22,13 @@ export const AboutPage: React.FC = () => {
     <div className="space-y-14 py-6 md:py-10">
       
       {/* Page Header */}
-      <div className="border-b border-[#1B2A24]/10 pb-8 max-w-3xl">
+      <motion.div
+        initial="hidden"
+        animate="show"
+        variants={fadeUp}
+        transition={fadeUpTransition}
+        className="border-b border-[#1B2A24]/10 pb-8 max-w-3xl"
+      >
         <div className="flex items-center gap-2 mb-2">
           <span className="h-[1px] w-8 bg-[#9C4A32]" />
           <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#9C4A32]">
@@ -33,53 +41,81 @@ export const AboutPage: React.FC = () => {
         <p className="mt-3 text-base text-[#1B2A24]/80 leading-relaxed font-serif italic">
           &ldquo;Organiseren zit in mijn natuur: ik houd van structuur en overzicht, maar altijd met oog voor de mens achter het proces.&rdquo;
         </p>
-      </div>
+      </motion.div>
 
       {/* Main Grid: Story + Photos */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
-        
+
         {/* Story Columns (7 cols) */}
         <div className="lg:col-span-7 space-y-10">
-          
+
           {/* Section 1: Wie ben ik & Studieachtergrond */}
-          <div className="space-y-3">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeUp}
+            transition={fadeUpTransition}
+            className="space-y-3"
+          >
             <h2 className="font-serif text-2xl text-[#1B2A24] flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#9C4A32]" />
               Wie ik ben &amp; mijn achtergrond
             </h2>
-            <div className="text-sm sm:text-base font-sans text-[#1B2A24]/85 leading-relaxed bg-[#CEC5B5] p-5 border border-[#1B2A24]/10">
+            <div className="text-sm sm:text-base font-sans text-[#1B2A24]/85 leading-relaxed bg-[#D6D2C4] p-5 border border-[#1B2A24]/10">
               <p>{personalBio}</p>
             </div>
-          </div>
+          </motion.div>
 
           {/* Section 2: Waar ik vandaan kom (Placeholder voor Jasmijn) */}
-          <div className="space-y-3">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeUp}
+            transition={fadeUpTransition}
+            className="space-y-3"
+          >
             <h2 className="font-serif text-2xl text-[#1B2A24] flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#9C4A32]" />
               Waar ik vandaan kom
             </h2>
-            <div className="text-sm sm:text-base font-sans text-[#1B2A24]/85 leading-relaxed bg-[#CEC5B5] p-5 border border-[#1B2A24]/10 space-y-3">
+            <div className="text-sm sm:text-base font-sans text-[#1B2A24]/85 leading-relaxed bg-[#D6D2C4] p-5 border border-[#1B2A24]/10 space-y-3">
               {whereFrom.split('\n\n').map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Section 3: Waar word ik blij van (Talenten, passies, dromen) */}
-          <div className="space-y-3">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeUp}
+            transition={fadeUpTransition}
+            className="space-y-3"
+          >
             <h2 className="font-serif text-2xl text-[#1B2A24] flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#9C4A32]" />
               Waar ik blij van word (talenten, passies &amp; dromen)
             </h2>
-            <div className="text-sm sm:text-base font-sans text-[#1B2A24]/85 leading-relaxed bg-[#CEC5B5] p-5 border border-[#1B2A24]/10 space-y-3">
+            <div className="text-sm sm:text-base font-sans text-[#1B2A24]/85 leading-relaxed bg-[#D6D2C4] p-5 border border-[#1B2A24]/10 space-y-3">
               {whatMakesMeHappy.split('\n\n').map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Werkstijl: Excel & Canva */}
-          <div className="bg-[#CEC5B5] border border-[#1B2A24]/10 p-6 sm:p-7 space-y-4">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={fadeUp}
+            transition={fadeUpTransition}
+            className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-6 sm:p-7 space-y-4"
+          >
             <h3 className="font-serif text-xl text-[#1B2A24]">
               Mijn werkwijze &amp; favoriete gereedschap
             </h3>
@@ -111,12 +147,18 @@ export const AboutPage: React.FC = () => {
               <Users className="w-4 h-4 text-[#9C4A32]" />
               <span>Karakter: Mensgericht, sociaal, doordacht en betrouwbaar.</span>
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
         {/* Right Column: Single Photo Frame & Gegevens in het kort (5 cols) */}
-        <div className="lg:col-span-5 space-y-6">
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={fadeUp}
+          transition={{ ...fadeUpTransition, delay: 0.15 }}
+          className="lg:col-span-5 space-y-6"
+        >
           
           {/* Photo 1: Portret van Jasmijn Mesu */}
           <div className="space-y-2">
@@ -130,7 +172,7 @@ export const AboutPage: React.FC = () => {
           </div>
 
           {/* Quick Info Box */}
-          <div className="bg-[#CEC5B5] border border-[#1B2A24]/10 p-5 sm:p-6 shadow-xs">
+          <div className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-5 sm:p-6 shadow-xs">
             <h4 className="font-serif text-base font-bold tracking-tight text-[#1B2A24] pb-3 mb-4 border-b border-[#1B2A24]/10">
               Gegevens in het kort
             </h4>
@@ -158,7 +200,7 @@ export const AboutPage: React.FC = () => {
             </dl>
           </div>
 
-        </div>
+        </motion.div>
 
       </div>
 

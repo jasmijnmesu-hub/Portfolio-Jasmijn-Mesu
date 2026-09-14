@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { initialEvidenceItems } from '../data/portfolioData';
 import { EvidenceType } from '../types';
+import { fadeUp, cardStagger, fadeUpTransition } from '../lib/motionVariants';
 import {
   FileText,
   Video,
@@ -70,7 +72,13 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
     <div className="space-y-12 py-6 md:py-10">
       
       {/* Header */}
-      <div className="border-b border-[#1B2A24]/10 pb-8">
+      <motion.div
+        initial="hidden"
+        animate="show"
+        variants={fadeUp}
+        transition={fadeUpTransition}
+        className="border-b border-[#1B2A24]/10 pb-8"
+      >
         <div className="max-w-2xl">
           <div className="flex items-center gap-2 mb-2">
             <span className="h-[1px] w-8 bg-[#9C4A32]" />
@@ -85,10 +93,10 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
             Alle bewijsstukken die aantonen dat ik voldoe aan de leeruitkomsten. Een bewijsstuk kan meerdere leeruitkomsten tegelijk aantonen. Externe bestanden zijn direct te openen via OneDrive, YouTube of presentatielinks.
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Filter Bar: Leeruitkomst, Sprint en Zoeken */}
-      <div className="bg-[#CEC5B5] border border-[#1B2A24]/10 p-4 space-y-3">
+      <div className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-4 space-y-3">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           
           {/* Filter by Learning Outcome */}
@@ -153,7 +161,7 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
 
       {/* Evidence Cards List */}
       {filteredEvidence.length === 0 ? (
-        <div className="bg-[#CEC5B5] border border-[#1B2A24]/10 p-12 text-center space-y-3">
+        <div className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-12 text-center space-y-3">
           <p className="font-serif text-lg text-[#1B2A24]">
             Geen bewijsstukken gevonden voor deze selectie.
           </p>
@@ -168,16 +176,24 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.15 }}
+          variants={cardStagger}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        >
           {filteredEvidence.map((item) => {
             const platformText = cleanPlatform(item.platform);
             const isInProgress = item.date.toLowerCase().includes('bewerking');
 
             return (
-              <div
+              <motion.div
                 key={item.id}
                 id={`evidence-${item.id.toLowerCase()}`}
-                className="bg-[#CEC5B5] border border-[#1B2A24]/10 p-6 flex flex-col justify-between space-y-5 hover:border-[#9C4A32]/50 transition-colors"
+                variants={fadeUp}
+                transition={fadeUpTransition}
+                className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-6 flex flex-col justify-between space-y-5 hover:border-[#9C4A32]/50 transition-colors"
               >
                 <div className="space-y-3">
                   {/* Top badges: Sprint, Type en Datum / In bewerking */}
@@ -260,10 +276,10 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
                     </a>
                   )}
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       )}
 
     </div>

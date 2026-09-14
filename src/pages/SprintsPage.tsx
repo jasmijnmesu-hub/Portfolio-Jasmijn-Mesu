@@ -1,5 +1,7 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { sprintsData as sprints, initialEvidenceItems, SPRINT_LOGBOEK_DOWNLOAD } from '../data/portfolioData';
+import { fadeUp, cardStagger, fadeUpTransition } from '../lib/motionVariants';
 import { Download, ExternalLink, Calendar, ArrowRight, Presentation, Flag, Sparkles } from 'lucide-react';
 
 interface SprintsPageProps {
@@ -11,7 +13,13 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
     <div className="space-y-12 py-6 md:py-10">
       
       {/* Header */}
-      <div className="border-b border-[#1B2A24]/10 pb-8">
+      <motion.div
+        initial="hidden"
+        animate="show"
+        variants={fadeUp}
+        transition={fadeUpTransition}
+        className="border-b border-[#1B2A24]/10 pb-8"
+      >
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 mb-2">
@@ -29,7 +37,7 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
           </div>
 
           {/* Direct Download Excel Sprint Logboek Button */}
-          <div className="bg-[#CEC5B5] border border-[#1B2A24]/10 p-5 lg:max-w-md shrink-0 space-y-2.5">
+          <div className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-5 lg:max-w-md shrink-0 space-y-2.5">
             <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#9C4A32]">
               <Download className="w-4 h-4" />
               <span>Integraal Sprint Logboek (Excel)</span>
@@ -49,10 +57,17 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
             </a>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Quick Jump Bar: 8 Show & Grow Mijlpalen */}
-      <section className="bg-[#CEC5B5] border border-[#1B2A24]/10 p-5 sm:p-6 space-y-3">
+      <motion.section
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={fadeUp}
+        transition={fadeUpTransition}
+        className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-5 sm:p-6 space-y-3"
+      >
         <div className="flex items-center justify-between border-b border-[#1B2A24]/10 pb-2.5">
           <div className="flex items-center gap-2">
             <Flag className="w-4 h-4 text-[#9C4A32]" />
@@ -94,19 +109,27 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
             );
           })}
         </div>
-      </section>
+      </motion.section>
 
       {/* SPRINT TIJDLIJN: SHOW & GROW MOMENTEN ALS MEEST OPVALLENDE MIJLPALEN */}
-      <div className="relative pl-4 sm:pl-8 md:pl-10 space-y-12 before:absolute before:left-2 sm:before:left-4 md:before:left-5 before:top-4 before:bottom-4 before:w-[2px] before:bg-[#1B2A24]/15">
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.05 }}
+        variants={cardStagger}
+        className="relative pl-4 sm:pl-8 md:pl-10 space-y-12 before:absolute before:left-2 sm:before:left-4 md:before:left-5 before:top-4 before:bottom-4 before:w-[2px] before:bg-[#1B2A24]/15"
+      >
         {sprints.map((sprint) => {
           const isCurrent = sprint.status === 'bezig';
           const isPlanned = sprint.status === 'gepland';
           const evidenceCount = initialEvidenceItems.filter((e) => e.sprintId === sprint.id).length;
 
           return (
-            <div
+            <motion.div
               key={sprint.id}
               id={`sprint-node-${sprint.id}`}
+              variants={fadeUp}
+              transition={fadeUpTransition}
               className="relative group"
             >
               {/* Timeline Marker Dot */}
@@ -124,7 +147,7 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
 
               {/* Sprint Card with Show & Grow Milestone as Central Focus */}
               <div
-                className={`bg-[#CEC5B5] border transition-all p-6 sm:p-8 space-y-6 ${
+                className={`bg-[#D6D2C4] border transition-all p-6 sm:p-8 space-y-6 ${
                   isCurrent
                     ? 'border-[#9C4A32] ring-2 ring-[#9C4A32]/20 shadow-xs'
                     : 'border-[#1B2A24]/15 hover:border-[#1B2A24]/35'
@@ -164,11 +187,13 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
 
                   {/* Status & Sprint Tag */}
                   <div className="flex sm:flex-col items-start sm:items-end justify-between sm:justify-center gap-2 shrink-0 border-t sm:border-t-0 pt-2 sm:pt-0 border-[#1B2A24]/10">
-                    <span className={`text-xs uppercase tracking-widest font-bold px-3 py-1 ${
-                      isCurrent
-                        ? 'bg-[#9C4A32] text-white'
-                        : 'bg-[#CEC5B5] text-[#1B2A24]/80 border border-[#1B2A24]/15'
-                    }`}>
+                    <span
+                      className={`text-xs uppercase tracking-widest font-bold px-3 py-1 ${
+                        isCurrent
+                          ? 'bg-[#9C4A32] text-white'
+                          : 'bg-[#D6D2C4] text-[#1B2A24]/80 border border-[#1B2A24]/15'
+                      }`}
+                    >
                       {sprint.title}
                     </span>
 
@@ -252,7 +277,7 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
                         href={sprint.presentationUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#EDE6D8] hover:bg-[#CEC5B5] text-[#1B2A24] border border-[#1B2A24]/15 hover:border-[#9C4A32] text-xs font-medium uppercase tracking-wider transition-colors cursor-pointer"
+                        className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#EDE6D8] hover:bg-[#D6D2C4] text-[#1B2A24] border border-[#1B2A24]/15 hover:border-[#9C4A32] text-xs font-medium uppercase tracking-wider transition-colors cursor-pointer"
                       >
                         <Presentation className="w-3.5 h-3.5 text-[#9C4A32]" />
                         <span>Bekijk presentatie</span>
@@ -280,10 +305,10 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
                 </div>
 
               </div>
-            </div>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
 
     </div>
   );

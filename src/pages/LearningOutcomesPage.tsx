@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { learningOutcomes as outcomes, initialEvidenceItems } from '../data/portfolioData';
+import { fadeUp, cardStagger, fadeUpTransition } from '../lib/motionVariants';
 import { ArrowRight, CheckCircle2, Award, ExternalLink } from 'lucide-react';
 
 interface LearningOutcomesPageProps {
@@ -15,7 +17,13 @@ export const LearningOutcomesPage: React.FC<LearningOutcomesPageProps> = ({ onNa
   return (
     <div className="space-y-12 py-6 md:py-10">
       {/* Header */}
-      <div className="border-b border-[#1B2A24]/10 pb-8">
+      <motion.div
+        initial="hidden"
+        animate="show"
+        variants={fadeUp}
+        transition={fadeUpTransition}
+        className="border-b border-[#1B2A24]/10 pb-8"
+      >
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 mb-2">
@@ -33,7 +41,7 @@ export const LearningOutcomesPage: React.FC<LearningOutcomesPageProps> = ({ onNa
           </div>
 
           {/* Overall Score Card */}
-          <div className="bg-[#CEC5B5] border border-[#1B2A24]/10 p-5 md:min-w-[280px]">
+          <div className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-5 md:min-w-[280px]">
             <div className="flex items-center justify-between text-xs font-sans text-[#1B2A24]/70 mb-2">
               <span className="font-bold uppercase tracking-widest text-[10px]">Totaal Aangetoond</span>
               <span className="text-[#9C4A32] font-semibold text-xs">Streefdoel: {totalTarget}x</span>
@@ -56,10 +64,16 @@ export const LearningOutcomesPage: React.FC<LearningOutcomesPageProps> = ({ onNa
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* List of 5 Learning Outcomes */}
-      <div className="space-y-6">
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={cardStagger}
+        className="space-y-6"
+      >
         {outcomes.map((lu) => {
           const isTargetMet = lu.currentCount >= lu.targetCount;
           const percentage = lu.targetCount > 0 ? Math.min(100, Math.round((lu.currentCount / lu.targetCount) * 100)) : 0;
@@ -67,10 +81,12 @@ export const LearningOutcomesPage: React.FC<LearningOutcomesPageProps> = ({ onNa
           const linkedEvidence = initialEvidenceItems.filter((e) => e.learningOutcomes.includes(lu.id));
 
           return (
-            <div
+            <motion.div
               key={lu.id}
               id={`lu-card-${lu.id.toLowerCase()}`}
-              className="bg-[#CEC5B5] border border-[#1B2A24]/10 p-6 sm:p-7 transition-all hover:border-[#9C4A32]/40"
+              variants={fadeUp}
+              transition={fadeUpTransition}
+              className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-6 sm:p-7 transition-all hover:border-[#9C4A32]/40"
             >
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
                 
@@ -112,7 +128,7 @@ export const LearningOutcomesPage: React.FC<LearningOutcomesPageProps> = ({ onNa
                       </span>
                     </div>
 
-                    <div className="w-full h-1.5 bg-[#CEC5B5] mt-2.5 overflow-hidden">
+                    <div className="w-full h-1.5 bg-[#D6D2C4] mt-2.5 overflow-hidden">
                       <div
                         className="h-full bg-[#9C4A32] transition-all duration-300"
                         style={{ width: `${percentage}%` }}
@@ -187,13 +203,20 @@ export const LearningOutcomesPage: React.FC<LearningOutcomesPageProps> = ({ onNa
                   )}
                 </div>
               )}
-            </div>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
 
       {/* Target Breakdown explainer box & instructions on adjusting numbers */}
-      <div className="bg-[#CEC5B5] border border-[#1B2A24]/10 p-6 sm:p-7 space-y-4 text-xs font-sans text-[#1B2A24]">
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={fadeUp}
+        transition={fadeUpTransition}
+        className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-6 sm:p-7 space-y-4 text-xs font-sans text-[#1B2A24]"
+      >
         <div className="space-y-1">
           <h3 className="font-serif text-base text-[#1B2A24] font-semibold flex items-center gap-2">
             <Award className="w-4 h-4 text-[#9C4A32]" />
@@ -226,7 +249,7 @@ export const LearningOutcomesPage: React.FC<LearningOutcomesPageProps> = ({ onNa
             <span className="text-[10px] text-[#1B2A24]/70">Zelfstandig en Zelfsturend</span>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

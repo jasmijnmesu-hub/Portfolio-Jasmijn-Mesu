@@ -153,7 +153,7 @@ export const LearningLogPage: React.FC = () => {
 
         {/* The page itself, with a spiral-bound spine */}
         <div className="flex" style={{ perspective: 1400 }}>
-          <div className="hidden sm:flex flex-col items-center justify-evenly w-6 shrink-0 bg-[#CEC5B5] border border-r-0 border-[#1B2A24]/15 py-8">
+          <div className="hidden sm:flex flex-col items-center justify-evenly w-6 shrink-0 bg-[#D6D2C4] border border-r-0 border-[#1B2A24]/15 py-8">
             {Array.from({ length: 12 }).map((_, i) => (
               <span key={i} className="w-2 h-2 rounded-full bg-[#EDE6D8] border border-[#1B2A24]/20" />
             ))}
@@ -278,7 +278,7 @@ export const LearningLogPage: React.FC = () => {
               <span>Extra lespagina toevoegen</span>
             </button>
           ) : (
-            <div className="bg-[#CEC5B5] border border-[#1B2A24]/10 p-5 space-y-3 w-full max-w-sm">
+            <div className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-5 space-y-3 w-full max-w-sm">
               <div className="grid grid-cols-1 gap-1.5">
                 <label className="text-[10px] uppercase tracking-widest font-bold text-[#1B2A24]/60">Datum</label>
                 <input

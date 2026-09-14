@@ -3,17 +3,8 @@ import { motion } from 'motion/react';
 import { NavTab } from '../types';
 import { studentProfile, learningOutcomes, sprintsData, initialEvidenceItems, SPRINT_LOGBOEK_DOWNLOAD } from '../data/portfolioData';
 import { PhotoFrame } from '../components/PhotoFrame';
+import { fadeUp, cardStagger } from '../lib/motionVariants';
 import { ArrowRight, Download, Calendar, Award } from 'lucide-react';
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0 },
-};
-
-const cardStagger = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12 } },
-};
 
 interface HomePageProps {
   onNavigate: (tab: NavTab) => void;
@@ -81,7 +72,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <button
                 id="btn-hero-leeruitkomsten"
                 onClick={() => onNavigate('leeruitkomsten')}
-                className="px-6 py-3.5 text-xs sm:text-sm font-medium uppercase tracking-widest text-[#1B2A24] bg-[#CEC5B5] hover:bg-[#C7BFAE] border border-[#1B2A24]/10 transition-colors cursor-pointer"
+                className="px-6 py-3.5 text-xs sm:text-sm font-medium uppercase tracking-widest text-[#1B2A24] bg-[#D6D2C4] hover:bg-[#C7BFAE] border border-[#1B2A24]/10 transition-colors cursor-pointer"
               >
                 <span>Leeruitkomsten</span>
               </button>
@@ -118,7 +109,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             </div>
 
             {/* Actuele Status Blok (Punt 5) — inclusief compacte kernstats */}
-            <div className="bg-[#CEC5B5] border border-[#1B2A24]/10 p-4 sm:p-5 space-y-3">
+            <div className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-4 sm:p-5 space-y-3">
               <div className="flex items-center gap-2 border-b border-[#1B2A24]/10 pb-2.5">
                 <span className="h-[1px] w-5 bg-[#9C4A32]" />
                 <Calendar className="w-3 h-3 text-[#9C4A32]" />
@@ -134,6 +125,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   </div>
                   <div className="text-[10px] uppercase tracking-wider font-bold opacity-60 text-[#1B2A24]">
                     LU Aangetoond
+                  </div>
+                  <div className="w-full h-1 bg-[#EDE6D8] border border-[#1B2A24]/10 mt-1.5 overflow-hidden">
+                    <div
+                      className="h-full bg-[#9C4A32] transition-all duration-300"
+                      style={{ width: `${Math.min(100, (totalDemonstrated / totalTarget) * 100)}%` }}
+                    />
                   </div>
                 </div>
                 <div>
@@ -215,7 +212,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             tabIndex={0}
             onClick={() => onNavigate('leeruitkomsten')}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate('leeruitkomsten'); } }}
-            className="p-6 sm:p-7 bg-[#CEC5B5] border border-[#1B2A24]/10 hover:border-[#9C4A32]/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer group flex flex-col justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9C4A32] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EDE6D8]"
+            className="p-6 sm:p-7 bg-[#D6D2C4] border border-[#1B2A24]/10 hover:border-[#9C4A32]/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer group flex flex-col justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9C4A32] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EDE6D8]"
           >
             <div className="space-y-3">
               <span className="text-xs uppercase tracking-widest font-bold text-[#9C4A32] block">
@@ -242,7 +239,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             tabIndex={0}
             onClick={() => onNavigate('sprints')}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate('sprints'); } }}
-            className="p-6 sm:p-7 bg-[#CEC5B5] border border-[#1B2A24]/10 hover:border-[#9C4A32]/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer group flex flex-col justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9C4A32] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EDE6D8]"
+            className="p-6 sm:p-7 bg-[#D6D2C4] border border-[#1B2A24]/10 hover:border-[#9C4A32]/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer group flex flex-col justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9C4A32] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EDE6D8]"
           >
             <div className="space-y-3">
               <span className="text-xs uppercase tracking-widest font-bold text-[#9C4A32] block">
@@ -269,7 +266,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             tabIndex={0}
             onClick={() => onNavigate('bewijzen')}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onNavigate('bewijzen'); } }}
-            className="p-6 sm:p-7 bg-[#CEC5B5] border border-[#1B2A24]/10 hover:border-[#9C4A32]/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer group flex flex-col justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9C4A32] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EDE6D8]"
+            className="p-6 sm:p-7 bg-[#D6D2C4] border border-[#1B2A24]/10 hover:border-[#9C4A32]/50 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer group flex flex-col justify-between focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9C4A32] focus-visible:ring-offset-2 focus-visible:ring-offset-[#EDE6D8]"
           >
             <div className="space-y-3">
               <span className="text-xs uppercase tracking-widest font-bold text-[#9C4A32] block">
@@ -296,7 +293,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="bg-[#CEC5B5] border-l-2 border-[#9C4A32] border-y border-r border-[#1B2A24]/10 p-6 sm:p-8 space-y-3"
+        className="bg-[#D6D2C4] border-l-2 border-[#9C4A32] border-y border-r border-[#1B2A24]/10 p-6 sm:p-8 space-y-3"
       >
         <div className="flex items-center gap-2">
           <span className="h-[1px] w-6 bg-[#9C4A32]" />

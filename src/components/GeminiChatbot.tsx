@@ -121,7 +121,7 @@ export const GeminiChatbot: React.FC = () => {
     <div className="fixed bottom-5 right-5 z-50">
       {isOpen && (
         <section className="mb-3 flex h-[min(32rem,calc(100vh-7rem))] w-[min(22rem,calc(100vw-2rem))] flex-col border border-[#1B2A24]/15 bg-[#EDE6D8] shadow-2xl" aria-label="Portfolio chatbot">
-          <div className="flex items-center justify-between border-b border-[#1B2A24]/10 bg-[#CEC5B5] p-4">
+          <div className="flex items-center justify-between border-b border-[#1B2A24]/10 bg-[#D6D2C4] p-4">
             <div className="flex items-center gap-2">
               <Bot className="h-5 w-5 text-[#9C4A32]" />
               <div>
@@ -140,7 +140,7 @@ export const GeminiChatbot: React.FC = () => {
               <p className="text-xs leading-relaxed text-[#1B2A24]/70">Stel een vraag over dit portfolio. Je chat wordt bewaard voor je volgende bezoek.</p>
             )}
             {messages.map((message, index) => (
-              <div key={`${message.role}-${index}`} className={`max-w-[90%] p-3 text-xs leading-relaxed ${message.role === 'user' ? 'ml-auto bg-[#9C4A32] text-[#EDE6D8]' : 'bg-[#CEC5B5]'}`}>
+              <div key={`${message.role}-${index}`} className={`max-w-[90%] p-3 text-xs leading-relaxed ${message.role === 'user' ? 'ml-auto bg-[#9C4A32] text-[#EDE6D8]' : 'bg-[#D6D2C4]'}`}>
                 {message.text}
               </div>
             ))}

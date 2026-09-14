@@ -32,7 +32,7 @@ export const PhotoFrame: React.FC<PhotoFrameProps> = ({
   return (
     <figure id={id} className="relative block">
       <div
-        className={`group w-full ${aspectClass} bg-[#CEC5B5] border border-[#1B2A24]/15 overflow-hidden flex flex-col items-center justify-center relative shadow-xs`}
+        className={`group w-full ${aspectClass} bg-[#D6D2C4] border border-[#1B2A24]/15 overflow-hidden flex flex-col items-center justify-center relative shadow-xs`}
       >
         <img
           src={imageSrc}
@@ -48,7 +48,7 @@ export const PhotoFrame: React.FC<PhotoFrameProps> = ({
             <p className="text-[10px] uppercase tracking-widest font-bold opacity-80 mb-0.5 text-[#EDE6D8]">
               Jasmijn Mesu
             </p>
-            <p className="font-serif italic text-xs sm:text-sm text-[#EDE6D8] line-clamp-1">
+            <p className="font-serif italic text-xs sm:text-sm text-[#EDE6D8] line-clamp-2">
               {caption}
             </p>
           </div>
