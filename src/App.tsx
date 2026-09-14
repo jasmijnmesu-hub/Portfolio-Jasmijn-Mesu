@@ -8,6 +8,7 @@ import { LearningOutcomesPage } from './pages/LearningOutcomesPage';
 import { SprintsPage } from './pages/SprintsPage';
 import { EvidencePage } from './pages/EvidencePage';
 import { ContactPage } from './pages/ContactPage';
+import { GeminiChatbot } from './components/GeminiChatbot';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<NavTab>('home');
@@ -91,6 +92,7 @@ export default function App() {
 
       {/* Persistent Footer */}
       <Footer onSelectTab={handleSelectTab} />
+      <GeminiChatbot />
     </div>
   );
 }
