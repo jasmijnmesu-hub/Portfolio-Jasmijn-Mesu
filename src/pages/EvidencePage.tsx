@@ -264,6 +264,17 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
                       <span>Download Excel</span>
                       <Download className="w-3.5 h-3.5 text-[#9C4A32]" />
                     </a>
+                  ) : item.externalUrl.endsWith('.pdf') ? (
+                    <a
+                      href={item.externalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#EDE6D8] hover:bg-white text-[#1B2A24] hover:text-[#9C4A32] border border-[#1B2A24]/10 hover:border-[#9C4A32] text-xs font-medium uppercase tracking-wider transition-colors cursor-pointer"
+                      title="Open het onderzoeksrapport als PDF"
+                    >
+                      <span>Open PDF</span>
+                      <FileText className="w-3.5 h-3.5 text-[#9C4A32]" />
+                    </a>
                   ) : (
                     <a
                       href={item.externalUrl}

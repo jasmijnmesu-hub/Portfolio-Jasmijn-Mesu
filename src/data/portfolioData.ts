@@ -13,6 +13,7 @@ import { StudentProfile, LearningOutcome, Sprint, EvidenceItem } from '../types'
  * Direct downloadbaar Excel-bestand in de /public map
  */
 export const SPRINT_LOGBOEK_DOWNLOAD = '/sprintlogboek.xlsx';
+export const AI_RESEARCH_REPORT_PDF = '/assets/evidence/onderzoek-impact-ai-organiseren-samenwerken.pdf';
 
 export const studentProfile: StudentProfile = {
   name: 'Jasmijn Mesu',
@@ -226,10 +227,10 @@ export const initialEvidenceItems: EvidenceItem[] = [
     summary: 'Daarnaast onderzoek ik welke AI-toepassingen de meeste impact hebben op organiseren, coördineren en samenwerken binnen mijn toekomstige beroepspraktijk.',
     type: 'document',
     platform: 'PDF',
-    externalUrl: '#',
+    externalUrl: AI_RESEARCH_REPORT_PDF,
     sprintId: 1,
     learningOutcomes: ['LU1'],
-    date: 'In bewerking',
+    date: 'September 2026',
   },
   {
     id: 'BEW-03',
