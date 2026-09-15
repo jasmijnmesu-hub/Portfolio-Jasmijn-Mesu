@@ -37,7 +37,7 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
           </div>
 
           {/* Direct Download Excel Sprint Logboek Button */}
-          <div className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-5 lg:max-w-md shrink-0 space-y-2.5">
+          <div className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-5 lg:max-w-md shrink-0 space-y-2.5">
             <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#9C4A32]">
               <Download className="w-4 h-4" />
               <span>Integraal Sprint Logboek (Excel)</span>
@@ -66,7 +66,7 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
         viewport={{ once: true, amount: 0.3 }}
         variants={fadeUp}
         transition={fadeUpTransition}
-        className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-5 sm:p-6 space-y-3"
+        className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-5 sm:p-6 space-y-3"
       >
         <div className="flex items-center justify-between border-b border-[#1B2A24]/10 pb-2.5">
           <div className="flex items-center gap-2">
@@ -147,7 +147,7 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
 
               {/* Sprint Card with Show & Grow Milestone as Central Focus */}
               <div
-                className={`bg-[#D6D2C4] border transition-all p-6 sm:p-8 space-y-6 ${
+                className={`${isCurrent ? 'bg-[#F1DDD3]' : 'bg-[#F3EDE5]'} border transition-all p-6 sm:p-8 space-y-6 ${
                   isCurrent
                     ? 'border-[#9C4A32] ring-2 ring-[#9C4A32]/20 shadow-xs'
                     : 'border-[#1B2A24]/15 hover:border-[#1B2A24]/35'
@@ -156,7 +156,7 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
                 {/* PROMINENT SHOW & GROW MILESTONE BANNER */}
                 <div className={`p-4 sm:p-5 border transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
                   isCurrent
-                    ? 'bg-[#EDE6D8] border-[#9C4A32]'
+                    ? 'bg-[#F9EEE9] border-[#9C4A32]'
                     : 'bg-[#EDE6D8]/80 border-[#1B2A24]/15'
                 }`}>
                   <div className="space-y-1">
@@ -191,7 +191,7 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
                       className={`text-xs uppercase tracking-widest font-bold px-3 py-1 ${
                         isCurrent
                           ? 'bg-[#9C4A32] text-white'
-                          : 'bg-[#D6D2C4] text-[#1B2A24]/80 border border-[#1B2A24]/15'
+                          : 'bg-[#E8DED1] text-[#1B2A24]/80 border border-[#1B2A24]/15'
                       }`}
                     >
                       {sprint.title}
@@ -277,7 +277,7 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
                         href={sprint.presentationUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#EDE6D8] hover:bg-[#D6D2C4] text-[#1B2A24] border border-[#1B2A24]/15 hover:border-[#9C4A32] text-xs font-medium uppercase tracking-wider transition-colors cursor-pointer"
+                        className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#EDE6D8] hover:bg-[#E8DED1] text-[#1B2A24] border border-[#1B2A24]/15 hover:border-[#9C4A32] text-xs font-medium uppercase tracking-wider transition-colors cursor-pointer"
                       >
                         <Presentation className="w-3.5 h-3.5 text-[#9C4A32]" />
                         <span>Bekijk presentatie</span>

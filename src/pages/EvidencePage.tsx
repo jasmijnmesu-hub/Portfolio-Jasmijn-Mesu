@@ -96,7 +96,7 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
       </motion.div>
 
       {/* Filter Bar: Leeruitkomst, Sprint en Zoeken */}
-      <div className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-4 space-y-3">
+      <div className="bg-[#EDE6D8]/65 border-y border-[#1B2A24]/10 p-4 space-y-3">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           
           {/* Filter by Learning Outcome */}
@@ -161,7 +161,7 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
 
       {/* Evidence Cards List */}
       {filteredEvidence.length === 0 ? (
-        <div className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-12 text-center space-y-3">
+        <div className="bg-[#EDE6D8] border border-[#1B2A24]/10 p-12 text-center space-y-3">
           <p className="font-serif text-lg text-[#1B2A24]">
             Geen bewijsstukken gevonden voor deze selectie.
           </p>
@@ -193,7 +193,7 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
                 id={`evidence-${item.id.toLowerCase()}`}
                 variants={fadeUp}
                 transition={fadeUpTransition}
-                className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-6 flex flex-col justify-between space-y-5 hover:border-[#9C4A32]/50 transition-colors"
+                className="bg-[#F7F1E8] border border-[#9C4A32]/25 border-t-4 p-6 flex flex-col justify-between space-y-5 hover:border-[#9C4A32]/60 hover:shadow-sm transition-all"
               >
                 <div className="space-y-3">
                   {/* Top badges: Sprint, Type en Datum / In bewerking */}
@@ -227,7 +227,7 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
                   </h3>
 
                   {/* Description */}
-                  <p className="text-xs sm:text-sm font-sans text-[#1B2A24]/85 leading-relaxed">
+                  <p className="text-xs sm:text-sm font-sans text-[#1B2A24]/85 leading-relaxed whitespace-pre-line">
                     {item.description}
                   </p>
 

@@ -7,9 +7,9 @@
   --color-aubergine: #1B2A24;
   --color-terracotta: #9C4A32;
   --color-terracotta-hover: #7E3A26;
-  --color-greige: #CEC5B5;
-  --color-greige-subtle: #E4DECF;
-  --color-greige-border: #C7BFAE;
+  --color-greige: #E8DED1;
+  --color-greige-subtle: #F3EDE5;
+  --color-greige-border: #D8C9B9;
   --color-ochre: #C9A56B;
   --color-rose: #D8B7A6;
 }
@@ -31,7 +31,7 @@ h1, h2, h3, h4, .font-serif {
 }
 
 .sleek-card {
-  background-color: #CEC5B5;
+  background-color: #E8DED1;
   border: 1px solid rgba(27, 42, 36, 0.1);
 }
 

@@ -49,7 +49,7 @@ export const ContactPage: React.FC = () => {
           transition={fadeUpTransition}
           className="lg:col-span-7 space-y-6"
         >
-          <div className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-6 sm:p-8 space-y-6">
+          <div className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-6 sm:p-8 space-y-6">
             <h2 className="font-serif text-2xl text-[#1B2A24]">
               {studentProfile.name}
             </h2>
@@ -76,7 +76,7 @@ export const ContactPage: React.FC = () => {
 
                 <button
                   onClick={handleCopyEmail}
-                  className="text-xs px-3 py-1.5 bg-[#D6D2C4] hover:bg-[#C7BFAE] text-[#1B2A24] border border-[#1B2A24]/15 transition-colors cursor-pointer self-start sm:self-auto inline-flex items-center gap-1 uppercase tracking-wider font-medium"
+                  className="text-xs px-3 py-1.5 bg-[#F3EDE5] hover:bg-[#E5D8CA] text-[#1B2A24] border border-[#1B2A24]/15 transition-colors cursor-pointer self-start sm:self-auto inline-flex items-center gap-1 uppercase tracking-wider font-medium"
                 >
                   {copiedEmail ? (
                     <>
@@ -102,7 +102,7 @@ export const ContactPage: React.FC = () => {
                   href={studentProfile.linkedInUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs px-3 py-1.5 bg-[#D6D2C4] hover:bg-[#C7BFAE] text-[#1B2A24] border border-[#1B2A24]/15 transition-colors inline-flex items-center gap-1 uppercase tracking-wider font-medium"
+                  className="text-xs px-3 py-1.5 bg-[#F3EDE5] hover:bg-[#E5D8CA] text-[#1B2A24] border border-[#1B2A24]/15 transition-colors inline-flex items-center gap-1 uppercase tracking-wider font-medium"
                 >
                   <span>Bekijk</span>
                   <ExternalLink className="w-3 h-3 text-[#9C4A32]" />
@@ -143,7 +143,7 @@ export const ContactPage: React.FC = () => {
         >
           
           {/* Begeleiders / Coaches */}
-          <div className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-6 space-y-4">
+          <div className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-6 space-y-4">
             <h3 className="font-serif text-lg text-[#1B2A24] flex items-center gap-2">
               <GraduationCap className="w-5 h-5 text-[#9C4A32]" />
               Coach Minor HU
@@ -167,7 +167,7 @@ export const ContactPage: React.FC = () => {
           </div>
 
           {/* Onderwijsinstellingen */}
-          <div className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-6 space-y-3 text-xs">
+          <div className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-6 space-y-3 text-xs">
             <h3 className="font-serif text-lg text-[#1B2A24] flex items-center gap-2">
               <MapPin className="w-4 h-4 text-[#9C4A32]" />
               Onderwijsinstellingen

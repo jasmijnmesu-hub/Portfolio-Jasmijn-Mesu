@@ -7,11 +7,11 @@ import { Sparkles, FolderKanban, Users } from 'lucide-react';
 
 const personalBio = `Ik ben Jasmijn Mesu, 23 jaar oud. Momenteel zit ik in het derde jaar van mijn opleiding Facility Management aan Zuyd Hogeschool. Vanaf het begin van mijn studie wist ik dat mijn interesse niet ligt in de klassieke facilitaire hoek zoals schoonmaakbeheer, cateringcontracten of technisch gebouwbeheer. Waar mijn hart wél sneller van gaat kloppen is de organisatorische kant: processen analyseren en stroomlijnen, projecten van A tot Z coördineren, en vooral: mensen, taken en belangen met elkaar verbinden.`;
 
-const whereFrom = `Ik kom oorspronkelijk uit Hilversum. Daar ben ik opgegroeid en mijn moeder woont er nog steeds. Voor mijn studie verhuisde ik naar Maastricht, waar ik begon aan de Hotel Management School. Ik heb daar veel geleerd en voel me nog steeds thuis in die wereld. Zo ben ik lid van studentenvereniging Amphitryon en dispuut Alcmenae.
+const whereFrom = `Ik kom oorspronkelijk uit Hilversum. Daar ben ik opgegroeid. Voor mijn studie verhuisde ik naar Maastricht, waar ik begon aan de Hotel Management School. Ik heb daar veel geleerd en voel me nog steeds thuis in die wereld. Zo ben ik lid van studentenvereniging Amphitryon en dispuut Alcmenae.
 
-Na twee jaar merkte ik dat het traditionele hotelvak niet was waar mijn energie vandaan kwam. Wat mij juist trok, was alles wat met organiseren, plannen en mensen aansturen te maken heeft. Die ontdekking bracht me bij Facility Management in Heerlen. Deze opleiding past beter bij mijn talenten. Minder gericht op operationele hotelzaken, meer op processen, projecten en management.
+Na twee jaar merkte ik dat het traditionele hotelvak niet was waar mijn energie vandaan kwam. Wat mij juist trok, was alles wat te maken heeft met organiseren, plannen en mensen aansturen. Die ontdekking bracht me bij de opleiding Facility Management in Heerlen. Deze opleiding past beter bij mijn talenten, want er is minder aandacht voor operationele hotelzaken en meer voor processen, projecten en management.
 
-Tijdens mijn managementstage bij ABN AMRO MeesPierson, bij Project Support Events en recruitment, merkte ik hoeveel energie ik krijg van de combinatie van organiseren en persoonlijk contact. Gesprekken voeren, mensen op hun gemak stellen en tegelijk zorgen dat evenementen en trajecten soepel verlopen. Die combinatie is voor mij een rode draad geworden in wat ik zoek voor mijn toekomst.`;
+Tijdens mijn managementstage bij ABN AMRO MeesPierson, bij Project Support Events en recruitment, merkte ik hoeveel energie ik krijg van de combinatie van organiseren en persoonlijk contact. Ik voerde gesprekken, stelde mensen op hun gemak en zorgde er tegelijk voor dat evenementen en trajecten soepel verliepen. Die combinatie is voor mij een rode draad geworden in wat ik zoek voor mijn toekomst.`;
 
 const whatMakesMeHappy = `Ik krijg energie van contact met mensen. Luisteren naar hun verhaal, ontdekken wat bij iemand past en het gevoel dat ik iets voor iemand kan betekenen. Tegelijk hou ik van overzicht. Een planning die klopt, een lijstje dat compleet is, een proces dat net iets soepeler loopt dan eerst. Die twee kanten van mezelf, het sociale en het organisatorische, probeer ik steeds met elkaar te verbinden.
 
@@ -62,7 +62,7 @@ export const AboutPage: React.FC = () => {
               <span className="w-2 h-2 rounded-full bg-[#9C4A32]" />
               Wie ik ben &amp; mijn achtergrond
             </h2>
-            <div className="text-sm sm:text-base font-sans text-[#1B2A24]/85 leading-relaxed bg-[#D6D2C4] p-5 border border-[#1B2A24]/10">
+            <div className="text-sm sm:text-base font-sans text-[#1B2A24]/85 leading-relaxed bg-[#F3EDE5] p-5 border border-[#1B2A24]/10">
               <p>{personalBio}</p>
             </div>
           </motion.div>
@@ -80,7 +80,7 @@ export const AboutPage: React.FC = () => {
               <span className="w-2 h-2 rounded-full bg-[#9C4A32]" />
               Waar ik vandaan kom
             </h2>
-            <div className="text-sm sm:text-base font-sans text-[#1B2A24]/85 leading-relaxed bg-[#D6D2C4] p-5 border border-[#1B2A24]/10 space-y-3">
+            <div className="text-sm sm:text-base font-sans text-[#1B2A24]/85 leading-relaxed bg-[#F3EDE5] p-5 border border-[#1B2A24]/10 space-y-3">
               {whereFrom.split('\n\n').map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}
@@ -100,7 +100,7 @@ export const AboutPage: React.FC = () => {
               <span className="w-2 h-2 rounded-full bg-[#9C4A32]" />
               Waar ik blij van word (talenten, passies &amp; dromen)
             </h2>
-            <div className="text-sm sm:text-base font-sans text-[#1B2A24]/85 leading-relaxed bg-[#D6D2C4] p-5 border border-[#1B2A24]/10 space-y-3">
+            <div className="text-sm sm:text-base font-sans text-[#1B2A24]/85 leading-relaxed bg-[#F3EDE5] p-5 border border-[#1B2A24]/10 space-y-3">
               {whatMakesMeHappy.split('\n\n').map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}
@@ -114,7 +114,7 @@ export const AboutPage: React.FC = () => {
             viewport={{ once: true, amount: 0.3 }}
             variants={fadeUp}
             transition={fadeUpTransition}
-            className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-6 sm:p-7 space-y-4"
+            className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-6 sm:p-7 space-y-4"
           >
             <h3 className="font-serif text-xl text-[#1B2A24]">
               Mijn werkwijze &amp; favoriete gereedschap
@@ -172,7 +172,7 @@ export const AboutPage: React.FC = () => {
           </div>
 
           {/* Quick Info Box */}
-          <div className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-5 sm:p-6 shadow-xs">
+          <div className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-5 sm:p-6 shadow-xs">
             <h4 className="font-serif text-base font-bold tracking-tight text-[#1B2A24] pb-3 mb-4 border-b border-[#1B2A24]/10">
               Gegevens in het kort
             </h4>

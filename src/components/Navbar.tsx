@@ -74,7 +74,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
               <a
                 href={SPRINT_LOGBOEK_DOWNLOAD}
                 download="sprintlogboek.xlsx"
-                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 2xl:px-3.5 2xl:py-2 text-[11px] 2xl:text-sm font-sans uppercase tracking-[0.08em] 2xl:tracking-wider font-medium text-[#1B2A24] bg-[#D6D2C4] hover:bg-[#C7BFAE] border border-[#1B2A24]/10 transition-colors cursor-pointer whitespace-nowrap"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1.5 2xl:px-3.5 2xl:py-2 text-[11px] 2xl:text-sm font-sans uppercase tracking-[0.08em] 2xl:tracking-wider font-medium text-[#1B2A24] bg-[#F3EDE5] hover:bg-[#E5D8CA] border border-[#1B2A24]/10 transition-colors cursor-pointer whitespace-nowrap"
                 title="Download sprintlogboek.xlsx rechtstreeks"
               >
                 <Download className="w-3.5 h-3.5 text-[#9C4A32]" />
@@ -85,7 +85,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
             {/* Mobile Menu Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-[#1B2A24] hover:bg-[#D6D2C4] transition-colors focus:outline-hidden cursor-pointer ml-2"
+              className="md:hidden p-2 text-[#1B2A24] hover:bg-[#E5D8CA] transition-colors focus:outline-hidden cursor-pointer ml-2"
               aria-label="Menu openen"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -106,8 +106,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
                 onClick={() => handleNavClick(item.id)}
                 className={`w-full text-left px-4 py-3 text-sm font-sans uppercase tracking-wider font-medium transition-colors cursor-pointer flex items-center justify-between ${
                   isActive
-                    ? 'bg-[#D6D2C4] text-[#9C4A32] border-l-2 border-[#9C4A32]'
-                    : 'text-[#1B2A24] opacity-70 hover:opacity-100 hover:bg-[#D6D2C4]/60'
+                    ? 'bg-[#F3EDE5] text-[#9C4A32] border-l-2 border-[#9C4A32]'
+                    : 'text-[#1B2A24] opacity-70 hover:opacity-100 hover:bg-[#F3EDE5]/70'
                 }`}
               >
                 <span>{item.label}</span>
@@ -120,7 +120,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
             <a
               href={SPRINT_LOGBOEK_DOWNLOAD}
               download="sprintlogboek.xlsx"
-              className="flex items-center justify-between w-full px-4 py-3 text-xs font-sans uppercase tracking-wider font-medium text-[#1B2A24] bg-[#D6D2C4] border border-[#1B2A24]/10"
+              className="flex items-center justify-between w-full px-4 py-3 text-xs font-sans uppercase tracking-wider font-medium text-[#1B2A24] bg-[#F3EDE5] border border-[#1B2A24]/10"
               title="Download sprintlogboek.xlsx rechtstreeks"
             >
               <span className="flex items-center gap-2">

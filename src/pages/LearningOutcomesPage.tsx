@@ -41,7 +41,7 @@ export const LearningOutcomesPage: React.FC<LearningOutcomesPageProps> = ({ onNa
           </div>
 
           {/* Overall Score Card */}
-          <div className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-5 md:min-w-[280px]">
+          <div className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-5 md:min-w-[280px]">
             <div className="flex items-center justify-between text-xs font-sans text-[#1B2A24]/70 mb-2">
               <span className="font-bold uppercase tracking-widest text-[10px]">Totaal Aangetoond</span>
               <span className="text-[#9C4A32] font-semibold text-xs">Streefdoel: {totalTarget}x</span>
@@ -86,7 +86,7 @@ export const LearningOutcomesPage: React.FC<LearningOutcomesPageProps> = ({ onNa
               id={`lu-card-${lu.id.toLowerCase()}`}
               variants={fadeUp}
               transition={fadeUpTransition}
-              className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-6 sm:p-7 transition-all hover:border-[#9C4A32]/40"
+              className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-6 sm:p-7 transition-all hover:border-[#9C4A32]/40"
             >
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
                 
@@ -128,7 +128,7 @@ export const LearningOutcomesPage: React.FC<LearningOutcomesPageProps> = ({ onNa
                       </span>
                     </div>
 
-                    <div className="w-full h-1.5 bg-[#D6D2C4] mt-2.5 overflow-hidden">
+                    <div className="w-full h-1.5 bg-[#E8DED1] mt-2.5 overflow-hidden">
                       <div
                         className="h-full bg-[#9C4A32] transition-all duration-300"
                         style={{ width: `${percentage}%` }}
@@ -215,7 +215,7 @@ export const LearningOutcomesPage: React.FC<LearningOutcomesPageProps> = ({ onNa
         viewport={{ once: true, amount: 0.3 }}
         variants={fadeUp}
         transition={fadeUpTransition}
-        className="bg-[#D6D2C4] border border-[#1B2A24]/10 p-6 sm:p-7 space-y-4 text-xs font-sans text-[#1B2A24]"
+        className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-6 sm:p-7 space-y-4 text-xs font-sans text-[#1B2A24]"
       >
         <div className="space-y-1">
           <h3 className="font-serif text-base text-[#1B2A24] font-semibold flex items-center gap-2">

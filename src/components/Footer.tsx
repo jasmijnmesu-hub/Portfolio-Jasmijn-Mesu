@@ -9,7 +9,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
   return (
-    <footer className="border-t border-[#1B2A24]/10 bg-[#D6D2C4]/30 mt-20 pt-12 pb-10 text-sm font-sans text-[#1B2A24]">
+    <footer className="border-t border-[#1B2A24]/10 bg-[#F3EDE5]/70 mt-20 pt-12 pb-10 text-sm font-sans text-[#1B2A24]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
           
@@ -22,7 +22,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
               Portfolio voor de minor <span className="font-medium text-[#1B2A24]">Futureproof met AI</span> aan de Hogeschool Utrecht. Studente Facility Management aan Zuyd Hogeschool met focus op organisatie, procesverbetering en mensgerichte AI-toepassingen.
             </p>
             <div className="pt-2">
-              <span className="inline-block px-3 py-1 bg-[#D6D2C4] border border-[#1B2A24]/10 text-[10px] uppercase tracking-widest font-bold text-[#9C4A32]">
+              <span className="inline-block px-3 py-1 bg-[#F3EDE5] border border-[#1B2A24]/10 text-[10px] uppercase tracking-widest font-bold text-[#9C4A32]">
                 Streefniveau: Boven Niveau
               </span>
             </div>

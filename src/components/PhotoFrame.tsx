@@ -32,7 +32,7 @@ export const PhotoFrame: React.FC<PhotoFrameProps> = ({
   return (
     <figure id={id} className="relative block">
       <div
-        className={`group w-full ${aspectClass} bg-[#D6D2C4] border border-[#1B2A24]/15 overflow-hidden flex flex-col items-center justify-center relative shadow-xs`}
+        className={`group w-full ${aspectClass} bg-[#F3EDE5] border border-[#1B2A24]/15 overflow-hidden flex flex-col items-center justify-center relative shadow-xs`}
       >
         <img
           src={imageSrc}
