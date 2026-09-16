@@ -257,7 +257,8 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
                   {item.externalUrl.endsWith('.xlsx') ? (
                     <a
                       href={item.externalUrl}
-                      download="sprintlogboek.xlsx"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#EDE6D8] hover:bg-white text-[#1B2A24] hover:text-[#9C4A32] border border-[#1B2A24]/10 hover:border-[#9C4A32] text-xs font-medium uppercase tracking-wider transition-colors cursor-pointer"
                       title="Download sprintlogboek.xlsx rechtstreeks"
                     >

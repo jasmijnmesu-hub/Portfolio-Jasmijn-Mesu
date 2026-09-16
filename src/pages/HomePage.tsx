@@ -80,7 +80,8 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <a
                 id="btn-hero-logboek"
                 href={SPRINT_LOGBOEK_DOWNLOAD}
-                download="sprintlogboek.xlsx"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-xs sm:text-sm font-medium border-b border-[#1B2A24] pb-1 hover:text-[#9C4A32] hover:border-[#9C4A32] transition-colors inline-flex items-center gap-1.5 cursor-pointer"
                 title="Download sprintlogboek.xlsx rechtstreeks"
               >

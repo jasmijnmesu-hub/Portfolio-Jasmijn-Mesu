@@ -73,7 +73,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
             <div className="hidden xl:flex items-center ml-2 2xl:ml-4 pl-2 2xl:pl-3 border-l border-[#1B2A24]/15 shrink-0">
               <a
                 href={SPRINT_LOGBOEK_DOWNLOAD}
-                download="sprintlogboek.xlsx"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-2.5 py-1.5 2xl:px-3.5 2xl:py-2 text-[11px] 2xl:text-sm font-sans uppercase tracking-[0.08em] 2xl:tracking-wider font-medium text-[#1B2A24] bg-[#F3EDE5] hover:bg-[#E5D8CA] border border-[#1B2A24]/10 transition-colors cursor-pointer whitespace-nowrap"
                 title="Download sprintlogboek.xlsx rechtstreeks"
               >
@@ -119,7 +120,8 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
           <div className="pt-4 mt-2 border-t border-[#1B2A24]/10">
             <a
               href={SPRINT_LOGBOEK_DOWNLOAD}
-              download="sprintlogboek.xlsx"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center justify-between w-full px-4 py-3 text-xs font-sans uppercase tracking-wider font-medium text-[#1B2A24] bg-[#F3EDE5] border border-[#1B2A24]/10"
               title="Download sprintlogboek.xlsx rechtstreeks"
             >

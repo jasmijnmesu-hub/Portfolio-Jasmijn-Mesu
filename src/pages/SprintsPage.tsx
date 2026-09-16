@@ -48,7 +48,8 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
             <a
               id="btn-download-sprint-logbook"
               href={SPRINT_LOGBOEK_DOWNLOAD}
-              download="sprintlogboek.xlsx"
+              target="_blank"
+              rel="noopener noreferrer"
               className="accent-btn inline-flex items-center justify-between w-full px-4 py-2.5 text-xs font-medium uppercase tracking-wider cursor-pointer"
               title="Download sprintlogboek.xlsx rechtstreeks"
             >

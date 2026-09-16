@@ -12,7 +12,7 @@ import { StudentProfile, LearningOutcome, Sprint, EvidenceItem } from '../types'
 /**
  * Direct downloadbaar Excel-bestand in de /public map
  */
-export const SPRINT_LOGBOEK_DOWNLOAD = '/sprintlogboek.xlsx';
+export const SPRINT_LOGBOEK_DOWNLOAD = '/Integraal_Sprint_Logboek_Jasmijn%20Mesu.xlsx';
 export const AI_RESEARCH_REPORT_PDF = '/assets/evidence/onderzoek-impact-ai-organiseren-samenwerken.pdf';
 
 export const studentProfile: StudentProfile = {
@@ -44,7 +44,7 @@ export const learningOutcomes: LearningOutcome[] = [
     shortDescription: 'Onderzoeken hoe AI organisatorische en facilitaire werkprocessen verandert en kansen identificeren.',
     fullDescription: 'De student analyseert en evalueert systematisch welke impact artificiële intelligentie heeft op de huidige en toekomstige beroepspraktijk binnen het facilitaire werkveld, met specifieke focus op procesoptimalisatie, werkcoördinatie en mens-techniek interactie.',
     targetCount: 2,
-    currentCount: 0,
+    currentCount: 1,
   },
   {
     id: 'LU2',
@@ -71,7 +71,7 @@ export const learningOutcomes: LearningOutcome[] = [
     shortDescription: 'Doelgericht selecteren en toepassen van moderne AI-technologieën en werkwijzen.',
     fullDescription: 'De student maakt doelgericht en beargumenteerd gebruik van actuele AI-technologieën, prompting, API-structuren of no-code/low-code automatiseringen om vraagstukken op te lossen en processen te optimaliseren.',
     targetCount: 4,
-    currentCount: 0,
+    currentCount: 1,
   },
   {
     id: 'LU5',
@@ -80,7 +80,7 @@ export const learningOutcomes: LearningOutcome[] = [
     shortDescription: 'Proactief plannen in tweewekelijkse sprints, tijdig feedback ophalen en reflecteren op eigen groei.',
     fullDescription: 'De student toont een proactieve, methodische en onderzoekende houding. Werkt zelfstandig volgens agile sprintcycli, reflecteert aantoonbaar op de eigen professionele ontwikkeling en benut feedback van coaches en medestudenten constructief.',
     targetCount: 6,
-    currentCount: 0,
+    currentCount: 1,
   },
 ];
 
@@ -97,7 +97,7 @@ export const sprintsData: Sprint[] = [
     created: 'Ik werkte drie concrete bewijzen uit: een onderzoeksverslag, deze portfoliowebsite en het prototype NormChecker. Voor het onderzoeksverslag selecteerde ik tien bronnen, liet ik OpenAI Deep Research een eerste versie maken, vergeleek ik die met een versie van Gemini en corrigeerde ik zelf drie fouten in de APA7-bronnenlijst. Voor de websites werkte ik eerst in Google AI Studio of Claude, controleerde ik de uitkomsten lokaal in Visual Studio Code en zette ik de projecten via GitHub en Vercel live.',
     learned: 'Ik heb geleerd dat een goed resultaat niet ontstaat door een AI-tool één opdracht te geven en de uitkomst over te nemen. Ik moest keuzes maken, bronnen vergelijken, fouten herkennen en zelf bepalen wat bruikbaar was. Ook merkte ik dat verschillende tools verschillende sterke kanten hebben: Deep Research hielp bij het ordenen van het onderzoek, Claude hielp bij de zakelijke afwerking en Claude Code hielp bij het bouwen van een eerste dashboard. De prototypes zijn nog geen afgeronde bedrijfsoplossingen, maar laten wel zien dat ik zelfstandig van vraagstuk naar eerste werkende opzet kan gaan.',
     presentationUrl: '',
-    learningOutcomes: ['LU1', 'LU2', 'LU3', 'LU4', 'LU5'],
+    learningOutcomes: ['LU1', 'LU4', 'LU5'],
     evidenceIds: ['BEW-01', 'BEW-02', 'BEW-03'],
   },
   {
@@ -112,7 +112,7 @@ export const sprintsData: Sprint[] = [
     created: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 2]',
     learned: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 2]',
     presentationUrl: '',
-    learningOutcomes: ['LU1', 'LU4', 'LU5'],
+    learningOutcomes: [],
     evidenceIds: [],
   },
   {
@@ -127,7 +127,7 @@ export const sprintsData: Sprint[] = [
     created: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 3]',
     learned: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 3]',
     presentationUrl: '',
-    learningOutcomes: ['LU1', 'LU2', 'LU5'],
+    learningOutcomes: [],
     evidenceIds: [],
   },
   {
@@ -142,7 +142,7 @@ export const sprintsData: Sprint[] = [
     created: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 4]',
     learned: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 4]',
     presentationUrl: '',
-    learningOutcomes: ['LU1', 'LU2', 'LU3', 'LU5'],
+    learningOutcomes: [],
     evidenceIds: [],
   },
   {
@@ -157,7 +157,7 @@ export const sprintsData: Sprint[] = [
     created: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 5]',
     learned: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 5]',
     presentationUrl: '',
-    learningOutcomes: ['LU2', 'LU4', 'LU5'],
+    learningOutcomes: [],
     evidenceIds: [],
   },
   {
@@ -172,7 +172,7 @@ export const sprintsData: Sprint[] = [
     created: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 6]',
     learned: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 6]',
     presentationUrl: '',
-    learningOutcomes: ['LU2', 'LU3', 'LU4', 'LU5'],
+    learningOutcomes: [],
     evidenceIds: [],
   },
   {
@@ -187,7 +187,7 @@ export const sprintsData: Sprint[] = [
     created: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 7]',
     learned: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 7]',
     presentationUrl: '',
-    learningOutcomes: ['LU2', 'LU3', 'LU4', 'LU5'],
+    learningOutcomes: [],
     evidenceIds: [],
   },
   {
@@ -202,7 +202,7 @@ export const sprintsData: Sprint[] = [
     created: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 8]',
     learned: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 8]',
     presentationUrl: '',
-    learningOutcomes: ['LU1', 'LU2', 'LU3', 'LU4', 'LU5'],
+    learningOutcomes: [],
     evidenceIds: [],
   },
 ];
@@ -217,7 +217,7 @@ export const initialEvidenceItems: EvidenceItem[] = [
     platform: 'Vercel (Live Website)',
     externalUrl: '#',
     sprintId: 1,
-    learningOutcomes: ['LU2', 'LU4', 'LU5'],
+    learningOutcomes: ['LU4', 'LU5'],
     date: 'In bewerking',
   },
   {
@@ -229,7 +229,7 @@ export const initialEvidenceItems: EvidenceItem[] = [
     platform: 'PDF',
     externalUrl: AI_RESEARCH_REPORT_PDF,
     sprintId: 1,
-    learningOutcomes: ['LU1', 'LU3', 'LU4', 'LU5'],
+    learningOutcomes: ['LU1', 'LU4', 'LU5'],
     date: 'September 2026',
   },
   {
@@ -241,7 +241,7 @@ export const initialEvidenceItems: EvidenceItem[] = [
     platform: 'Vercel',
     externalUrl: 'https://normchecker.vercel.app/',
     sprintId: 1,
-    learningOutcomes: ['LU2', 'LU3', 'LU4', 'LU5'],
+    learningOutcomes: ['LU4', 'LU5'],
     date: 'In bewerking',
   },
 ];
