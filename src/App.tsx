@@ -8,21 +8,31 @@ import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { LearningOutcomesPage } from './pages/LearningOutcomesPage';
 import { SprintsPage } from './pages/SprintsPage';
+import { SprintDetailPage } from './pages/SprintDetailPage';
 import { EvidencePage } from './pages/EvidencePage';
 import { LearningLogPage } from './pages/LearningLogPage';
 import { ContactPage } from './pages/ContactPage';
 import { GeminiChatbot } from './components/GeminiChatbot';
+import { sprintsData } from './data/portfolioData';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<NavTab>('home');
   const [evidenceLuFilter, setEvidenceLuFilter] = useState<string | undefined>(undefined);
   const [evidenceSprintFilter, setEvidenceSprintFilter] = useState<number | undefined>(undefined);
+  const [activeSprintId, setActiveSprintId] = useState<number | undefined>(undefined);
 
   // Sync with window.location.hash for shareable links & browser history
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '').toLowerCase();
+      const sprintMatch = hash.match(/^sprint-(\d+)$/);
+      if (sprintMatch) {
+        setActiveSprintId(Number(sprintMatch[1]));
+        setActiveTab('sprints');
+        return;
+      }
       if (['home', 'over-mij', 'leeruitkomsten', 'sprints', 'bewijzen', 'geleerd', 'contact'].includes(hash)) {
+        setActiveSprintId(undefined);
         setActiveTab(hash as NavTab);
       }
     };
@@ -36,8 +46,22 @@ export default function App() {
   }, []);
 
   const handleSelectTab = (tab: NavTab) => {
+    setActiveSprintId(undefined);
     setActiveTab(tab);
     window.location.hash = tab;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleOpenSprint = (sprintId: number) => {
+    setActiveSprintId(sprintId);
+    setActiveTab('sprints');
+    window.location.hash = `sprint-${sprintId}`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleBackToSprints = () => {
+    setActiveSprintId(undefined);
+    window.location.hash = 'sprints';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -88,7 +112,18 @@ export default function App() {
             )}
 
             {activeTab === 'sprints' && (
-              <SprintsPage onNavigateToEvidence={handleNavigateToEvidenceWithSprint} />
+              activeSprintId ? (
+                <SprintDetailPage
+                  sprint={sprintsData.find((sprint) => sprint.id === activeSprintId) || sprintsData[0]}
+                  onBack={handleBackToSprints}
+                  onNavigateToEvidence={handleNavigateToEvidenceWithSprint}
+                />
+              ) : (
+                <SprintsPage
+                  onNavigateToEvidence={handleNavigateToEvidenceWithSprint}
+                  onOpenSprint={handleOpenSprint}
+                />
+              )
             )}
 
             {activeTab === 'bewijzen' && (

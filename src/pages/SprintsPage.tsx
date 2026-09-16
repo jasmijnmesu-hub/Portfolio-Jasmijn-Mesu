@@ -6,9 +6,10 @@ import { Download, ExternalLink, Calendar, ArrowRight, Presentation, Flag, Spark
 
 interface SprintsPageProps {
   onNavigateToEvidence: (sprintId?: number) => void;
+  onOpenSprint: (sprintId: number) => void;
 }
 
-export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }) => {
+export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence, onOpenSprint }) => {
   return (
     <div className="space-y-12 py-6 md:py-10">
       
@@ -86,9 +87,10 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
             const isCurrent = s.status === 'bezig';
 
             return (
-              <a
+              <button
                 key={s.id}
-                href={`#sprint-node-${s.id}`}
+                type="button"
+                onClick={() => onOpenSprint(s.id)}
                 className={`p-2.5 text-left border transition-all cursor-pointer block ${
                   isCurrent
                     ? 'bg-[#EDE6D8] border-[#9C4A32] ring-2 ring-[#9C4A32]/25'
@@ -106,7 +108,8 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
                 }`}>
                   {isCurrent ? 'Nu Actief' : 'Nog te starten'}
                 </span>
-              </a>
+                <span className="sr-only">Bekijk details van Sprint {s.id}</span>
+              </button>
             );
           })}
         </div>
@@ -122,7 +125,6 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
       >
         {sprints.map((sprint) => {
           const isCurrent = sprint.status === 'bezig';
-          const isPlanned = sprint.status === 'gepland';
           const evidenceCount = initialEvidenceItems.filter((e) => e.sprintId === sprint.id).length;
 
           return (
@@ -148,11 +150,20 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
 
               {/* Sprint Card with Show & Grow Milestone as Central Focus */}
               <div
+                role="button"
+                tabIndex={0}
+                onClick={() => onOpenSprint(sprint.id)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    onOpenSprint(sprint.id);
+                  }
+                }}
                 className={`${isCurrent ? 'bg-[#F1DDD3]' : 'bg-[#F3EDE5]'} border transition-all p-6 sm:p-8 space-y-6 ${
                   isCurrent
                     ? 'border-[#9C4A32] ring-2 ring-[#9C4A32]/20 shadow-xs'
                     : 'border-[#1B2A24]/15 hover:border-[#1B2A24]/35'
-                }`}
+                } cursor-pointer`}
               >
                 {/* PROMINENT SHOW & GROW MILESTONE BANNER */}
                 <div className={`p-4 sm:p-5 border transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
@@ -216,43 +227,13 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
                   </h3>
                 </div>
 
-                {/* Agile Breakdown: Onderzocht, Gemaakt, Geleerd */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                  {/* 1. Onderzocht */}
-                  <div className="bg-[#EDE6D8] p-4 border border-[#1B2A24]/10 space-y-1.5 flex flex-col justify-between">
-                    <div>
-                      <span className="block font-sans text-[10px] font-bold uppercase tracking-widest text-[#9C4A32]">
-                        1. Onderzocht &amp; Verdiept
-                      </span>
-                      <p className={`text-xs text-[#1B2A24]/85 leading-relaxed mt-1 ${isPlanned ? 'italic text-[#1B2A24]/60' : ''}`}>
-                        {sprint.researched}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* 2. Gemaakt */}
-                  <div className="bg-[#EDE6D8] p-4 border border-[#1B2A24]/10 space-y-1.5 flex flex-col justify-between">
-                    <div>
-                      <span className="block font-sans text-[10px] font-bold uppercase tracking-widest text-[#9C4A32]">
-                        2. Gemaakt &amp; Opgeleverd
-                      </span>
-                      <p className={`text-xs text-[#1B2A24]/85 leading-relaxed mt-1 ${isPlanned ? 'italic text-[#1B2A24]/60' : ''}`}>
-                        {sprint.created}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* 3. Geleerd */}
-                  <div className="bg-[#EDE6D8] p-4 border border-[#1B2A24]/10 space-y-1.5 flex flex-col justify-between">
-                    <div>
-                      <span className="block font-sans text-[10px] font-bold uppercase tracking-widest text-[#9C4A32]">
-                        3. Geleerd &amp; Reflectie
-                      </span>
-                      <p className={`text-xs text-[#1B2A24]/85 leading-relaxed mt-1 ${isPlanned ? 'italic text-[#1B2A24]/60' : ''}`}>
-                        {sprint.learned}
-                      </p>
-                    </div>
-                  </div>
+                <div className="bg-[#EDE6D8] border border-[#1B2A24]/10 p-4">
+                  <span className="block font-sans text-[10px] font-bold uppercase tracking-widest text-[#9C4A32]">
+                    Korte samenvatting
+                  </span>
+                  <p className="text-sm text-[#1B2A24]/85 leading-relaxed mt-1">
+                    {sprint.summary}
+                  </p>
                 </div>
 
                 {/* Card Footer: Gekoppelde Leeruitkomsten + Knoppen voor Presentatie en Bewijs */}
@@ -272,10 +253,22 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
                   </div>
 
                   <div className="flex flex-wrap items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        onOpenSprint(sprint.id);
+                      }}
+                      className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#EDE6D8] hover:bg-[#E8DED1] text-[#1B2A24] border border-[#1B2A24]/15 hover:border-[#9C4A32] text-xs font-medium uppercase tracking-wider transition-colors cursor-pointer"
+                    >
+                      <span>Open {sprint.title}</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-[#9C4A32]" />
+                    </button>
                     {/* Knop: Bekijk Presentatie (Show & Grow) */}
                     {sprint.presentationUrl ? (
                       <a
                         href={sprint.presentationUrl}
+                        onClick={(event) => event.stopPropagation()}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#EDE6D8] hover:bg-[#E8DED1] text-[#1B2A24] border border-[#1B2A24]/15 hover:border-[#9C4A32] text-xs font-medium uppercase tracking-wider transition-colors cursor-pointer"
@@ -296,7 +289,10 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence }
 
                     {/* Knop: Bekijk bewijs */}
                     <button
-                      onClick={() => onNavigateToEvidence(sprint.id)}
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        onNavigateToEvidence(sprint.id);
+                      }}
                       className="accent-btn inline-flex items-center gap-2 px-4 py-2 text-xs font-medium uppercase tracking-wider transition-colors cursor-pointer"
                     >
                       <span>Bekijk bewijs ({evidenceCount})</span>

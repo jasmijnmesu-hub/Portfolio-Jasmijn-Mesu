@@ -13,6 +13,13 @@ export interface LearningOutcome {
 
 export type SprintStatus = 'afgerond' | 'bezig' | 'gepland';
 
+export interface SprintStory {
+  id: string;
+  description: string;
+  acceptanceCriteria: string[];
+  qualityCriteria: string[];
+}
+
 export interface Sprint {
   id: number;
   title: string;
@@ -21,12 +28,14 @@ export interface Sprint {
   status: SprintStatus;
   statusText: string;
   focus: string;
+  summary: string;
   researched: string;
   created: string;
   learned: string;
   presentationUrl?: string;
   learningOutcomes: ('LU1' | 'LU2' | 'LU3' | 'LU4' | 'LU5')[];
   evidenceIds: string[];
+  stories?: SprintStory[];
 }
 
 export type EvidenceType = 'document' | 'video' | 'prototype' | 'spreadsheet' | 'presentatie';
