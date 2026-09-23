@@ -7,6 +7,9 @@ import {
   generateScheduledLessons,
   getLessonImage,
   loadStoredData,
+  loadRemoteData,
+  saveRemoteLesson,
+  deleteRemoteLesson,
   saveStoredData,
   todayISO,
 } from '../lib/lessonLog';
@@ -36,6 +39,14 @@ export const LearningLogPage: React.FC = () => {
       setCurrentIndex(pages.length - 1);
     }
   }, [pages, currentIndex]);
+
+  useEffect(() => {
+    void loadRemoteData().then((remoteData) => {
+      if (!remoteData) return;
+      setCustomLessons(remoteData.customLessons);
+      setNotes(remoteData.notes);
+    });
+  }, []);
 
   const goToPage = (index: number, dir: 1 | -1) => {
     if (index < 0 || index >= pages.length) return;
@@ -72,6 +83,7 @@ export const LearningLogPage: React.FC = () => {
     if (saveTimeout.current) window.clearTimeout(saveTimeout.current);
     saveTimeout.current = window.setTimeout(() => {
       saveStoredData({ notes: updated, customLessons });
+      void saveRemoteLesson(currentPage, value);
       setSaved(true);
     }, 500);
   };
@@ -82,6 +94,7 @@ export const LearningLogPage: React.FC = () => {
     const updatedCustom = [...customLessons, lesson];
     setCustomLessons(updatedCustom);
     saveStoredData({ notes, customLessons: updatedCustom });
+    void saveRemoteLesson(lesson, notes[lesson.id] ?? '');
     setShowAddForm(false);
     setNewLabel('');
   };
@@ -93,6 +106,7 @@ export const LearningLogPage: React.FC = () => {
     setCustomLessons(updatedCustom);
     setNotes(updatedNotes);
     saveStoredData({ notes: updatedNotes, customLessons: updatedCustom });
+    void deleteRemoteLesson(id);
     setCurrentIndex((idx) => (idx !== null ? Math.min(idx, updatedCustom.length + generateScheduledLessons().length - 1) : idx));
   };
 

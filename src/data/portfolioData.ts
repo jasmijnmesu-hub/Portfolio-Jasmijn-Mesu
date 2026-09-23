@@ -8,6 +8,7 @@
  */
 
 import { StudentProfile, LearningOutcome, Sprint, EvidenceItem } from '../types';
+import { supabase } from '../lib/supabase';
 
 /**
  * Direct downloadbaar Excel-bestand in de /public map
@@ -36,7 +37,7 @@ export const studentProfile: StudentProfile = {
   ],
 };
 
-export const learningOutcomes: LearningOutcome[] = [
+export let learningOutcomes: LearningOutcome[] = [
   {
     id: 'LU1',
     code: 'LU1',
@@ -84,7 +85,7 @@ export const learningOutcomes: LearningOutcome[] = [
   },
 ];
 
-export const sprintsData: Sprint[] = [
+export let sprintsData: Sprint[] = [
   {
     id: 1,
     title: 'Sprint 1',
@@ -266,7 +267,7 @@ export const sprintsData: Sprint[] = [
   },
 ];
 
-export const initialEvidenceItems: EvidenceItem[] = [
+export let initialEvidenceItems: EvidenceItem[] = [
   {
     id: 'BEW-01',
     title: 'Ontwerp en Bouw van dit Digitale Portfolio',
@@ -304,3 +305,29 @@ export const initialEvidenceItems: EvidenceItem[] = [
     date: 'In bewerking',
   },
 ];
+
+interface PortfolioContentRecord {
+  profile: StudentProfile;
+  learning_outcomes: LearningOutcome[];
+  sprints: Sprint[];
+  evidence: EvidenceItem[];
+}
+
+export async function loadPortfolioData(): Promise<boolean> {
+  if (!supabase) return false;
+
+  const { data, error } = await supabase
+    .from('portfolio_content')
+    .select('profile, learning_outcomes, sprints, evidence')
+    .eq('id', 'main')
+    .maybeSingle();
+
+  if (error || !data) return false;
+
+  const content = data as PortfolioContentRecord;
+  Object.assign(studentProfile, content.profile);
+  learningOutcomes = content.learning_outcomes;
+  sprintsData = content.sprints;
+  initialEvidenceItems = content.evidence;
+  return true;
+}

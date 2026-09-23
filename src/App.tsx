@@ -13,13 +13,18 @@ import { EvidencePage } from './pages/EvidencePage';
 import { LearningLogPage } from './pages/LearningLogPage';
 import { ContactPage } from './pages/ContactPage';
 import { GeminiChatbot } from './components/GeminiChatbot';
-import { sprintsData } from './data/portfolioData';
+import { loadPortfolioData, sprintsData } from './data/portfolioData';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<NavTab>('home');
   const [evidenceLuFilter, setEvidenceLuFilter] = useState<string | undefined>(undefined);
   const [evidenceSprintFilter, setEvidenceSprintFilter] = useState<number | undefined>(undefined);
   const [activeSprintId, setActiveSprintId] = useState<number | undefined>(undefined);
+  const [portfolioLoaded, setPortfolioLoaded] = useState(false);
+
+  useEffect(() => {
+    void loadPortfolioData().finally(() => setPortfolioLoaded(true));
+  }, []);
 
   // Sync with window.location.hash for shareable links & browser history
   useEffect(() => {
@@ -91,6 +96,11 @@ export default function App() {
 
       {/* Main Page Content */}
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+        {!portfolioLoaded ? (
+          <div className="flex min-h-[50vh] items-center justify-center text-sm text-[#1B2A24]/60">
+            Portfoliogegevens laden...
+          </div>
+        ) : (
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -143,6 +153,7 @@ export default function App() {
             )}
           </motion.div>
         </AnimatePresence>
+        )}
       </main>
 
       {/* Persistent Footer */}

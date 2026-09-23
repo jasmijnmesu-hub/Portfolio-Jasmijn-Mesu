@@ -7,6 +7,8 @@
  * Jasmijn, dus ze blijven staan tussen bezoeken op hetzelfde apparaat.
  */
 
+import { supabase } from './supabase';
+
 export interface LessonPage {
   id: string;
   dateISO: string;
@@ -127,4 +129,56 @@ export function saveStoredData(data: StoredData): void {
   } catch {
     // localStorage niet beschikbaar (bv. privénavigatie) — aantekening gaat dan niet mee naar een volgend bezoek.
   }
+}
+
+async function getRemoteUserId(): Promise<string | null> {
+  if (!supabase) return null;
+  const { data: sessionData } = await supabase.auth.getSession();
+  if (sessionData.session?.user.id) return sessionData.session.user.id;
+  const { data, error } = await supabase.auth.signInAnonymously();
+  return error ? null : data.user?.id ?? null;
+}
+
+export async function loadRemoteData(): Promise<StoredData | null> {
+  const userId = await getRemoteUserId();
+  if (!userId || !supabase) return null;
+
+  const { data, error } = await supabase
+    .from('lesson_notes')
+    .select('id, date_iso, label, note, is_custom')
+    .eq('user_id', userId)
+    .order('date_iso', { ascending: true });
+
+  if (error) return null;
+
+  const notes: Record<string, string> = {};
+  const customLessons: LessonPage[] = [];
+  (data || []).forEach((row) => {
+    notes[row.id] = row.note || '';
+    if (row.is_custom) {
+      const lesson = buildLessonPage(row.date_iso, row.label || undefined);
+      lesson.id = row.id;
+      customLessons.push(lesson);
+    }
+  });
+  return { notes, customLessons };
+}
+
+export async function saveRemoteLesson(lesson: LessonPage, note: string): Promise<void> {
+  const userId = await getRemoteUserId();
+  if (!userId || !supabase) return;
+  await supabase.from('lesson_notes').upsert({
+    id: lesson.id,
+    user_id: userId,
+    date_iso: lesson.dateISO,
+    label: lesson.label || null,
+    note,
+    is_custom: lesson.isCustom,
+  });
+}
+
+export async function deleteRemoteLesson(id: string): Promise<void> {
+  const userId = await getRemoteUserId();
+  if (!userId || !supabase) return;
+  await supabase.from('lesson_notes').delete().eq('id', id).eq('user_id', userId);
 }
