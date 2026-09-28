@@ -15,6 +15,7 @@ import { supabase } from '../lib/supabase';
  */
 export const SPRINT_LOGBOEK_DOWNLOAD = '/Integraal_Sprint_Logboek_Officieel.xlsx';
 export const AI_RESEARCH_REPORT_PDF = '/assets/evidence/onderzoek-impact-ai-organiseren-samenwerken.pdf';
+export const BLUE_CURRENT_RESEARCH_PDF = '/assets/evidence/Vooronderzoek_AI-kansen_Blue_Current.pdf';
 
 export const studentProfile: StudentProfile = {
   name: 'Jasmijn Mesu',
@@ -368,8 +369,8 @@ export let initialEvidenceItems: EvidenceItem[] = [
     description: 'Onderzoeksvraag\nIk onderzoek de bedrijfsactiviteiten, laadinfrastructuurdiensten en technologische context van Blue Current, zodat ik tijdens het eerste intakegesprek gerichte AI-toepassingen kan voorstellen.\n\nWerkwijze\nIk combineer openbare bronnen, zoals de website, nieuwsartikelen en LinkedIn, met een gerichte analyse via een taalmodel. Door deze bronnen en perspectieven met elkaar te vergelijken, werk ik minimaal drie realistische AI-kansen uit, bijvoorbeeld op het gebied van slim laden en netcongestie, voorspellend onderhoud en geautomatiseerde ondersteuning. Daarnaast stel ik een gestructureerde vragenlijst met vijf tot acht vragen op voor het intakegesprek.\n\nResultaat\nHet onderzoek biedt een onderbouwde basis voor een scherpe minoropdracht die realistisch aansluit op een praktijkvraagstuk met een looptijd van ongeveer vier maanden.',
     summary: 'Ik onderzoek Blue Current en werk drie haalbare AI-toepassingen en een gestructureerde intakevragenlijst uit.',
     type: 'document',
-    platform: 'Integraal sprintlogboek',
-    externalUrl: SPRINT_LOGBOEK_DOWNLOAD,
+    platform: 'PDF',
+    externalUrl: BLUE_CURRENT_RESEARCH_PDF,
     sprintId: 2,
     learningOutcomes: ['LU4', 'LU5'],
     date: 'September 2026',
