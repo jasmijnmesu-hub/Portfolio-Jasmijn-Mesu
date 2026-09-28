@@ -32,15 +32,29 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
     initialSprintFilter ? String(initialSprintFilter) : 'ALL'
   );
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const hasActiveFilters = selectedLu !== 'ALL' || selectedSprint !== 'ALL' || searchQuery.trim() !== '';
+
+  const clearFilters = () => {
+    setSelectedLu('ALL');
+    setSelectedSprint('ALL');
+    setSearchQuery('');
+  };
 
   // Filter logic: LU filter, sprint filter, and text search
   const filteredEvidence = evidenceList.filter((item) => {
     const matchesLu = selectedLu === 'ALL' || item.learningOutcomes.includes(selectedLu as any);
     const matchesSprint = selectedSprint === 'ALL' || item.sprintId === Number(selectedSprint);
-    const matchesSearch = searchQuery === '' || 
-      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.learningOutcomes.some((lu) => lu.toLowerCase().includes(searchQuery.toLowerCase()));
+    const normalizedSearch = searchQuery.trim().toLowerCase();
+    const searchableText = [
+      item.title,
+      item.description,
+      item.platform,
+      item.type,
+      item.date,
+      `sprint ${item.sprintId}`,
+      ...item.learningOutcomes,
+    ].join(' ').toLowerCase();
+    const matchesSearch = normalizedSearch === '' || searchableText.includes(normalizedSearch);
     
     return matchesLu && matchesSprint && matchesSearch;
   });
@@ -154,6 +168,15 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
                 className="text-xs pl-8 pr-3 py-1.5 bg-[#EDE6D8] border border-[#1B2A24]/20 text-[#1B2A24] focus:outline-hidden focus:border-[#9C4A32] w-40 sm:w-48"
               />
             </div>
+
+            <button
+              type="button"
+              onClick={clearFilters}
+              disabled={!hasActiveFilters}
+              className="text-xs uppercase tracking-wider font-semibold text-[#9C4A32] hover:text-[#1B2A24] disabled:text-[#1B2A24]/35 disabled:cursor-not-allowed cursor-pointer transition-colors"
+            >
+              Wis filters
+            </button>
           </div>
 
         </div>
@@ -169,7 +192,7 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
             Pas het filter aan om andere bewijsstukken te bekijken.
           </p>
           <button
-            onClick={() => { setSelectedLu('ALL'); setSelectedSprint('ALL'); setSearchQuery(''); }}
+            onClick={clearFilters}
             className="text-xs text-[#9C4A32] underline cursor-pointer uppercase tracking-wider"
           >
             Alle filters wissen
