@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { learningOutcomes as outcomes, initialEvidenceItems } from '../data/portfolioData';
+import { learningOutcomes as outcomes, initialEvidenceItems, sprintsData } from '../data/portfolioData';
 import { fadeUp, cardStagger, fadeUpTransition } from '../lib/motionVariants';
+import { getCurrentSprintId } from '../lib/date';
 import { ArrowRight, CheckCircle2, Award, ExternalLink } from 'lucide-react';
 
 interface LearningOutcomesPageProps {
@@ -13,6 +14,7 @@ export const LearningOutcomesPage: React.FC<LearningOutcomesPageProps> = ({ onNa
 
   const totalDemonstrated = outcomes.reduce((acc, curr) => acc + curr.currentCount, 0);
   const totalTarget = outcomes.reduce((acc, curr) => acc + curr.targetCount, 0); // 2 + 4 + 2 + 4 + 6 = 18
+  const currentSprintId = getCurrentSprintId(sprintsData);
 
   return (
     <div className="space-y-12 py-6 md:py-10">
@@ -60,7 +62,7 @@ export const LearningOutcomesPage: React.FC<LearningOutcomesPageProps> = ({ onNa
             </div>
 
             <p className="text-[10px] uppercase tracking-wider text-[#1B2A24]/60 mt-2.5">
-              Huidige status: Sprint 1 (nog geen Show &amp; Grow geweest)
+              Huidige status: Sprint {currentSprintId} (volgende Show &amp; Grow)
             </p>
           </div>
         </div>
