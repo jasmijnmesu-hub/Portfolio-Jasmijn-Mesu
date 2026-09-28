@@ -13,7 +13,7 @@ import { supabase } from '../lib/supabase';
 /**
  * Direct downloadbaar Excel-bestand in de /public map
  */
-export const SPRINT_LOGBOEK_DOWNLOAD = '/Integraal_Sprint_Logboek_Jasmijn%20Mesu.xlsx';
+export const SPRINT_LOGBOEK_DOWNLOAD = '/Integraal_Sprint_Logboek_Officieel.xlsx';
 export const AI_RESEARCH_REPORT_PDF = '/assets/evidence/onderzoek-impact-ai-organiseren-samenwerken.pdf';
 
 export const studentProfile: StudentProfile = {
@@ -54,7 +54,7 @@ export let learningOutcomes: LearningOutcome[] = [
     shortDescription: 'Een tastbare, werkende AI-oplossing ontwerpen en bouwen die een concreet organisatorisch knelpunt oplost.',
     fullDescription: 'De student ontwerpt, realiseert en presenteert een iteratief getoetste AI-gedreven oplossing voor een authentiek praktijkvraagstuk. De oplossing verbindt behoeften van eindgebruikers met technische haalbaarheid en functionele bruikbaarheid.',
     targetCount: 4,
-    currentCount: 0,
+    currentCount: 2,
   },
   {
     id: 'LU3',
@@ -72,7 +72,7 @@ export let learningOutcomes: LearningOutcome[] = [
     shortDescription: 'Doelgericht selecteren en toepassen van moderne AI-technologieën en werkwijzen.',
     fullDescription: 'De student maakt doelgericht en beargumenteerd gebruik van actuele AI-technologieën, prompting, API-structuren of no-code/low-code automatiseringen om vraagstukken op te lossen en processen te optimaliseren.',
     targetCount: 4,
-    currentCount: 1,
+    currentCount: 2,
   },
   {
     id: 'LU5',
@@ -81,7 +81,7 @@ export let learningOutcomes: LearningOutcome[] = [
     shortDescription: 'Proactief plannen in tweewekelijkse sprints, tijdig feedback ophalen en reflecteren op eigen groei.',
     fullDescription: 'De student toont een proactieve, methodische en onderzoekende houding. Werkt zelfstandig volgens agile sprintcycli, reflecteert aantoonbaar op de eigen professionele ontwikkeling en benut feedback van coaches en medestudenten constructief.',
     targetCount: 6,
-    currentCount: 1,
+    currentCount: 2,
   },
 ];
 
@@ -91,15 +91,15 @@ export let sprintsData: Sprint[] = [
     title: 'Sprint 1',
     period: '7 september 2026 tot en met 16 september 2026',
     showAndGrowDate: '16 september 2026',
-    status: 'bezig',
-    statusText: 'Huidige sprint',
+    status: 'afgerond',
+    statusText: 'Afgesloten met een voldoende',
     focus: 'Van onderzoek naar eerste prototypes: onderzoeken welke rol generatieve AI kan spelen in organiseren, samenwerken en het volgen van bouwnormen.',
     summary: 'In Sprint 1 onderzocht ik de impact van AI op organiseren en samenwerken, bouwde ik mijn portfolio en maakte ik een eerste NormChecker-prototype.',
     researched: 'Ik onderzocht drie kanten van AI in mijn toekomstige werk. Eerst onderzocht ik met Perplexity welke AI-toepassingen invloed hebben op organiseren, coördineren en samenwerken. Daarna vergeleek ik bronnen van adviesbureaus, beroepsorganisaties, wetenschap, vakpers en softwareleveranciers, zodat ik niet afhankelijk werd van één perspectief. Ook onderzocht ik met Claude Code wat AI al wist over NEN- en ISO-bouwnormen en waar controle op verzonnen of onjuiste informatie nodig was.',
     created: 'Ik werkte drie concrete bewijzen uit: een onderzoeksverslag, deze portfoliowebsite en het prototype NormChecker. Voor het onderzoeksverslag selecteerde ik tien bronnen, liet ik OpenAI Deep Research een eerste versie maken, vergeleek ik die met een versie van Gemini en corrigeerde ik zelf drie fouten in de APA7-bronnenlijst. Voor de websites werkte ik eerst in Google AI Studio of Claude, controleerde ik de uitkomsten lokaal in Visual Studio Code en zette ik de projecten via GitHub en Vercel live.',
     learned: 'Ik heb geleerd dat een goed resultaat niet ontstaat door een AI-tool één opdracht te geven en de uitkomst over te nemen. Ik moest keuzes maken, bronnen vergelijken, fouten herkennen en zelf bepalen wat bruikbaar was. Ook merkte ik dat verschillende tools verschillende sterke kanten hebben: Deep Research hielp bij het ordenen van het onderzoek, Claude hielp bij de zakelijke afwerking en Claude Code hielp bij het bouwen van een eerste dashboard. De prototypes zijn nog geen afgeronde bedrijfsoplossingen, maar laten wel zien dat ik zelfstandig van vraagstuk naar eerste werkende opzet kan gaan.',
     presentationUrl: '',
-    learningOutcomes: ['LU1', 'LU4', 'LU5'],
+    learningOutcomes: ['LU1', 'LU2', 'LU4', 'LU5'],
     evidenceIds: ['BEW-01', 'BEW-02', 'BEW-03'],
     stories: [
       {
@@ -158,16 +158,62 @@ export let sprintsData: Sprint[] = [
     title: 'Sprint 2',
     period: '21 september 2026 tot en met 30 september 2026',
     showAndGrowDate: '30 september 2026',
-    status: 'gepland',
-    statusText: 'Nog te starten',
-    focus: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 2]',
-    summary: '[Korte samenvatting wordt ingevuld na Sprint 2]',
-    researched: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 2]',
-    created: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 2]',
-    learned: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 2]',
+    status: 'bezig',
+    statusText: 'Huidige sprint',
+    focus: 'Van AI-agenten leren en Blue Current verkennen naar een gerichte, praktijkgerichte portfolio-oplossing.',
+    summary: 'In Sprint 2 verdiep ik mij in AI-agents via DataCamp, onderzoek ik Blue Current en mogelijke AI-use cases en presenteer ik het vernieuwde portfolio aan Ronald Boiten voor gerichte feedback.',
+    researched: 'Ik volg de DataCamp-cursus "Introduction to AI Agents" en vergelijk eenvoudige prompt-chains en workflows met een agentic aanpak. Daarnaast onderzoek ik de bedrijfsactiviteiten, laadinfrastructuur-diensten en technologiecontext van Blue Current. Op basis daarvan werk ik minimaal drie kansrijke AI-use cases uit en maak ik een vragenlijst voor het eerste intakegesprek.',
+    created: 'Ik werk het eerste werkende prototype van mijn vernieuwde portfoliowebsite uit en presenteer dit samen met de gebruikte AI-systemen aan Ronald Boiten. Ik verwerk zijn feedback op fotografie, korte teksten, typografie en de herkenbaarheid van de grafische identiteit als input voor Sprint 3.',
+    learned: 'Ik leer dat een agentic aanpak meer vraagt dan een losse prompt: ik moet kunnen uitleggen wanneer autonome stappen waarde toevoegen ten opzichte van een gewone workflow. Ook leer ik een organisatie eerst gericht te onderzoeken voordat ik AI-use cases voorstel. Door feedback van Shahmeer en Ronald plan ik de volgende stap bewust: eerst gebruikersvalidatie van het ontwerp en daarna pas de technische beheeromgeving en backend.',
     presentationUrl: '',
-    learningOutcomes: [],
-    evidenceIds: [],
+    learningOutcomes: ['LU2', 'LU4', 'LU5'],
+    evidenceIds: ['BEW-04', 'BEW-05', 'BEW-06'],
+    stories: [
+      {
+        id: 'LS',
+        description: 'Als student in de minor Futureproof met AI,\nwil ik de basisprincipes en architecturen van AI-agents leren via DataCamp,\nzodat ik kan onderbouwen of en hoe een agentic aanpak waarde toevoegt aan mijn specifieke minoroplossing.',
+        acceptanceCriteria: [
+          'DataCamp-cursus "Introduction to AI Agents" succesvol afronden, inclusief certificaat of bewijs van afronding in het logboek.',
+          'Een geschreven analyse van ongeveer 300 tot 500 woorden maken waarin ik mijn huidige aanpak vergelijk met een agentic aanpak voor mijn eigen opdracht.',
+          'Minimaal twee relevante verdiepingsvideo\'s bekijken en documenteren met titel, link en een korte kernboodschap.',
+        ],
+        qualityCriteria: [
+          'Betrouwbaarheid en herkomst: actuele, gereputeerde bronnen gebruiken en correct vermelden.',
+          'Diepgang en onderbouwing: helder onderscheid maken tussen eenvoudige prompt-chains of workflows en daadwerkelijke autonome agents.',
+          'Toepasbaarheid: de vertaling sluit direct aan op de context van mijn eigen projectportfolio.',
+        ],
+      },
+      {
+        id: 'RS',
+        description: 'Als AI-projectmanager in opleiding,\nwil ik de bedrijfsactiviteiten, laadinfrastructuur-diensten en potentiële AI-kansen van Blue Current onderzoeken,\nzodat ik tijdens het eerste intakegesprek direct gerichte AI-use cases kan pitchen en een scherpe minoropdracht kan formuleren.',
+        acceptanceCriteria: [
+          'Een compact onderzoeksverslag van 1 tot 2 pagina\'s maken met de kernactiviteiten en propositie van Blue Current en de huidige technologie- en laadinfrastructuurcontext.',
+          'Minimaal drie concrete AI-kansen of use cases uitwerken, bijvoorbeeld slim laden en netcongestie, voorspellend onderhoud of geautomatiseerde support.',
+          'Een gestructureerde vragenlijst met vijf tot acht vragen maken voor het intakegesprek met Blue Current.',
+        ],
+        qualityCriteria: [
+          'Bronnen en herkomst: relevante openbare bronnen gebruiken, zoals de website, nieuws en LinkedIn, met expliciete bronvermelding.',
+          'Triangulatie: deskresearch combineren met een gerichte analyse via minimaal een LLM met een gestructureerde promptopbouw.',
+          'Relevantie en haalbaarheid: de voorgestelde AI-kansen sluiten realistisch aan op een minorproject van ongeveer vier maanden.',
+        ],
+      },
+      {
+        id: 'US',
+        description: 'Als student van de minor Futureproof met AI,\nwil ik het eerste werkende prototype van de vernieuwde website en de gebruikte AI-systemen presenteren aan Ronald Boiten,\nzodat we kunnen toetsen of het ontwerp en de kleuren aansluiten bij zijn grafische identiteit en we duidelijke input hebben voor Sprint 3.',
+        acceptanceCriteria: [
+          'Het prototype is live en toegankelijk via de Vercel-link.',
+          'De specifieke grafische stijl en kleurstelling van Ronald zijn herkenbaar doorgevoerd op de website.',
+          'De boekprojecten zijn visueel representatief weergegeven.',
+          'De afspraak en presentatie op dinsdag 27 september zijn uitgevoerd.',
+          'De feedback van Ronald is gedocumenteerd als input voor Sprint 3.',
+        ],
+        qualityCriteria: [
+          'Een heldere toelichting geven over de gebruikte AI-tools en -systemen.',
+          'De Vercel-link werkt technisch goed en de website is responsive op mobiel en desktop.',
+          'De opzet en code van de website zijn netjes gestructureerd en onderhoudbaar voor verdere uitbreiding in Sprint 3.',
+        ],
+      },
+    ],
   },
   {
     id: 3,
@@ -303,6 +349,42 @@ export let initialEvidenceItems: EvidenceItem[] = [
     sprintId: 1,
     learningOutcomes: ['LU4', 'LU5'],
     date: 'In bewerking',
+  },
+  {
+    id: 'BEW-04',
+    title: 'Verdieping: AI-agents via DataCamp',
+    description: 'Doel\nIk leer de basisprincipes en architecturen van AI-agents, zodat ik kan onderbouwen of een agentic aanpak waarde toevoegt aan mijn eigen minoroplossing.\n\nAanpak\nIk volg de DataCamp-cursus "Introduction to AI Agents" en vergelijk eenvoudige prompt-chains en workflows met daadwerkelijke autonome agents. Daarnaast verzamel en documenteer ik relevante verdiepingsvideo\'s met hun kernboodschap.\n\nResultaat\nDe uitwerking maakt inzichtelijk wanneer een agentic aanpak meerwaarde heeft en hoe deze kennis toepasbaar is binnen mijn eigen portfolio en toekomstige AI-oplossing.',
+    summary: 'Ik verdiep mij via DataCamp in AI-agents en vertaal de basisprincipes naar de context van mijn eigen minoroplossing.',
+    type: 'document',
+    platform: 'Integraal sprintlogboek',
+    externalUrl: SPRINT_LOGBOEK_DOWNLOAD,
+    sprintId: 2,
+    learningOutcomes: ['LU4', 'LU5'],
+    date: 'September 2026',
+  },
+  {
+    id: 'BEW-05',
+    title: 'Onderzoek: AI-kansen voor Blue Current',
+    description: 'Onderzoeksvraag\nIk onderzoek de bedrijfsactiviteiten, laadinfrastructuur-diensten en technologiecontext van Blue Current, zodat ik tijdens het eerste intakegesprek gerichte AI-use cases kan pitchen.\n\nWerkwijze\nIk combineer openbare bronnen zoals de website, nieuws en LinkedIn met een gerichte analyse via een LLM. Vanuit die triangulatie werk ik minimaal drie realistische AI-kansen uit, bijvoorbeeld slim laden en netcongestie, voorspellend onderhoud en geautomatiseerde support. Ook maak ik een gestructureerde vragenlijst met vijf tot acht vragen voor het intakegesprek.\n\nResultaat\nHet onderzoek levert een onderbouwde basis op voor een scherpe minoropdracht die aansluit op een praktijkvraagstuk van ongeveer vier maanden.',
+    summary: 'Ik onderzoek Blue Current en werk drie haalbare AI-use cases plus een intakevragenlijst uit.',
+    type: 'document',
+    platform: 'Integraal sprintlogboek',
+    externalUrl: SPRINT_LOGBOEK_DOWNLOAD,
+    sprintId: 2,
+    learningOutcomes: ['LU4', 'LU5'],
+    date: 'September 2026',
+  },
+  {
+    id: 'BEW-06',
+    title: 'Prototypepresentatie aan Ronald Boiten',
+    description: 'Doel\nIk presenteer het eerste werkende prototype van de vernieuwde portfoliowebsite en de gebruikte AI-systemen aan Ronald Boiten, zodat het ontwerp kan worden getoetst aan zijn grafische identiteit.\n\nAanpak\nIk laat zien hoe de stijl, kleuren en boekprojecten in het prototype zijn verwerkt en licht toe welke AI-tools ik per onderdeel heb gebruikt. De presentatie en afspraak zijn vastgelegd in het sprintlogboek.\n\nFeedback en vervolg\nRonald gaf feedback op fotografie, korte teksten en typografie. Ik neem deze punten mee naar Sprint 3: eerst gebruikersvalidatie van het ontwerp en daarna pas de technische beheeromgeving en backend.',
+    summary: 'Ik presenteer het werkende portfolio-prototype aan Ronald Boiten en vertaal zijn feedback naar concrete vervolgstappen.',
+    type: 'presentatie',
+    platform: 'Vercel',
+    externalUrl: 'https://boiten-boekprojecten.vercel.app/',
+    sprintId: 2,
+    learningOutcomes: ['LU2', 'LU4', 'LU5'],
+    date: 'September 2026',
   },
 ];
 
