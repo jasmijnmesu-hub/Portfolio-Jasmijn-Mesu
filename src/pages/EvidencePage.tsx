@@ -254,6 +254,14 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
                     {item.description}
                   </p>
 
+                  {item.imageUrl && (
+                    <img
+                      src={item.imageUrl}
+                      alt={`Bewijs van ${item.title}`}
+                      className="w-full h-auto border border-[#1B2A24]/10"
+                    />
+                  )}
+
                   {/* 8. Meerdere kleine labels voor elke gekoppelde leeruitkomst */}
                   <div className="pt-2 flex flex-wrap items-center gap-1.5">
                     <span className="text-[10px] uppercase tracking-wider text-[#1B2A24]/60 font-sans mr-1">
@@ -273,10 +281,18 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
                 </div>
 
                 {/* Action Button: External Link or Direct Download */}
-                <div className="pt-4 border-t border-[#1B2A24]/10 flex items-center justify-between">
-                  <span className="text-[10px] uppercase tracking-wider text-[#1B2A24]/60">
-                    {platformText ? `Bron: ${platformText}` : 'Externe bron'}
-                  </span>
+                <div className="pt-4 border-t border-[#1B2A24]/10 flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <span className="text-[10px] uppercase tracking-wider text-[#1B2A24]/60">
+                      {platformText ? `Bron: ${platformText}` : 'Externe bron'}
+                    </span>
+                    {item.pdfUrl && (
+                      <span className="text-[10px] uppercase tracking-wider text-[#1B2A24]/60">
+                        Bron: PDF
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2">
                   {item.externalUrl.endsWith('.xlsx') ? (
                     <a
                       href={item.externalUrl}
@@ -310,6 +326,19 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
                       <ExternalLink className="w-3.5 h-3.5 text-[#9C4A32]" />
                     </a>
                   )}
+                  {item.pdfUrl && (
+                    <a
+                      href={item.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#EDE6D8] hover:bg-white text-[#1B2A24] hover:text-[#9C4A32] border border-[#1B2A24]/10 hover:border-[#9C4A32] text-xs font-medium uppercase tracking-wider transition-colors cursor-pointer"
+                      title="Open de DataCamp-samenvatting als PDF"
+                    >
+                      <span>Open PDF</span>
+                      <FileText className="w-3.5 h-3.5 text-[#9C4A32]" />
+                    </a>
+                  )}
+                  </div>
                 </div>
               </motion.div>
             );

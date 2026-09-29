@@ -16,6 +16,9 @@ import { supabase } from '../lib/supabase';
 export const SPRINT_LOGBOEK_DOWNLOAD = '/Integraal_Sprint_Logboek_Officieel.xlsx';
 export const AI_RESEARCH_REPORT_PDF = '/assets/evidence/onderzoek-impact-ai-organiseren-samenwerken.pdf';
 export const BLUE_CURRENT_RESEARCH_PDF = '/assets/evidence/Vooronderzoek_AI-kansen_Blue_Current.pdf';
+export const DATACAMP_AI_AGENTS_URL = 'https://app.datacamp.com/learn/courses/introduction-to-ai-agents';
+export const DATACAMP_COMPLETION_IMAGE = '/datacamp-ai-agents-bewijs.png';
+export const DATACAMP_SUMMARY_PDF = '/assets/evidence/AI_agents_basisprincipes_samenvatting.pdf';
 
 export const studentProfile: StudentProfile = {
   name: 'Jasmijn Mesu',
@@ -176,7 +179,7 @@ export let sprintsData: Sprint[] = [
         acceptanceCriteria: [
           'DataCamp-cursus "Introduction to AI Agents" succesvol afronden, inclusief certificaat of bewijs van afronding in het logboek.',
           'Een geschreven analyse van ongeveer 300 tot 500 woorden maken waarin ik mijn huidige aanpak vergelijk met een agentic aanpak voor mijn eigen opdracht.',
-          'Minimaal twee relevante verdiepingsvideo\'s bekijken en documenteren met titel, link en een korte kernboodschap.',
+          'Een uitgebreide, begrijpelijke samenvatting maken van hoofdstuk 1 tot en met 3, met begrippenlijst en een koppeling naar mijn eigen werk bij ABN AMRO en mijn minor.',
         ],
         qualityCriteria: [
           'Betrouwbaarheid en herkomst: actuele, gereputeerde bronnen gebruiken en correct vermelden.',
@@ -354,11 +357,13 @@ export let initialEvidenceItems: EvidenceItem[] = [
   {
     id: 'BEW-04',
     title: 'Verdieping: AI-agents via DataCamp',
-    description: 'Doel\nIk leer de basisprincipes en architecturen van AI-agents, zodat ik kan onderbouwen of een agentgerichte aanpak meerwaarde heeft voor mijn eigen minoroplossing.\n\nAanpak\nIk volg de DataCamp-cursus "Introduction to AI Agents". Daarbij vergelijk ik eenvoudige promptketens en workflows met daadwerkelijk autonome agents. Ook bekijk en documenteer ik relevante verdiepingsvideo\'s, inclusief de belangrijkste boodschap per video.\n\nResultaat\nDeze verdieping maakt duidelijk wanneer een agentgerichte aanpak meerwaarde biedt en hoe ik de opgedane kennis kan toepassen binnen mijn eigen portfolio en toekomstige AI-oplossing.',
-    summary: 'Ik verdiep mij via DataCamp in AI-agents en vertaal de basisprincipes naar de context van mijn eigen minoroplossing.',
+    description: 'Doel\nMijn doel met de DataCamp-cursus "Introduction to AI Agents" was om de basisprincipes en architecturen van AI-agents te leren. Zo kan ik onderbouwen of en hoe een agentic aanpak waarde toevoegt aan mijn minor. Omdat ik vooral werk met no-code workflows in Make.com en n8n en met LLM\'s, wilde ik het verschil begrijpen tussen zo\'n vaste workflow en een echte AI-agent, en leren wanneer ik voor welke oplossing kies.\n\nAanpak\nIk doorliep de cursus aan de hand van drie hoofdstukken. In hoofdstuk 1 leerde ik wat een agent is, welke drie bouwstenen centraal staan (model, tools en orkestratie) en hoe het spectrum van agency loopt van eenvoudige scripts tot volledig zelfstandige agents. Hoofdstuk 2 ging over de TAO-cyclus (denken, handelen en observeren), het ReAct-framework, verschillende soorten tools en multi-agentsystemen, waaronder het managerpatroon en het gedecentraliseerde patroon. Dit hoofdstuk staat op 81%; de video "Wat zit er in de (tool) box?" en de herhaaloefening "ReAct: kun jij het?" staan nog open. In hoofdstuk 3 leerde ik over veilig en verantwoord werken met agents, met guardrails voor invoer, toolgebruik en uitvoer.\n\nControle\nVan alle stof maakte ik per hoofdstuk een uitgebreide en begrijpelijke samenvatting, met uitleg in gewone taal, een begrippenlijst en koppelingen naar mijn eigen werk bij ABN AMRO en mijn minor. Daarnaast schreef ik een vergelijkingsanalyse waarin ik mijn huidige workflow-aanpak afzet tegen een agentic aanpak voor mijn vakgebied. Het resultaat is een beginnersvriendelijke samenvatting van hoofdstuk 1 tot en met 3 met persoonlijke toepassing. De cursus is nog niet volledig afgerond: hoofdstuk 1 en 3 zijn voor 100% afgerond, hoofdstuk 2 staat op 81% en de twee openstaande onderdelen moet ik nog doen.',
+    summary: 'Ik maakte een uitgebreide samenvatting van de DataCamp-cursus, inclusief begrippenlijst en een onderbouwde vertaling van workflows versus agents naar mijn werk bij ABN AMRO en mijn minor.',
     type: 'document',
-    platform: 'Integraal sprintlogboek',
-    externalUrl: SPRINT_LOGBOEK_DOWNLOAD,
+    platform: 'DataCamp',
+    externalUrl: DATACAMP_AI_AGENTS_URL,
+    pdfUrl: DATACAMP_SUMMARY_PDF,
+    imageUrl: DATACAMP_COMPLETION_IMAGE,
     sprintId: 2,
     learningOutcomes: ['LU4', 'LU5'],
     date: 'September 2026',
@@ -412,5 +417,16 @@ export async function loadPortfolioData(): Promise<boolean> {
   learningOutcomes = content.learning_outcomes;
   sprintsData = content.sprints;
   initialEvidenceItems = content.evidence;
+  const datacampEvidence = initialEvidenceItems.find((item) => item.id === 'BEW-04');
+  if (datacampEvidence) {
+    Object.assign(datacampEvidence, {
+      platform: 'DataCamp',
+      externalUrl: DATACAMP_AI_AGENTS_URL,
+      pdfUrl: DATACAMP_SUMMARY_PDF,
+      imageUrl: DATACAMP_COMPLETION_IMAGE,
+      description: 'Doel\nMijn doel met de DataCamp-cursus "Introduction to AI Agents" was om de basisprincipes en architecturen van AI-agents te leren. Zo kan ik onderbouwen of en hoe een agentic aanpak waarde toevoegt aan mijn minor. Omdat ik vooral werk met no-code workflows in Make.com en n8n en met LLM\'s, wilde ik het verschil begrijpen tussen zo\'n vaste workflow en een echte AI-agent, en leren wanneer ik voor welke oplossing kies.\n\nAanpak\nIk doorliep de cursus aan de hand van drie hoofdstukken. In hoofdstuk 1 leerde ik wat een agent is, welke drie bouwstenen centraal staan (model, tools en orkestratie) en hoe het spectrum van agency loopt van eenvoudige scripts tot volledig zelfstandige agents. Hoofdstuk 2 ging over de TAO-cyclus (denken, handelen en observeren), het ReAct-framework, verschillende soorten tools en multi-agentsystemen, waaronder het managerpatroon en het gedecentraliseerde patroon. Dit hoofdstuk staat op 81%; de video "Wat zit er in de (tool) box?" en de herhaaloefening "ReAct: kun jij het?" staan nog open. In hoofdstuk 3 leerde ik over veilig en verantwoord werken met agents, met guardrails voor invoer, toolgebruik en uitvoer.\n\nControle\nVan alle stof maakte ik per hoofdstuk een uitgebreide en begrijpelijke samenvatting, met uitleg in gewone taal, een begrippenlijst en koppelingen naar mijn eigen werk bij ABN AMRO en mijn minor. Daarnaast schreef ik een vergelijkingsanalyse waarin ik mijn huidige workflow-aanpak afzet tegen een agentic aanpak voor mijn vakgebied. Het resultaat is een beginnersvriendelijke samenvatting van hoofdstuk 1 tot en met 3 met persoonlijke toepassing. De cursus is nog niet volledig afgerond: hoofdstuk 1 en 3 zijn voor 100% afgerond, hoofdstuk 2 staat op 81% en de twee openstaande onderdelen moet ik nog doen.',
+      summary: 'Ik maakte een uitgebreide samenvatting van de DataCamp-cursus, inclusief begrippenlijst en een onderbouwde vertaling van workflows versus agents naar mijn werk bij ABN AMRO en mijn minor.',
+    });
+  }
   return true;
 }

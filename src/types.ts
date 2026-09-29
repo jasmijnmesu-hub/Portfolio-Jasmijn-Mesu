@@ -45,9 +45,11 @@ export interface EvidenceItem {
   title: string;
   description: string;
   summary?: string;
+  imageUrl?: string;
   type: EvidenceType;
   platform: string; // e.g., 'OneDrive', 'YouTube', 'SharePoint', 'Canva'
   externalUrl: string;
+  pdfUrl?: string;
   sprintId: number;
   learningOutcomes: ('LU1' | 'LU2' | 'LU3' | 'LU4' | 'LU5')[];
   date: string;
