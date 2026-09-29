@@ -177,14 +177,14 @@ export let sprintsData: Sprint[] = [
         id: 'LS',
         description: 'Als student in de minor Futureproof met AI,\nwil ik de basisprincipes en architecturen van AI-agents leren via DataCamp,\nzodat ik kan onderbouwen of en hoe een agentic aanpak waarde toevoegt aan mijn specifieke minoroplossing.',
         acceptanceCriteria: [
-          'DataCamp-cursus "Introduction to AI Agents" succesvol afronden, inclusief certificaat of bewijs van afronding in het logboek.',
-          'Een geschreven analyse van ongeveer 300 tot 500 woorden maken waarin ik mijn huidige aanpak vergelijk met een agentic aanpak voor mijn eigen opdracht.',
-          'Een uitgebreide, begrijpelijke samenvatting maken van hoofdstuk 1 tot en met 3, met begrippenlijst en een koppeling naar mijn eigen werk bij ABN AMRO en mijn minor.',
+          'DataCamp-cursus "Introduction to AI Agents" succesvol afgerond, inclusief certificaat/bewijs van afronding in logboek.',
+          'Een geschreven samenvatting waarin de behandelde stof wordt besproken en je de stof te allen tijde kunt terugvinden.',
+          'De samenvatting is toegevoegd aan mijn portfolio om deze altijd bij de hand te hebben.',
         ],
         qualityCriteria: [
-          'Betrouwbaarheid en herkomst: actuele, gereputeerde bronnen gebruiken en correct vermelden.',
-          'Diepgang en onderbouwing: helder onderscheid maken tussen eenvoudige prompt-chains of workflows en daadwerkelijke autonome agents.',
-          'Toepasbaarheid: de vertaling sluit direct aan op de context van mijn eigen projectportfolio.',
+          'Betrouwbaarheid & herkomst: gebruik van actuele, gereputeerde bronnen en correcte bronvermelding.',
+          'Diepgang & onderbouwing: helder onderscheid gemaakt tussen eenvoudige prompt-chains/workflows en daadwerkelijke autonome agents.',
+          'Toepasbaarheid: de vertaalslag sluit direct aan op de context van het eigen projectportfolio.',
         ],
       },
       {

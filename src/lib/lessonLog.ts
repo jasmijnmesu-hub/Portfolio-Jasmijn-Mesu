@@ -8,6 +8,8 @@
  */
 
 import { supabase } from './supabase';
+import { sprintsData } from '../data/portfolioData';
+import { parseDutchDate } from './date';
 
 export interface LessonPage {
   id: string;
@@ -18,6 +20,15 @@ export interface LessonPage {
   isCustom: boolean;
   label?: string;
 }
+
+export type LessonNoteStatus = 'has-notes' | 'no-notes' | 'pending';
+
+const LESSON_STATUS_OVERRIDES: Record<string, LessonNoteStatus> = {
+  '2026-09-16': 'no-notes',
+  '2026-09-21': 'no-notes',
+  '2026-09-23': 'no-notes',
+  '2026-09-28': 'pending',
+};
 
 const FIRST_LESSON_ISO = '2026-08-31';
 const STORAGE_KEY = 'jm-portfolio-notitieboek-v1';
@@ -37,6 +48,18 @@ export const LESSON_NOTE_IMAGES: Record<string, { src: string; alt: string }> = 
 
 export function getLessonImage(dateISO: string) {
   return LESSON_NOTE_IMAGES[dateISO];
+}
+
+function getShowAndGrowLabel(dateISO: string): string | undefined {
+  const sprint = sprintsData.find((item) => {
+    const showAndGrowDate = parseDutchDate(item.showAndGrowDate);
+    return isoDate(showAndGrowDate) === dateISO;
+  });
+  return sprint ? `SHOW & GROW ${sprint.id}` : undefined;
+}
+
+export function getLessonNoteStatus(dateISO: string, note = ''): LessonNoteStatus {
+  return LESSON_STATUS_OVERRIDES[dateISO] ?? (LESSON_NOTE_IMAGES[dateISO] || note.trim() ? 'has-notes' : 'no-notes');
 }
 
 const DUTCH_WEEKDAYS = ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'];
@@ -77,6 +100,7 @@ export function generateScheduledLessons(untilDate: Date = new Date()): LessonPa
         dateLabel: formatDutchDate(cursor),
         lessonNumber: 0,
         isCustom: false,
+        label: getShowAndGrowLabel(isoDate(cursor)),
       });
     }
     cursor.setDate(cursor.getDate() + 1);
@@ -94,7 +118,7 @@ export function buildLessonPage(dateISO: string, label?: string): LessonPage {
     dateLabel: formatDutchDate(d),
     lessonNumber: 0,
     isCustom: true,
-    label,
+    label: label || getShowAndGrowLabel(dateISO),
   };
 }
 

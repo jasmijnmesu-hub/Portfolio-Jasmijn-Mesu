@@ -101,6 +101,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
               <div>
                 <a
                   href={SPRINT_LOGBOEK_DOWNLOAD}
+                  download="Integraal_Sprint_Logboek_Officieel.xlsx"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-xs text-[#9C4A32] hover:opacity-80 font-medium uppercase tracking-wider cursor-pointer"

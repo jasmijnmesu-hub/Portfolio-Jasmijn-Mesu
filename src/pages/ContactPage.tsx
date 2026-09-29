@@ -120,6 +120,7 @@ export const ContactPage: React.FC = () => {
                 </div>
                 <a
                   href={SPRINT_LOGBOEK_DOWNLOAD}
+                  download="Integraal_Sprint_Logboek_Officieel.xlsx"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="accent-btn text-xs px-3 py-1.5 transition-colors inline-flex items-center gap-1.5 uppercase tracking-wider font-medium cursor-pointer"
