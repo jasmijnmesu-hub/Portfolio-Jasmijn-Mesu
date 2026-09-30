@@ -16,6 +16,17 @@ import {
   Download
 } from 'lucide-react';
 
+const sprintAccentBorders = [
+  'border-l-[#9C4A32]/65',
+  'border-l-[#C9A56B]/80',
+  'border-l-[#D8B7A6]/90',
+  'border-l-[#4E7A57]/70',
+  'border-l-[#6F8790]/70',
+  'border-l-[#765A66]/70',
+  'border-l-[#B58B4A]/80',
+  'border-l-[#4B7872]/70',
+];
+
 interface EvidencePageProps {
   initialLuFilter?: string;
   initialSprintFilter?: number;
@@ -209,6 +220,7 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
           {filteredEvidence.map((item) => {
             const platformText = cleanPlatform(item.platform);
             const isInProgress = item.date.toLowerCase().includes('bewerking');
+            const sprintAccentBorder = sprintAccentBorders[item.sprintId - 1] ?? sprintAccentBorders[0];
 
             return (
               <motion.div
@@ -216,7 +228,7 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
                 id={`evidence-${item.id.toLowerCase()}`}
                 variants={fadeUp}
                 transition={fadeUpTransition}
-                className="bg-[#F7F1E8] border border-[#9C4A32]/25 border-t-4 p-6 flex flex-col justify-between space-y-5 hover:border-[#9C4A32]/60 hover:shadow-sm transition-all"
+                className={`bg-[#F7F1E8] border-l-4 ${sprintAccentBorder} border-y-[#1B2A24]/15 border-r-[#1B2A24]/15 p-6 flex flex-col justify-between space-y-5 hover:border-y-[#1B2A24]/35 hover:border-r-[#1B2A24]/35 hover:shadow-sm transition-all`}
               >
                 <div className="space-y-3">
                   {/* Top badges: Sprint, Type en Datum / In bewerking */}

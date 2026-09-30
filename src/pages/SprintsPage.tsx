@@ -5,6 +5,17 @@ import { fadeUp, cardStagger, fadeUpTransition } from '../lib/motionVariants';
 import { Download, Calendar, ArrowRight, Flag, Sparkles, CheckCircle2 } from 'lucide-react';
 import { getCurrentSprintId } from '../lib/date';
 
+const sprintAccentBorders = [
+  'border-l-[#9C4A32]/65',
+  'border-l-[#C9A56B]/80',
+  'border-l-[#D8B7A6]/90',
+  'border-l-[#4E7A57]/70',
+  'border-l-[#6F8790]/70',
+  'border-l-[#765A66]/70',
+  'border-l-[#B58B4A]/80',
+  'border-l-[#4B7872]/70',
+];
+
 interface SprintsPageProps {
   onNavigateToEvidence: (sprintId?: number) => void;
   onOpenSprint: (sprintId: number) => void;
@@ -134,6 +145,7 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence, 
         {sprints.map((sprint) => {
           const isCurrent = sprint.id === currentSprintId;
           const evidenceCount = initialEvidenceItems.filter((e) => e.sprintId === sprint.id).length;
+          const sprintAccentBorder = sprintAccentBorders[sprint.id - 1] ?? sprintAccentBorders[0];
 
           return (
             <motion.div
@@ -172,10 +184,10 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence, 
                     onOpenSprint(sprint.id);
                   }
                 }}
-                className={`${isCurrent ? 'bg-[#F1DDD3]' : 'bg-[#F3EDE5]'} border transition-all p-6 sm:p-8 space-y-6 ${
+                className={`${isCurrent ? 'bg-[#F1DDD3]' : 'bg-[#F3EDE5]'} border-l-4 ${sprintAccentBorder} border-y-[#1B2A24]/15 border-r-[#1B2A24]/15 transition-all p-6 sm:p-8 space-y-6 ${
                   isCurrent
-                    ? 'border-[#9C4A32] ring-2 ring-[#9C4A32]/20 shadow-xs'
-                    : 'border-[#1B2A24]/15 hover:border-[#1B2A24]/35'
+                    ? 'ring-2 ring-[#9C4A32]/20 shadow-xs'
+                    : 'hover:border-y-[#1B2A24]/35 hover:border-r-[#1B2A24]/35'
                 } cursor-pointer`}
               >
                 {/* PROMINENT SHOW & GROW MILESTONE BANNER */}
@@ -247,7 +259,7 @@ export const SprintsPage: React.FC<SprintsPageProps> = ({ onNavigateToEvidence, 
                   </h3>
                 </div>
 
-                <div className="bg-[#EDE6D8] border border-[#1B2A24]/10 p-4">
+                <div className={`bg-[#EDE6D8] border-l-2 ${sprintAccentBorder} border-y-[#1B2A24]/10 border-r-[#1B2A24]/10 p-4`}>
                   <span className="block font-sans text-[10px] font-bold uppercase tracking-widest text-[#9C4A32]">
                     Korte samenvatting
                   </span>

@@ -26,9 +26,13 @@ export function parseDutchDate(dateStr: string, hour = 0, minute = 0): Date {
 }
 
 export function getCurrentSprintId(sprints: DatedSprint[], now = new Date()): number | undefined {
-  const upcomingSprint = [...sprints]
-    .sort((a, b) => parseDutchDate(a.showAndGrowDate, 9).getTime() - parseDutchDate(b.showAndGrowDate, 9).getTime())
-    .find((sprint) => parseDutchDate(sprint.showAndGrowDate, 9).getTime() > now.getTime());
+  const sortedSprints = [...sprints].sort(
+    (a, b) => parseDutchDate(a.showAndGrowDate).getTime() - parseDutchDate(b.showAndGrowDate).getTime()
+  );
+  const nextShowAndGrowIndex = sortedSprints.findIndex(
+    (sprint) => parseDutchDate(sprint.showAndGrowDate, 14).getTime() > now.getTime()
+  );
 
-  return upcomingSprint?.id ?? sprints.at(-1)?.id;
+  if (nextShowAndGrowIndex === -1) return sortedSprints.at(-1)?.id;
+  return sortedSprints[nextShowAndGrowIndex]?.id;
 }
