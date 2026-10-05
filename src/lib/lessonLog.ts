@@ -24,13 +24,10 @@ export interface LessonPage {
 export type LessonNoteStatus = 'has-notes' | 'no-notes' | 'pending';
 
 const LESSON_STATUS_OVERRIDES: Record<string, LessonNoteStatus> = {
-  '2026-09-16': 'no-notes',
-  '2026-09-21': 'no-notes',
-  '2026-09-23': 'no-notes',
-  '2026-09-28': 'pending',
 };
 
 const FIRST_LESSON_ISO = '2026-08-31';
+const EXCLUDED_LESSON_DATES = new Set(['2026-09-09', '2026-09-16', '2026-09-21', '2026-09-23', '2026-09-30']);
 const STORAGE_KEY = 'jm-portfolio-notitieboek-v1';
 
 /**
@@ -38,15 +35,20 @@ const STORAGE_KEY = 'jm-portfolio-notitieboek-v1';
  * handgemaakte pagina (afbeelding in /public/lesson-notes). Voor alle
  * andere lesdata valt het notitieboek terug op het typvak.
  */
-export const LESSON_NOTE_IMAGES: Record<string, { src: string; alt: string }> = {
-  '2026-08-31': { src: '/lesson-notes/2026-08-31.png', alt: 'Aantekeningen maandag 31 augustus — Hoe generatieve AI werkt' },
-  '2026-09-02': { src: '/lesson-notes/2026-09-02.png', alt: 'Aantekeningen woensdag 2 september — Werken met stories' },
-  '2026-09-07': { src: '/lesson-notes/2026-09-07.png', alt: 'Aantekeningen maandag 7 september — Vibe coding' },
-  '2026-09-09': { src: '/lesson-notes/2026-09-09.png', alt: 'Aantekeningen woensdag 9 september — Online sessie vanwege staking treinen' },
-  '2026-09-14': { src: '/lesson-notes/2026-09-14.png', alt: 'Aantekeningen maandag 14 september — Werken op de pc' },
+export const LESSON_NOTE_IMAGES: Record<string, { src: string; alt: string }[]> = {
+  '2026-08-31': [{ src: '/lesson-notes/2026-08-31.png', alt: 'Aantekeningen maandag 31 augustus — Hoe generatieve AI werkt' }],
+  '2026-09-02': [{ src: '/lesson-notes/2026-09-02.png', alt: 'Aantekeningen woensdag 2 september — Werken met stories' }],
+  '2026-09-07': [{ src: '/lesson-notes/2026-09-07.png', alt: 'Aantekeningen maandag 7 september — Vibe coding' }],
+  '2026-09-14': [{ src: '/lesson-notes/2026-09-14.png', alt: 'Aantekeningen maandag 14 september — Werken op de pc' }],
+  '2026-09-28': [{ src: '/lesson-notes/Make.com Workflows Cheat Sheet.png', alt: 'Aantekeningen maandag 28 september — Workflows met Make.com' }],
+  '2026-10-05': [
+    { src: '/lesson-notes/Google Colab Study Cheat Sheet.png', alt: 'Aantekeningen maandag 5 oktober — Google Colab' },
+    { src: '/lesson-notes/Neuraal Netwerk_ Van Input naar Output.png', alt: 'Aantekeningen maandag 5 oktober — Hoe werkt een neuraal netwerk' },
+    { src: '/lesson-notes/Machine Learning Lecture Notes Poster.png', alt: 'Aantekeningen maandag 5 oktober — Machine learning' },
+  ],
 };
 
-export function getLessonImage(dateISO: string) {
+export function getLessonImages(dateISO: string) {
   return LESSON_NOTE_IMAGES[dateISO];
 }
 
@@ -59,7 +61,7 @@ function getShowAndGrowLabel(dateISO: string): string | undefined {
 }
 
 export function getLessonNoteStatus(dateISO: string, note = ''): LessonNoteStatus {
-  return LESSON_STATUS_OVERRIDES[dateISO] ?? (LESSON_NOTE_IMAGES[dateISO] || note.trim() ? 'has-notes' : 'no-notes');
+  return LESSON_STATUS_OVERRIDES[dateISO] ?? (LESSON_NOTE_IMAGES[dateISO]?.length || note.trim() ? 'has-notes' : 'no-notes');
 }
 
 const DUTCH_WEEKDAYS = ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'];
@@ -73,6 +75,13 @@ function isoDate(d: Date): string {
   const month = String(d.getMonth() + 1).padStart(2, '0');
   const day = String(d.getDate()).padStart(2, '0');
   return `${year}-${month}-${day}`;
+}
+
+export function getLessonWeekNumber(dateISO: string): number {
+  const [year, month, day] = dateISO.split('-').map(Number);
+  const lessonDate = Date.UTC(year, month - 1, day);
+  const firstLessonDate = Date.UTC(2026, 7, 31);
+  return Math.max(1, Math.floor((lessonDate - firstLessonDate) / (7 * 24 * 60 * 60 * 1000)) + 1);
 }
 
 function formatDutchDate(d: Date): string {
@@ -92,15 +101,16 @@ export function generateScheduledLessons(untilDate: Date = new Date()): LessonPa
 
   while (cursor <= end) {
     const day = cursor.getDay();
-    if (day === 1 || day === 3) {
+    const date = isoDate(cursor);
+    if ((day === 1 || day === 3) && !EXCLUDED_LESSON_DATES.has(date)) {
       lessons.push({
-        id: isoDate(cursor),
-        dateISO: isoDate(cursor),
+        id: date,
+        dateISO: date,
         weekday: DUTCH_WEEKDAYS[day],
         dateLabel: formatDutchDate(cursor),
         lessonNumber: 0,
         isCustom: false,
-        label: getShowAndGrowLabel(isoDate(cursor)),
+        label: getShowAndGrowLabel(date),
       });
     }
     cursor.setDate(cursor.getDate() + 1);

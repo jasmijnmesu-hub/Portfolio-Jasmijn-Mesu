@@ -5,7 +5,7 @@ import {
   LessonPage,
   buildLessonPage,
   generateScheduledLessons,
-  getLessonImage,
+  getLessonImages,
   getLessonNoteStatus,
   loadStoredData,
   loadRemoteData,
@@ -13,6 +13,7 @@ import {
   deleteRemoteLesson,
   saveStoredData,
   todayISO,
+  getLessonWeekNumber,
 } from '../lib/lessonLog';
 
 export const LearningLogPage: React.FC = () => {
@@ -27,12 +28,13 @@ export const LearningLogPage: React.FC = () => {
   const [newLabel, setNewLabel] = useState('');
   const [saved, setSaved] = useState(true);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const saveTimeout = useRef<number | undefined>(undefined);
 
   const pages = useMemo<LessonPage[]>(() => {
     const scheduled = generateScheduledLessons();
     const merged = [...scheduled, ...customLessons].sort((a, b) => a.dateISO.localeCompare(b.dateISO));
-    return merged.map((lesson, index) => ({ ...lesson, lessonNumber: index + 1 }));
+    return merged.map((lesson) => ({ ...lesson, lessonNumber: getLessonWeekNumber(lesson.dateISO) }));
   }, [customLessons, currentDate]);
 
   useEffect(() => {
@@ -76,10 +78,12 @@ export const LearningLogPage: React.FC = () => {
 
   useEffect(() => {
     setLightboxOpen(false);
+    setSelectedImageIndex(0);
   }, [currentIndex]);
 
   const currentPage = currentIndex !== null ? pages[currentIndex] : undefined;
-  const currentImage = currentPage ? getLessonImage(currentPage.dateISO) : undefined;
+  const currentImages = currentPage ? getLessonImages(currentPage.dateISO) ?? [] : [];
+  const currentImage = currentImages[selectedImageIndex] ?? currentImages[0];
   const todayId = currentDate;
 
   const statusLabels = {
@@ -173,7 +177,7 @@ export const LearningLogPage: React.FC = () => {
           {pages.map((lesson, lessonIndex) => {
             const status = getLessonNoteStatus(lesson.dateISO, notes[lesson.id]);
             const isLatestLesson = lessonIndex === pages.length - 1;
-            const lessonImage = getLessonImage(lesson.dateISO);
+            const lessonImages = getLessonImages(lesson.dateISO) ?? [];
             return (
               <article
                 key={lesson.id}
@@ -181,10 +185,16 @@ export const LearningLogPage: React.FC = () => {
                   isLatestLesson
                     ? 'border-2 border-[#9C4A32] bg-[#F3EDE5]'
                     : 'border border-[#9C4A32]/45 bg-[#EDE6D8]/50 hover:border-[#9C4A32] hover:bg-[#F3EDE5]/70'
+                } ${
+                  lesson.dateISO === '2026-10-05'
+                    ? 'lg:order-6 sm:col-span-2 lg:col-span-3'
+                    : lesson.dateISO === '2026-09-28'
+                      ? 'lg:order-5'
+                      : ''
                 }`}
               >
                 <div className="flex items-start justify-between gap-3">
-                  <span className="text-[10px] uppercase tracking-widest font-bold text-[#1B2A24]/45">Les {lesson.lessonNumber}</span>
+                  <span className="text-[10px] uppercase tracking-widest font-bold text-[#1B2A24]/45">Week {lesson.lessonNumber}</span>
                   {lesson.dateISO === todayId && <span className="text-[9px] uppercase tracking-widest font-bold text-[#9C4A32]">Vandaag</span>}
                 </div>
                 <span className="block font-serif text-lg text-[#1B2A24] mt-1">{lesson.weekday} {lesson.dateLabel}</span>
@@ -197,22 +207,23 @@ export const LearningLogPage: React.FC = () => {
                   {status === 'pending' ? <Clock3 className="w-3 h-3" /> : <BookOpen className="w-3 h-3" />}
                   {statusLabels[status]}
                 </span>
-                {lessonImage && (
-                  <button
-                    onClick={() => { setCurrentIndex(lessonIndex); setLightboxOpen(true); }}
-                    className="group relative block w-full mt-4 cursor-zoom-in overflow-hidden border border-[#1B2A24]/10 bg-[#E8DED1]"
-                    title="Afbeelding vergroten"
-                  >
-                    <img
-                      src={lessonImage.src}
-                      alt={lessonImage.alt}
-                      className="block w-full max-h-[520px] object-contain object-top"
-                    />
-                    <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#1B2A24]/80 text-[#EDE6D8] text-[10px] uppercase tracking-widest font-bold opacity-0 group-hover:opacity-100 transition-opacity">
-                      <ZoomIn className="w-3.5 h-3.5" />
-                      Uitvergroten
-                    </span>
-                  </button>
+                {lessonImages.length > 0 && (
+                  <div className={`grid gap-2 mt-4 ${lessonImages.length > 1 ? 'grid-cols-1 sm:grid-cols-3' : 'grid-cols-1'}`}>
+                    {lessonImages.map((lessonImage, imageIndex) => (
+                      <button
+                        key={lessonImage.src}
+                        onClick={() => { setCurrentIndex(lessonIndex); setSelectedImageIndex(imageIndex); setLightboxOpen(true); }}
+                        className="group relative block w-full cursor-zoom-in overflow-hidden border border-[#1B2A24]/10 bg-[#E8DED1]"
+                        title="Afbeelding vergroten"
+                      >
+                        <img src={lessonImage.src} alt={lessonImage.alt} className="block w-full object-contain object-top" />
+                        <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#1B2A24]/80 text-[#EDE6D8] text-[10px] uppercase tracking-widest font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                          <ZoomIn className="w-3.5 h-3.5" />
+                          Uitvergroten
+                        </span>
+                      </button>
+                    ))}
+                  </div>
                 )}
               </article>
             );
@@ -249,7 +260,7 @@ export const LearningLogPage: React.FC = () => {
                 <div className={`flex items-start justify-between gap-4 border-b border-[#1B2A24]/10 pb-3 mb-3 ${currentImage ? 'px-1 pt-1' : ''}`}>
                   <div>
                     <span className="block text-[10px] uppercase tracking-widest font-bold text-[#1B2A24]/50">
-                      Les {currentPage.lessonNumber}{currentPage.label ? ` · ${currentPage.label}` : ''}
+                      Week {currentPage.lessonNumber}{currentPage.label ? ` · ${currentPage.label}` : ''}
                     </span>
                     <span className="block font-serif text-xl sm:text-2xl text-[#1B2A24] mt-1">
                       {currentPage.weekday} {currentPage.dateLabel}
@@ -276,20 +287,21 @@ export const LearningLogPage: React.FC = () => {
                 {currentImage ? (
                   <>
                     {/* Handgemaakte aantekeningenpagina, op echt formaat */}
-                    <button
-                      onClick={() => setLightboxOpen(true)}
-                      className="group relative block w-full cursor-zoom-in"
-                    >
-                      <img
-                        src={currentImage.src}
-                        alt={currentImage.alt}
-                        className="block w-full h-auto"
-                      />
-                      <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#1B2A24]/80 text-[#EDE6D8] text-[10px] uppercase tracking-widest font-bold opacity-0 group-hover:opacity-100 transition-opacity">
-                        <ZoomIn className="w-3.5 h-3.5" />
-                        Uitvergroten
-                      </span>
-                    </button>
+                    <div className="grid gap-3">
+                      {currentImages.map((image, imageIndex) => (
+                        <button
+                          key={image.src}
+                          onClick={() => { setSelectedImageIndex(imageIndex); setLightboxOpen(true); }}
+                          className="group relative block w-full cursor-zoom-in"
+                        >
+                          <img src={image.src} alt={image.alt} className="block w-full h-auto" />
+                          <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#1B2A24]/80 text-[#EDE6D8] text-[10px] uppercase tracking-widest font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                            <ZoomIn className="w-3.5 h-3.5" />
+                            Uitvergroten
+                          </span>
+                        </button>
+                      ))}
+                    </div>
                     <div className="pt-3 flex items-center justify-end gap-1.5 text-[10px] uppercase tracking-widest font-medium text-[#1B2A24]/40 px-1">
                       <span>Eigen aantekeningenpagina</span>
                     </div>

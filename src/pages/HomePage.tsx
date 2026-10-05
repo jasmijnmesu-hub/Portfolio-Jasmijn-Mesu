@@ -5,13 +5,15 @@ import { studentProfile, learningOutcomes, sprintsData, initialEvidenceItems, SP
 import { PhotoFrame } from '../components/PhotoFrame';
 import { fadeUp, cardStagger } from '../lib/motionVariants';
 import { ArrowRight, Download, Calendar, Award } from 'lucide-react';
+import { getCurrentSprintId } from '../lib/date';
 
 interface HomePageProps {
   onNavigate: (tab: NavTab) => void;
 }
 
 export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
-  const currentSprint = sprintsData.find((s) => s.status === 'bezig') || sprintsData[0];
+  const currentSprintId = getCurrentSprintId(sprintsData);
+  const currentSprint = sprintsData.find((s) => s.id === currentSprintId) || sprintsData[0];
   const currentSprintEvidence = initialEvidenceItems.filter((item) => currentSprint.evidenceIds.includes(item.id));
   const evidenceSummary = currentSprintEvidence.length > 0
     ? currentSprintEvidence.map((item) => item.summary || item.description).join(' ')
@@ -163,7 +165,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   </div>
                   <div>
                     <span className="block text-[10px] uppercase tracking-wider opacity-60">Status cyclus</span>
-                    <span className="font-medium text-[#1B2A24]">Bezig</span>
+                    <span className="font-medium text-[#1B2A24]">{currentSprint.statusText}</span>
                   </div>
                 </div>
               </div>
