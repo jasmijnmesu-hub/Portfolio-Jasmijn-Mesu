@@ -15,12 +15,21 @@ import { ContactPage } from './pages/ContactPage';
 import { GeminiChatbot } from './components/GeminiChatbot';
 import { loadPortfolioData, sprintsData } from './data/portfolioData';
 
+const getInitialTab = (): NavTab => {
+  if (typeof window === 'undefined') return 'home';
+
+  const hash = window.location.hash.replace('#', '').toLowerCase();
+  return ['home', 'over-mij', 'leeruitkomsten', 'sprints', 'bewijzen', 'geleerd', 'contact'].includes(hash)
+    ? hash as NavTab
+    : 'home';
+};
+
 export default function App() {
-  const [activeTab, setActiveTab] = useState<NavTab>('home');
+  const [activeTab, setActiveTab] = useState<NavTab>(getInitialTab);
   const [evidenceLuFilter, setEvidenceLuFilter] = useState<string | undefined>(undefined);
   const [evidenceSprintFilter, setEvidenceSprintFilter] = useState<number | undefined>(undefined);
   const [activeSprintId, setActiveSprintId] = useState<number | undefined>(undefined);
-  const [portfolioLoaded, setPortfolioLoaded] = useState(false);
+  const [portfolioLoaded, setPortfolioLoaded] = useState(true);
 
   useEffect(() => {
     void loadPortfolioData().finally(() => setPortfolioLoaded(true));

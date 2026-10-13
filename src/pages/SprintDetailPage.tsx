@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowLeft, Calendar, CheckSquare, Flag, ListChecks, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Calendar, CheckSquare, Flag, ListChecks, MessageSquareText, RefreshCw, ShieldCheck, Trophy } from 'lucide-react';
 import { Sprint } from '../types';
 import { fadeUp, cardStagger, fadeUpTransition } from '../lib/motionVariants';
 
@@ -96,9 +96,9 @@ export const SprintDetailPage: React.FC<SprintDetailPageProps> = ({ sprint, onBa
             variants={cardStagger}
             className="space-y-6"
           >
-            {stories.map((story) => (
+            {stories.map((story, index) => (
               <motion.article
-                key={story.id}
+                key={`${story.id}-${index}`}
                 variants={fadeUp}
                 transition={fadeUpTransition}
                 className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-5 sm:p-7"
@@ -137,6 +137,79 @@ export const SprintDetailPage: React.FC<SprintDetailPageProps> = ({ sprint, onBa
           </div>
         )}
       </section>
+
+      {sprint.feedback && sprint.feedback.length > 0 && (
+        <section className="space-y-5">
+          <div className="border-b border-[#1B2A24]/10 pb-4">
+            <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#9C4A32]">Feedback</span>
+            <h2 className="mt-2 font-serif text-2xl sm:text-3xl text-[#1B2A24]">Wat anderen teruggaven</h2>
+          </div>
+          <div className="space-y-5">
+            {sprint.feedback.map((item) => (
+              <article key={`${item.date}-${item.from}`} className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-5 sm:p-7">
+                <div className="flex items-center gap-3 text-xs uppercase tracking-widest font-bold text-[#9C4A32]">
+                  <MessageSquareText className="w-4 h-4" />
+                  <span>{item.date} · {item.from}</span>
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-[#1B2A24]/85">{item.feedback}</p>
+                <p className="mt-4 border-l-2 border-[#9C4A32] pl-4 text-sm leading-relaxed text-[#1B2A24]/85"><strong>Mijn actie:</strong> {item.action}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {sprint.mastery && sprint.mastery.length > 0 && (
+        <section className="space-y-5">
+          <div className="border-b border-[#1B2A24]/10 pb-4">
+            <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#9C4A32]">Zelfevaluatie</span>
+            <h2 className="mt-2 font-serif text-2xl sm:text-3xl text-[#1B2A24]">Mastery per leeruitkomst</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {sprint.mastery.map((item) => (
+              <article key={item.outcome} className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-5 sm:p-6">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <Trophy className="w-4 h-4 text-[#9C4A32] shrink-0" />
+                    <div>
+                      <span className="text-xs uppercase tracking-widest font-bold text-[#9C4A32]">{item.outcome}</span>
+                      <h3 className="mt-1 font-serif text-lg text-[#1B2A24]">{item.title}</h3>
+                    </div>
+                  </div>
+                  <span className="shrink-0 text-sm font-bold text-[#9C4A32]">{item.level}</span>
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-[#1B2A24]/85">{item.evidence}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {sprint.reflection && (
+        <section className="space-y-5">
+          <div className="border-b border-[#1B2A24]/10 pb-4">
+            <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#9C4A32]">Reflectie · {sprint.reflection.date}</span>
+            <h2 className="mt-2 font-serif text-2xl sm:text-3xl text-[#1B2A24]">Terugkijken op Sprint 3</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-5">
+              <RefreshCw className="w-4 h-4 text-[#9C4A32]" />
+              <h3 className="mt-3 text-xs uppercase tracking-widest font-bold text-[#1B2A24]">Wat heb ik geleerd?</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#1B2A24]/85">{sprint.reflection.learned}</p>
+            </div>
+            <div className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-5">
+              <CheckSquare className="w-4 h-4 text-[#9C4A32]" />
+              <h3 className="mt-3 text-xs uppercase tracking-widest font-bold text-[#1B2A24]">Wat behoud ik?</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#1B2A24]/85">{sprint.reflection.keep}</p>
+            </div>
+            <div className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-5">
+              <Flag className="w-4 h-4 text-[#9C4A32]" />
+              <h3 className="mt-3 text-xs uppercase tracking-widest font-bold text-[#1B2A24]">Wat ga ik anders doen?</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#1B2A24]/85">{sprint.reflection.change}</p>
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 };

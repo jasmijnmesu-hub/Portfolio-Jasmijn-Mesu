@@ -20,6 +20,27 @@ export interface SprintStory {
   qualityCriteria: string[];
 }
 
+export interface SprintFeedback {
+  date: string;
+  from: string;
+  feedback: string;
+  action: string;
+}
+
+export interface SprintMastery {
+  outcome: string;
+  title: string;
+  level: string;
+  evidence: string;
+}
+
+export interface SprintReflection {
+  date: string;
+  learned: string;
+  keep: string;
+  change: string;
+}
+
 export interface Sprint {
   id: number;
   title: string;
@@ -36,6 +57,9 @@ export interface Sprint {
   learningOutcomes: ('LU1' | 'LU2' | 'LU3' | 'LU4' | 'LU5')[];
   evidenceIds: string[];
   stories?: SprintStory[];
+  feedback?: SprintFeedback[];
+  mastery?: SprintMastery[];
+  reflection?: SprintReflection;
 }
 
 export type EvidenceType = 'document' | 'video' | 'prototype' | 'spreadsheet' | 'presentatie';
