@@ -61,6 +61,10 @@ export default function App() {
 
   const handleSelectTab = (tab: NavTab) => {
     setActiveSprintId(undefined);
+    if (tab === 'bewijzen') {
+      setEvidenceLuFilter(undefined);
+      setEvidenceSprintFilter(undefined);
+    }
     setActiveTab(tab);
     window.location.hash = tab;
     window.scrollTo({ top: 0, behavior: 'smooth' });
