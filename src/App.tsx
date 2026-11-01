@@ -29,7 +29,7 @@ export default function App() {
   const [evidenceLuFilter, setEvidenceLuFilter] = useState<string | undefined>(undefined);
   const [evidenceSprintFilter, setEvidenceSprintFilter] = useState<number | undefined>(undefined);
   const [activeSprintId, setActiveSprintId] = useState<number | undefined>(undefined);
-  const [portfolioLoaded, setPortfolioLoaded] = useState(true);
+  const [portfolioLoaded, setPortfolioLoaded] = useState(false);
 
   useEffect(() => {
     void loadPortfolioData().finally(() => setPortfolioLoaded(true));
