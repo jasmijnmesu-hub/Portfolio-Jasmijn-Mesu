@@ -204,7 +204,7 @@ export let learningOutcomes: LearningOutcome[] = [
     shortDescription: 'Een tastbare, werkende AI-oplossing ontwerpen en bouwen die een concreet organisatorisch knelpunt oplost.',
     fullDescription: 'De student ontwerpt, realiseert en presenteert een iteratief getoetste AI-gedreven oplossing voor een authentiek praktijkvraagstuk. De oplossing verbindt behoeften van eindgebruikers met technische haalbaarheid en functionele bruikbaarheid.',
     targetCount: 4,
-    currentCount: 3,
+    currentCount: 4,
   },
   {
     id: 'LU3',
@@ -213,7 +213,7 @@ export let learningOutcomes: LearningOutcome[] = [
     shortDescription: 'Kritisch reflecteren op ethiek, privacy, transparantie en mensgerichte randvoorwaarden bij AI-inzet.',
     fullDescription: 'De student toetst AI-toepassingen aan ethische kaders, wet- en regelgeving zoals privacy en databescherming en maatschappelijke impact. Hierbij staat het borgen van mensgerichtheid, inclusie en bias-preventie centraal.',
     targetCount: 2,
-    currentCount: 0,
+    currentCount: 1,
   },
   {
     id: 'LU4',
@@ -222,7 +222,7 @@ export let learningOutcomes: LearningOutcome[] = [
     shortDescription: 'Doelgericht selecteren en toepassen van moderne AI-technologieën en werkwijzen.',
     fullDescription: 'De student maakt doelgericht en beargumenteerd gebruik van actuele AI-technologieën, prompting, API-structuren of no-code/low-code automatiseringen om vraagstukken op te lossen en processen te optimaliseren.',
     targetCount: 4,
-    currentCount: 3,
+    currentCount: 4,
   },
   {
     id: 'LU5',
@@ -231,7 +231,7 @@ export let learningOutcomes: LearningOutcome[] = [
     shortDescription: 'Proactief plannen in tweewekelijkse sprints, tijdig feedback ophalen en reflecteren op eigen groei.',
     fullDescription: 'De student toont een proactieve, methodische en onderzoekende houding. Werkt zelfstandig volgens agile sprintcycli, reflecteert aantoonbaar op de eigen professionele ontwikkeling en benut feedback van coaches en medestudenten constructief.',
     targetCount: 6,
-    currentCount: 3,
+    currentCount: 4,
   },
 ];
 
@@ -485,16 +485,120 @@ export let sprintsData: Sprint[] = [
     title: 'Sprint 4',
     period: '26 oktober 2026 tot en met 4 november 2026',
     showAndGrowDate: '4 november 2026',
-    status: 'gepland',
-    statusText: 'Nog te starten',
-    focus: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 4]',
-    summary: '[Korte samenvatting wordt ingevuld na Sprint 4]',
-    researched: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 4]',
-    created: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 4]',
-    learned: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 4]',
+    status: 'bezig',
+    statusText: 'Huidige sprint',
+    focus: 'Regelroute uitwerken tot een concreet onderwijsconcept, ethische randvoorwaarden onderzoeken en AI-tools testen in twee praktijkgerichte toepassingen',
+    summary: 'In Sprint 4 werkte ik Regelroute uit: een toegankelijk concept voor jongeren van 12 tot 24 jaar dat betrouwbare informatie begrijpelijk maakt. Ik maakte een bedrijfsplan, koos de naam, claimde het domein en bouwde een eerste website. Daarnaast onderzocht ik de ethische risico’s van AI voor jongeren, verkende ik Codex en bouwde ik met Microsoft Copilot Agent Builder een agent die mijn manager helpt om mailboxen overzichtelijker te maken.',
+    researched: 'Ik onderzocht hoe Regelroute kan worden ingezet binnen het onderwijs en welke risico’s daarbij aandacht vragen. Mijn risicoanalyse richtte zich op privacy van minderjarigen, bronbetrouwbaarheid, transparantie en toegankelijkheid. Per risico formuleerde ik maatregelen en ik onderbouwde het onderzoek met officiële bronnen, waaronder de Autoriteit Persoonsgegevens en de Rijksoverheid. Ook onderzocht ik Codex als programmeerhulpmiddel en legde ik vast waarom Copilot Studio niet beschikbaar was: voor mijn werkomgeving ontbreekt de benodigde licentie.',
+    created: 'Ik werkte het bedrijfsplan van Regelroute uit, koos de naam, claimde het domein en bouwde de eerste website: https://regelroute.vercel.app/. Daarnaast maakte ik met Microsoft Copilot Agent Builder een agent voor mijn manager. Deze agent helpt bij het samenvatten en ordenen van e-mails en het herkennen van actiepunten, prioriteiten en deadlines. Ik verkende Codex voor het schrijven, begrijpen en aanpassen van code en hield de verschillen met Claude Code bij.',
+    learned: 'Ik heb geleerd hoe ik een eigen idee kan vertalen naar een bedrijfsplan en een eerste prototype. Ook heb ik nieuwe codingtools verkend en geleerd hoe ik een agent kan inzetten voor een concreet werkprobleem. Bij Regelroute heb ik beter leren nadenken over privacy, betrouwbaarheid, transparantie en toegankelijkheid voor jongeren. Daarnaast ontdekte ik dat de beschikbare licenties bepalen welke Copilot-mogelijkheden ik daadwerkelijk kan gebruiken.',
     presentationUrl: '',
-    learningOutcomes: [],
-    evidenceIds: [],
+    learningOutcomes: ['LU2', 'LU3', 'LU4', 'LU5'],
+    evidenceIds: ['BEW-10', 'BEW-11', 'BEW-12', 'BEW-13'],
+    stories: [
+      {
+        id: 'US',
+        description: 'Als ontwikkelaar van Regelroute wil ik mijn idee uitwerken tot een concreet onderwijsconcept en bespreken met een mogelijke opdrachtgever, zodat ik kan onderzoeken of het in de praktijk kansrijk is.',
+        acceptanceCriteria: [
+          'Bedrijfsplan voor Regelroute opgesteld.',
+          'Naam gekozen, domein geclaimd en eerste website gebouwd: https://regelroute.vercel.app/.',
+          'Idee besproken met Simulise; de contactpersoon wil meedenken en staat bij succes open voor verdere samenwerking.',
+        ],
+        qualityCriteria: [
+          'Het plan beschrijft de doelgroep van 12 tot 24 jaar, het probleem, de oplossing en mogelijke inzet in het onderwijs.',
+          'De website geeft het concept duidelijk weer.',
+          'Contact met Simulise en gemaakte afspraken zijn als bewijs vast te leggen.',
+        ],
+      },
+      {
+        id: 'LS',
+        description: 'Als student wil ik Codex uitproberen, omdat deze tool in mijn ChatGPT-abonnement zit, zodat ik ontdek hoe ik AI naast Claude Code kan gebruiken voor programmeren.',
+        acceptanceCriteria: [
+          'Beschikbaarheid van Codex ontdekt.',
+          'Codex verkend voor het schrijven, begrijpen en aanpassen van code.',
+          'Eerste ervaringen vastgelegd, inclusief verschillen met Claude Code.',
+        ],
+        qualityCriteria: [
+          'Beschrijven welke taken daadwerkelijk zijn getest.',
+          'Een concreet voorbeeld of screenshot als bewijs toevoegen.',
+          'Niet claimen dat een project met Codex is gebouwd zonder bewijs.',
+        ],
+      },
+      {
+        id: 'RS',
+        description: 'Als ontwikkelaar van Regelroute wil ik ethische risico’s van AI voor jongeren onderzoeken, zodat het platform betrouwbare, veilige en begrijpelijke informatie kan bieden.',
+        acceptanceCriteria: [
+          'Een korte risicoanalyse gemaakt over privacy, bronbetrouwbaarheid, transparantie en toegankelijkheid.',
+          'Per risico een concrete maatregel geformuleerd.',
+          'Het onderzoek onderbouwd met officiële bronnen, waaronder de Autoriteit Persoonsgegevens en de Rijksoverheid, plus een voorbeeld van veilig chatbotgebruik.',
+        ],
+        qualityCriteria: [
+          'Extra aandacht voor minderjarige gebruikers en minimale gegevensverzameling.',
+          'Informatie via geselecteerde officiële bronnen en links controleerbaar maken.',
+          'AI geeft uitleg en geen bindend juridisch of financieel advies; onzekerheid is zichtbaar.',
+        ],
+      },
+      {
+        id: 'US',
+        description: 'Als medewerker wil ik voor mijn manager een Copilot-agent maken die haar mailbox overzichtelijker maakt, zodat zij actiepunten, prioriteiten en deadlines sneller herkent.',
+        acceptanceCriteria: [
+          'Agent gebouwd met Microsoft Copilot Agent Builder.',
+          'Agent ingericht op het samenvatten en ordenen van e-mails en het herkennen van acties.',
+          'Vastgelegd waarom Copilot Studio nog niet kon worden gebruikt: er is geen licentie.',
+        ],
+        qualityCriteria: [
+          'Resultaten en volledigheid van actiepunten met de manager toetsen.',
+          'Alleen toegang tot mailboxgegevens binnen de toegestane organisatieomgeving en rechten.',
+          'Geen vertrouwelijke mailinhoud opnemen in portfolio-bewijs.',
+        ],
+      },
+    ],
+    feedback: [
+      {
+        date: 'Sprint 4',
+        from: 'Contactpersoon Simulise',
+        feedback: 'Positief over het idee van Regelroute. De contactpersoon wil meedenken en staat bij een werkend concept open voor verdere uitwerking. Ook gaf hij aan dat het concept visueel mooi is.',
+        action: 'Het gesprek en contact vastleggen, het concept verder toetsen en nog geen formele opdracht of samenwerking claimen.',
+      },
+      {
+        date: 'Sprint 4',
+        from: 'Steven Heijn',
+        feedback: 'Het concept van Regelroute.nl is leuk en ziet er mooi uit. Hij adviseerde om te onderzoeken of het ook in PHP gebouwd kan worden en om per leeftijd verder te kijken dan de standaardinformatie, zodat het concept aantrekkelijker wordt.',
+        action: 'Onderzoeken welke mogelijkheden per leeftijd kunnen worden toegevoegd en in de volgende sprint één leeftijdsgroep verder uitwerken.',
+      },
+    ],
+    mastery: [
+      {
+        outcome: 'LU2',
+        title: 'Praktijkgerichte AI-oplossing ontwerpen, realiseren en presenteren',
+        level: 'V',
+        evidence: 'Ik heb de eerste website en het bedrijfsplan van Regelroute uitgewerkt. Daarmee heb ik een eigen idee vertaald naar een concreet concept en prototype dat ik met een mogelijke opdrachtgever kan bespreken.',
+      },
+      {
+        outcome: 'LU3',
+        title: 'Ethiek en verantwoord AI-gebruik beoordelen',
+        level: 'V',
+        evidence: 'Ik heb de ethische risico’s van Regelroute afgebakend: privacy van minderjarigen, betrouwbaarheid, transparantie en toegankelijkheid. Hiervoor heb ik een risicoanalyse met maatregelen en officiële bronnen afgerond.',
+      },
+      {
+        outcome: 'LU4',
+        title: 'AI-tools en technieken gebruiken',
+        level: 'V',
+        evidence: 'Ik heb Codex ontdekt en verkend en daarnaast gewerkt met Microsoft Copilot Agent Builder. Copilot Studio was niet beschikbaar vanwege een ontbrekende licentie. De concrete testresultaten van de agent wil ik verder aanvullen.',
+      },
+      {
+        outcome: 'LU5',
+        title: 'Zelfstandig en zelfsturend werken',
+        level: 'V',
+        evidence: 'Ik heb zelf het idee voor Regelroute ontwikkeld, het bedrijfsplan en prototype gemaakt en een mogelijke opdrachtgever benaderd. Ik heb n8n bewust doorgeschoven naar Sprint 5 om eerst de huidige concepten en tools goed af te ronden.',
+      },
+    ],
+    reflection: {
+      date: 'Sprint 4',
+      learned: 'Ik heb geleerd hoe ik een eigen concept kan omzetten naar een bedrijfsplan en prototype, nieuwe codingtools kan verkennen en een agent kan inzetten voor een concreet werkprobleem.',
+      keep: 'Ik wil blijven werken vanuit echte problemen, zelfstandig experimenteren en vroeg feedback ophalen bij mensen uit de praktijk.',
+      change: 'Ik wil nauw samenwerken met de eigenaar van Simulise om het idee verder uit te werken. Daarnaast wil ik binnen het bedrijf waar ik werk vragen naar meer licenties, zodat ik meer mogelijkheden kan uitvoeren en testen.',
+    },
   },
   {
     id: 5,
@@ -673,6 +777,54 @@ export let initialEvidenceItems: EvidenceItem[] = [
     learningOutcomes: ['LU1', 'LU4', 'LU5'],
     date: '14 oktober 2026',
   },
+  {
+    id: 'BEW-10',
+    title: 'Story 1: Regelroute — onderwijsconcept en prototype',
+    description: 'Bewijs van mijn eerste uitwerking van Regelroute. Ik werkte het idee uit tot een onderwijsconcept voor jongeren van 12 tot 24 jaar, maakte een bedrijfsplan, claimde het domein en bouwde een eerste website. Ook besprak ik het concept met een contactpersoon van Simulise.',
+    summary: 'Bedrijfsplan en eerste website van Regelroute, inclusief de bespreking met een mogelijke opdrachtgever.',
+    type: 'prototype',
+    platform: 'Regelroute',
+    externalUrl: 'https://regelroute.vercel.app/#/',
+    sprintId: 4,
+    learningOutcomes: ['LU2', 'LU5'],
+    date: 'Sprint 4 · oktober 2026',
+  },
+  {
+    id: 'BEW-11',
+    title: 'Story 2: Codex — verkenning als codingtool',
+    description: 'Hier voeg ik mijn bewijs toe van de verkenning van Codex. Ik leg vast welke taken ik met Codex heb getest voor het schrijven, begrijpen en aanpassen van code en welke verschillen ik heb ervaren ten opzichte van Claude Code.',
+    summary: 'Bewijsstuk voor mijn vergelijking van Codex en Claude Code, met een concreet voorbeeld of screenshot.',
+    type: 'document',
+    platform: 'Nog toe te voegen',
+    externalUrl: '#',
+    sprintId: 4,
+    learningOutcomes: ['LU4', 'LU5'],
+    date: 'Bewijs volgt',
+  },
+  {
+    id: 'BEW-12',
+    title: 'Story 3: Ethische risicoanalyse voor Regelroute',
+    description: 'Hier voeg ik mijn bewijs toe van de risicoanalyse voor Regelroute. De analyse behandelt privacy van minderjarigen, bronbetrouwbaarheid, transparantie en toegankelijkheid. Per risico werk ik een concrete maatregel uit en verwijs ik naar officiële bronnen.',
+    summary: 'Bewijsstuk voor de ethische risicoanalyse en de maatregelen voor veilig en verantwoord gebruik.',
+    type: 'document',
+    platform: 'Nog toe te voegen',
+    externalUrl: '#',
+    sprintId: 4,
+    learningOutcomes: ['LU3', 'LU2'],
+    date: 'Bewijs volgt',
+  },
+  {
+    id: 'BEW-13',
+    title: 'Story 4: Copilot-agent voor de mailbox',
+    description: 'Hier voeg ik mijn bewijs toe van de Copilot-agent die ik voor mijn manager heb ingericht. De agent helpt bij het samenvatten en ordenen van e-mails en het herkennen van actiepunten, prioriteiten en deadlines. Vertrouwelijke mailinhoud wordt niet opgenomen in het portfolio.',
+    summary: 'Bewijsstuk voor de inrichting en veilige afbakening van de Copilot-agent in de organisatieomgeving.',
+    type: 'prototype',
+    platform: 'Nog toe te voegen',
+    externalUrl: '#',
+    sprintId: 4,
+    learningOutcomes: ['LU4', 'LU5'],
+    date: 'Bewijs volgt',
+  },
 ];
 
 interface PortfolioContentRecord {
@@ -694,10 +846,21 @@ export async function loadPortfolioData(): Promise<boolean> {
   if (error || !data) return false;
 
   const content = data as PortfolioContentRecord;
+  const localLearningOutcomes = learningOutcomes;
+  const localSprint4 = sprintsData.find((sprint) => sprint.id === 4);
+  const localSprint4Evidence = initialEvidenceItems.filter((item) => item.sprintId === 4);
   Object.assign(studentProfile, content.profile);
-  learningOutcomes = content.learning_outcomes;
-  sprintsData = content.sprints;
-  initialEvidenceItems = content.evidence;
+  learningOutcomes = content.learning_outcomes.map((outcome) => {
+    const localOutcome = localLearningOutcomes.find((item) => item.id === outcome.id);
+    return localOutcome ? { ...outcome, currentCount: localOutcome.currentCount } : outcome;
+  });
+  sprintsData = content.sprints.map((sprint) => sprint.id === 4 && localSprint4 ? localSprint4 : sprint);
+  initialEvidenceItems = [
+    ...content.evidence,
+    ...localSprint4Evidence.filter(
+      (localItem) => !content.evidence.some((remoteItem) => remoteItem.id === localItem.id),
+    ),
+  ];
   const datacampEvidence = initialEvidenceItems.find((item) => item.id === 'BEW-04');
   if (datacampEvidence) {
     Object.assign(datacampEvidence, {

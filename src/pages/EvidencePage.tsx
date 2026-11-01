@@ -305,7 +305,13 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
                     )}
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
-                  {item.externalUrl.endsWith('.xlsx') ? (
+                  {item.externalUrl === '#' ? (
+                    <span
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#EDE6D8] text-[#1B2A24]/55 border border-[#1B2A24]/10 text-xs font-medium uppercase tracking-wider"
+                    >
+                      Bewijs toevoegen
+                    </span>
+                  ) : item.externalUrl.endsWith('.xlsx') ? (
                     <a
                       href={item.externalUrl}
                       download="Integraal_Sprint_Logboek_Officieel.xlsx"

@@ -186,7 +186,7 @@ export const LearningLogPage: React.FC = () => {
                     ? 'border-2 border-[#9C4A32] bg-[#F3EDE5]'
                     : 'border border-[#9C4A32]/45 bg-[#EDE6D8]/50 hover:border-[#9C4A32] hover:bg-[#F3EDE5]/70'
                 } ${
-                  lesson.dateISO === '2026-10-05'
+                  lesson.dateISO === '2026-10-05' || lesson.dateISO === '2026-10-26'
                     ? 'lg:order-6 sm:col-span-2 lg:col-span-3'
                     : lesson.dateISO === '2026-09-28'
                       ? 'lg:order-5'
@@ -294,7 +294,7 @@ export const LearningLogPage: React.FC = () => {
                           onClick={() => { setSelectedImageIndex(imageIndex); setLightboxOpen(true); }}
                           className="group relative block w-full cursor-zoom-in"
                         >
-                          <img src={image.src} alt={image.alt} className="block w-full h-auto" />
+                          <img src={image.src} alt={image.alt} className="block w-full aspect-[2/3] object-contain bg-white" />
                           <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#1B2A24]/80 text-[#EDE6D8] text-[10px] uppercase tracking-widest font-bold opacity-0 group-hover:opacity-100 transition-opacity">
                             <ZoomIn className="w-3.5 h-3.5" />
                             Uitvergroten

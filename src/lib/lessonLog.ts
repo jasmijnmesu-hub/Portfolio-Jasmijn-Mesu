@@ -27,7 +27,19 @@ const LESSON_STATUS_OVERRIDES: Record<string, LessonNoteStatus> = {
 };
 
 const FIRST_LESSON_ISO = '2026-08-31';
-const EXCLUDED_LESSON_DATES = new Set(['2026-09-09', '2026-09-16', '2026-09-21', '2026-09-23', '2026-09-30']);
+const EXCLUDED_LESSON_DATES = new Set([
+  '2026-09-09',
+  '2026-09-16',
+  '2026-09-21',
+  '2026-09-23',
+  '2026-09-30',
+  '2026-10-07',
+  '2026-10-12',
+  '2026-10-14',
+  '2026-10-19',
+  '2026-10-21',
+  '2026-10-28',
+]);
 const STORAGE_KEY = 'jm-portfolio-notitieboek-v1';
 
 /**
@@ -45,6 +57,11 @@ export const LESSON_NOTE_IMAGES: Record<string, { src: string; alt: string }[]> 
     { src: '/lesson-notes/Google Colab Study Cheat Sheet.png', alt: 'Aantekeningen maandag 5 oktober — Google Colab' },
     { src: '/lesson-notes/Neuraal Netwerk_ Van Input naar Output.png', alt: 'Aantekeningen maandag 5 oktober — Hoe werkt een neuraal netwerk' },
     { src: '/lesson-notes/Machine Learning Lecture Notes Poster.png', alt: 'Aantekeningen maandag 5 oktober — Machine learning' },
+  ],
+  '2026-10-26': [
+    { src: '/lesson-notes/ChatGPT Image Oct 26, 2026, 05_55_57 PM-1.png', alt: 'Aantekeningen maandag 26 oktober — Bouw je eigen AI-kloon' },
+    { src: '/lesson-notes/ChatGPT Image Oct 26, 2026, 05_55_58 PM-2.png', alt: 'Aantekeningen maandag 26 oktober — Zo bouwde ik mijn kloon' },
+    { src: '/lesson-notes/ChatGPT Image Oct 26, 2026, 05_55_59 PM-3.png', alt: 'Aantekeningen maandag 26 oktober — Veiligheid, fouten en inzichten' },
   ],
 };
 

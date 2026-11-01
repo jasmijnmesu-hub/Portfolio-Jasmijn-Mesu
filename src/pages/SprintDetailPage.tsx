@@ -189,7 +189,7 @@ export const SprintDetailPage: React.FC<SprintDetailPageProps> = ({ sprint, onBa
         <section className="space-y-5">
           <div className="border-b border-[#1B2A24]/10 pb-4">
             <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#9C4A32]">Reflectie · {sprint.reflection.date}</span>
-            <h2 className="mt-2 font-serif text-2xl sm:text-3xl text-[#1B2A24]">Terugkijken op Sprint 3</h2>
+            <h2 className="mt-2 font-serif text-2xl sm:text-3xl text-[#1B2A24]">Terugkijken op {sprint.title}</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             <div className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-5">
