@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { NavTab } from '../types';
-import { studentProfile, SPRINT_LOGBOEK_DOWNLOAD } from '../data/portfolioData';
-import { Menu, X, Download } from 'lucide-react';
+import { initialEvidenceItems, learningOutcomes, sprintsData, studentProfile, SPRINT_LOGBOEK_DOWNLOAD } from '../data/portfolioData';
+import { Menu, X, Download, Search } from 'lucide-react';
 
 interface NavbarProps {
   activeTab: NavTab;
@@ -20,11 +20,35 @@ const navItems: { id: NavTab; label: string }[] = [
 
 export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchFocused, setSearchFocused] = useState(false);
+
+  const searchResults = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
+    if (!query) return [];
+
+    const searchableItems = [
+      ...navItems.map((item) => ({ label: item.label, tab: item.id, text: item.label })),
+      ...learningOutcomes.map((item) => ({ label: item.title, tab: 'leeruitkomsten' as NavTab, text: `${item.title} ${item.fullDescription}` })),
+      ...sprintsData.map((item) => ({ label: `Sprint ${item.id}: ${item.title}`, tab: 'sprints' as NavTab, text: `${item.title} ${item.summary} ${item.focus}` })),
+      ...initialEvidenceItems.map((item) => ({ label: item.title, tab: 'bewijzen' as NavTab, text: `${item.title} ${item.description} ${item.summary || ''}` })),
+    ];
+
+    return searchableItems
+      .filter((item) => item.text.toLowerCase().includes(query))
+      .slice(0, 6);
+  }, [searchQuery]);
 
   const handleNavClick = (tab: NavTab) => {
     onSelectTab(tab);
     setMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleSearchSelect = (tab: NavTab) => {
+    setSearchQuery('');
+    setSearchFocused(false);
+    handleNavClick(tab);
   };
 
   return (
@@ -69,6 +93,44 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
               })}
             </nav>
 
+            <div className="relative hidden lg:block ml-3 2xl:ml-5 shrink-0">
+              <div className="flex items-center gap-2 border-b border-[#1B2A24]/25 px-1 py-1 focus-within:border-[#9C4A32]">
+                <Search className="h-3.5 w-3.5 text-[#9C4A32]" aria-hidden="true" />
+                <input
+                  type="search"
+                  value={searchQuery}
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                  onFocus={() => setSearchFocused(true)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' && searchResults[0]) handleSearchSelect(searchResults[0].tab);
+                    if (event.key === 'Escape') {
+                      setSearchQuery('');
+                      setSearchFocused(false);
+                    }
+                  }}
+                  placeholder="Zoeken"
+                  aria-label="Zoek in portfolio"
+                  className="w-24 bg-transparent text-xs text-[#1B2A24] outline-none placeholder:text-[#1B2A24]/55 xl:w-32"
+                />
+              </div>
+              {searchFocused && searchQuery.trim() && (
+                <div className="absolute right-0 top-full z-50 mt-2 w-72 border border-[#1B2A24]/10 bg-[#F3EDE5] p-2 shadow-xl">
+                  {searchResults.length > 0 ? searchResults.map((result) => (
+                    <button
+                      key={`${result.tab}-${result.label}`}
+                      type="button"
+                      onMouseDown={() => handleSearchSelect(result.tab)}
+                      className="block w-full px-3 py-2 text-left text-xs text-[#1B2A24] hover:bg-[#E5D8CA]"
+                    >
+                      {result.label}
+                    </button>
+                  )) : (
+                    <p className="px-3 py-2 text-xs text-[#1B2A24]/60">Geen resultaten gevonden</p>
+                  )}
+                </div>
+              )}
+            </div>
+
             {/* Quick Direct Download Logbook Link on the far right with separator */}
             <div className="hidden xl:flex items-center ml-2 2xl:ml-4 pl-2 2xl:pl-3 border-l border-[#1B2A24]/15 shrink-0">
               <a
@@ -100,6 +162,20 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, onSelectTab }) => {
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden border-b border-[#1B2A24]/10 bg-[#EDE6D8] px-6 pt-2 pb-6 space-y-1 shadow-sm">
+          <div className="flex items-center gap-2 border-b border-[#1B2A24]/25 px-2 py-3 focus-within:border-[#9C4A32]">
+            <Search className="h-4 w-4 text-[#9C4A32]" aria-hidden="true" />
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' && searchResults[0]) handleSearchSelect(searchResults[0].tab);
+              }}
+              placeholder="Zoek in portfolio"
+              aria-label="Zoek in portfolio"
+              className="min-w-0 flex-1 bg-transparent text-sm text-[#1B2A24] outline-none placeholder:text-[#1B2A24]/55"
+            />
+          </div>
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
             return (

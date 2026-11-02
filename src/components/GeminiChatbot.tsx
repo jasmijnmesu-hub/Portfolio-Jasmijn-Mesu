@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Bot, LoaderCircle, MessageCircle, Send, X } from 'lucide-react';
-import { supabase } from '../lib/supabase';
 
 interface ChatMessage {
   role: 'user' | 'model';
@@ -8,6 +7,7 @@ interface ChatMessage {
 }
 
 const apiKey = import.meta.env.GEMINI_API_KEY || '';
+const CHAT_STORAGE_KEY = 'jm-portfolio-chat-history-v1';
 
 export const GeminiChatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,44 +18,14 @@ export const GeminiChatbot: React.FC = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const loadChatHistory = async () => {
-      if (!supabase) {
-        setIsHistoryLoading(false);
-        return;
-      }
-
-      const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
-      let userId = sessionData.session?.user.id;
-      let authError = null;
-
-      if (!userId) {
-        const { data: authData, error } = await supabase.auth.signInAnonymously();
-        userId = authData.user?.id;
-        authError = error;
-      }
-
-      if (sessionError || authError || !userId) {
-        setError('De chat kon niet veilig worden gestart.');
-        setIsHistoryLoading(false);
-        return;
-      }
-
-      const { data, error: historyError } = await supabase
-        .from('chat_messages')
-        .select('role, message')
-        .eq('user_id', userId)
-        .order('created_at', { ascending: true })
-        .order('id', { ascending: true });
-
-      if (historyError) {
-        setError('De opgeslagen chat kon niet worden geladen.');
-      } else {
-        setMessages((data || []).map((message) => ({ role: message.role, text: message.message })));
-      }
+    try {
+      const stored = window.localStorage.getItem(CHAT_STORAGE_KEY);
+      if (stored) setMessages(JSON.parse(stored) as ChatMessage[]);
+    } catch {
+      setError('De opgeslagen chat kon niet worden geladen.');
+    } finally {
       setIsHistoryLoading(false);
-    };
-
-    void loadChatHistory();
+    }
   }, []);
 
   const sendMessage = async (event: React.FormEvent) => {
@@ -98,18 +68,11 @@ export const GeminiChatbot: React.FC = () => {
 
       const answer = data.candidates?.[0]?.content?.parts?.[0]?.text;
       if (!answer) throw new Error('Gemini gaf geen antwoord terug.');
-      if (supabase) {
-        const { data: sessionData } = await supabase.auth.getSession();
-        const userId = sessionData.session?.user.id;
-        if (!userId) throw new Error('De veilige chatsessie ontbreekt.');
-
-        const { error: saveError } = await supabase.from('chat_messages').insert([
-          { user_id: userId, role: 'user', message: prompt },
-          { user_id: userId, role: 'model', message: answer },
-        ]);
-        if (saveError) throw new Error('Het antwoord kon niet in de chatgeschiedenis worden opgeslagen.');
-      }
-      setMessages((current) => [...current, { role: 'model', text: answer }]);
+      setMessages((current) => {
+        const updated = [...current, { role: 'model' as const, text: answer }];
+        window.localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(updated));
+        return updated;
+      });
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : 'Er ging iets mis bij het versturen.');
     } finally {

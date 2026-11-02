@@ -16,6 +16,27 @@ import {
   getLessonWeekNumber,
 } from '../lib/lessonLog';
 
+const WORKSHOP_PRESENTATION_URL = '/2026-10-29%20-%20HU%20Futureproof%20met%20AI%20-%20Workshop%20kennisclips%20en%20Shorts%20maken%20met%20een%20AI-agent%20-%20v0.1.pptx';
+const WORKSHOP_SLIDES = [
+  'Van idee tot kennisclip met een AI-agent als montageteam',
+  'Waarom dit verhaal: jij regisseert, de agent monteert',
+  'Twee formats: kennisclip of Short',
+  'De workflow: van script tot YouTube in acht stappen',
+  'Achter de schermen: je stuurt in gewone taal',
+  'Wat heb je nodig: de gereedschapskist',
+  'Cloud of lokaal: drie routes',
+  'Hardware: wat je minimaal nodig hebt',
+  'Koopadvies: welke machine past bij welke route',
+  'Hoe Claude is ingesteld',
+  'Huisregels die de agent onthoudt',
+  'De feedbacklus',
+  'Ook met OpenAI Codex',
+  'Zelf instellen in zes stappen',
+  'Open source en wat privé blijft',
+  'Verantwoord AI-video maken',
+  'Aan de slag in je sprint',
+];
+
 export const LearningLogPage: React.FC = () => {
   const initialStored = useRef(loadStoredData());
   const [customLessons, setCustomLessons] = useState<LessonPage[]>(initialStored.current.customLessons);
@@ -188,6 +209,8 @@ export const LearningLogPage: React.FC = () => {
                 } ${
                   lesson.dateISO === '2026-10-05' || lesson.dateISO === '2026-10-26'
                     ? 'lg:order-6 sm:col-span-2 lg:col-span-3'
+                    : lesson.dateISO === '2026-11-02'
+                      ? 'lg:order-7 sm:col-span-2 lg:col-span-3'
                     : lesson.dateISO === '2026-09-28'
                       ? 'lg:order-5'
                       : ''
@@ -207,7 +230,56 @@ export const LearningLogPage: React.FC = () => {
                   {status === 'pending' ? <Clock3 className="w-3 h-3" /> : <BookOpen className="w-3 h-3" />}
                   {statusLabels[status]}
                 </span>
-                {lessonImages.length > 0 && (
+                {lesson.dateISO === '2026-11-02' && (
+                  <div className="mt-4 space-y-3">
+                    <div className="space-y-3">
+                      <div className="overflow-hidden border border-[#1B2A24]/15 bg-[#1B2A24] text-[#F3EDE5]">
+                        <div className="min-h-36 p-5 flex flex-col justify-between">
+                          <span className="text-[9px] uppercase tracking-[0.2em] text-[#D8B7A6]">Workshop · Pascal Mariany</span>
+                          <div>
+                            <p className="font-serif text-xl leading-tight">Van idee tot kennisclip</p>
+                            <p className="text-xs text-[#F3EDE5]/75 mt-1">met een AI-agent als montageteam</p>
+                          </div>
+                          <span className="text-[10px] text-[#F3EDE5]/60">17 slides · Futureproof met AI</span>
+                        </div>
+                      </div>
+                      <details className="border border-[#1B2A24]/15 bg-[#E8DED1]/50">
+                        <summary className="cursor-pointer px-3 py-2 text-[10px] uppercase tracking-wider font-bold text-[#9C4A32]">
+                          Bekijk de 17 slides
+                        </summary>
+                        <ol className="px-7 pb-3 pt-1 space-y-1 list-decimal text-xs text-[#1B2A24]/80">
+                          {WORKSHOP_SLIDES.map((slide) => <li key={slide}>{slide}</li>)}
+                        </ol>
+                      </details>
+                      <a
+                        href={WORKSHOP_PRESENTATION_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-2 bg-[#9C4A32] text-white hover:bg-[#7E3A26] text-[10px] uppercase tracking-wider font-bold transition-colors"
+                      >
+                        <BookOpen className="w-3 h-3" />
+                        Open originele PowerPoint
+                      </a>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => { setSelectedImageIndex(0); setLightboxOpen(true); }}
+                      className="group relative block w-full cursor-zoom-in overflow-hidden border border-[#1B2A24]/10 bg-[#E8DED1]"
+                      title="Lesnotitie vergroten"
+                    >
+                      <img
+                        src={lessonImages[0]?.src}
+                        alt={lessonImages[0]?.alt}
+                        className="block h-auto max-h-[42rem] w-full object-contain object-top"
+                      />
+                      <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-[#1B2A24]/80 text-[#EDE6D8] text-[10px] uppercase tracking-widest font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                        <ZoomIn className="w-3.5 h-3.5" />
+                        Uitvergroten
+                      </span>
+                    </button>
+                  </div>
+                )}
+                {lessonImages.length > 0 && lesson.dateISO !== '2026-11-02' && (
                   <div className={`grid gap-2 mt-4 ${lessonImages.length > 1 ? 'grid-cols-1 sm:grid-cols-3' : 'grid-cols-1'}`}>
                     {lessonImages.map((lessonImage, imageIndex) => (
                       <button

@@ -1,52 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
 import { NavTab } from './types';
 import { Navbar } from './components/Navbar';
-import { CountdownBar } from './components/CountdownBar';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { LearningOutcomesPage } from './pages/LearningOutcomesPage';
 import { SprintsPage } from './pages/SprintsPage';
-import { SprintDetailPage } from './pages/SprintDetailPage';
 import { EvidencePage } from './pages/EvidencePage';
-import { LearningLogPage } from './pages/LearningLogPage';
 import { ContactPage } from './pages/ContactPage';
+import { LearningLogPage } from './pages/LearningLogPage';
 import { GeminiChatbot } from './components/GeminiChatbot';
-import { loadPortfolioData, sprintsData } from './data/portfolioData';
-
-const getInitialTab = (): NavTab => {
-  if (typeof window === 'undefined') return 'home';
-
-  const hash = window.location.hash.replace('#', '').toLowerCase();
-  return ['home', 'over-mij', 'leeruitkomsten', 'sprints', 'bewijzen', 'geleerd', 'contact'].includes(hash)
-    ? hash as NavTab
-    : 'home';
-};
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<NavTab>(getInitialTab);
+  const [activeTab, setActiveTab] = useState<NavTab>('home');
   const [evidenceLuFilter, setEvidenceLuFilter] = useState<string | undefined>(undefined);
   const [evidenceSprintFilter, setEvidenceSprintFilter] = useState<number | undefined>(undefined);
-  const [activeSprintId, setActiveSprintId] = useState<number | undefined>(undefined);
-  const [portfolioLoaded, setPortfolioLoaded] = useState(false);
-
-  useEffect(() => {
-    void loadPortfolioData().finally(() => setPortfolioLoaded(true));
-  }, []);
 
   // Sync with window.location.hash for shareable links & browser history
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '').toLowerCase();
-      const sprintMatch = hash.match(/^sprint-(\d+)$/);
-      if (sprintMatch) {
-        setActiveSprintId(Number(sprintMatch[1]));
-        setActiveTab('sprints');
-        return;
-      }
       if (['home', 'over-mij', 'leeruitkomsten', 'sprints', 'bewijzen', 'geleerd', 'contact'].includes(hash)) {
-        setActiveSprintId(undefined);
         setActiveTab(hash as NavTab);
       }
     };
@@ -60,26 +34,12 @@ export default function App() {
   }, []);
 
   const handleSelectTab = (tab: NavTab) => {
-    setActiveSprintId(undefined);
     if (tab === 'bewijzen') {
       setEvidenceLuFilter(undefined);
       setEvidenceSprintFilter(undefined);
     }
     setActiveTab(tab);
     window.location.hash = tab;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleOpenSprint = (sprintId: number) => {
-    setActiveSprintId(sprintId);
-    setActiveTab('sprints');
-    window.location.hash = `sprint-${sprintId}`;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleBackToSprints = () => {
-    setActiveSprintId(undefined);
-    window.location.hash = 'sprints';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -101,71 +61,41 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#EDE6D8] text-[#1B2A24] font-sans antialiased selection:bg-[#D8B7A6] selection:text-[#1B2A24]">
-      {/* Fixed top navigation, with the Show & Grow countdown pinned above it */}
-      <div className="sticky top-0 z-50">
-        <CountdownBar />
-        <Navbar activeTab={activeTab} onSelectTab={handleSelectTab} />
-      </div>
+      {/* Fixed top navigation */}
+      <Navbar activeTab={activeTab} onSelectTab={handleSelectTab} />
 
       {/* Main Page Content */}
       <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8">
-        {!portfolioLoaded ? (
-          <div className="flex min-h-[50vh] items-center justify-center text-sm text-[#1B2A24]/60">
-            Portfoliogegevens laden...
-          </div>
-        ) : (
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          >
-            {activeTab === 'home' && (
-              <HomePage onNavigate={handleSelectTab} />
-            )}
+        {activeTab === 'home' && (
+          <HomePage onNavigate={handleSelectTab} />
+        )}
 
-            {activeTab === 'over-mij' && (
-              <AboutPage />
-            )}
+        {activeTab === 'over-mij' && (
+          <AboutPage />
+        )}
 
-            {activeTab === 'leeruitkomsten' && (
-              <LearningOutcomesPage onNavigateToEvidence={handleNavigateToEvidenceWithLu} />
-            )}
+        {activeTab === 'leeruitkomsten' && (
+          <LearningOutcomesPage onNavigateToEvidence={handleNavigateToEvidenceWithLu} />
+        )}
 
-            {activeTab === 'sprints' && (
-              activeSprintId ? (
-                <SprintDetailPage
-                  sprint={sprintsData.find((sprint) => sprint.id === activeSprintId) || sprintsData[0]}
-                  onBack={handleBackToSprints}
-                  onNavigateToEvidence={handleNavigateToEvidenceWithSprint}
-                />
-              ) : (
-                <SprintsPage
-                  onNavigateToEvidence={handleNavigateToEvidenceWithSprint}
-                  onOpenSprint={handleOpenSprint}
-                />
-              )
-            )}
+        {activeTab === 'sprints' && (
+          <SprintsPage onNavigateToEvidence={handleNavigateToEvidenceWithSprint} />
+        )}
 
-            {activeTab === 'bewijzen' && (
-              <EvidencePage
-                key={`${evidenceLuFilter}-${evidenceSprintFilter}`}
-                initialLuFilter={evidenceLuFilter}
-                initialSprintFilter={evidenceSprintFilter}
-              />
-            )}
+        {activeTab === 'bewijzen' && (
+          <EvidencePage 
+            key={`${evidenceLuFilter}-${evidenceSprintFilter}`} 
+            initialLuFilter={evidenceLuFilter} 
+            initialSprintFilter={evidenceSprintFilter} 
+          />
+        )}
 
-            {activeTab === 'geleerd' && (
-              <LearningLogPage />
-            )}
+        {activeTab === 'geleerd' && (
+          <LearningLogPage />
+        )}
 
-            {activeTab === 'contact' && (
-              <ContactPage />
-            )}
-          </motion.div>
-        </AnimatePresence>
+        {activeTab === 'contact' && (
+          <ContactPage />
         )}
       </main>
 

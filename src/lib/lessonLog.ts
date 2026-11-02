@@ -7,7 +7,6 @@
  * Jasmijn, dus ze blijven staan tussen bezoeken op hetzelfde apparaat.
  */
 
-import { supabase } from './supabase';
 import { sprintsData } from '../data/portfolioData';
 import { parseDutchDate } from './date';
 
@@ -62,6 +61,9 @@ export const LESSON_NOTE_IMAGES: Record<string, { src: string; alt: string }[]> 
     { src: '/lesson-notes/ChatGPT Image Oct 26, 2026, 05_55_57 PM-1.png', alt: 'Aantekeningen maandag 26 oktober — Bouw je eigen AI-kloon' },
     { src: '/lesson-notes/ChatGPT Image Oct 26, 2026, 05_55_58 PM-2.png', alt: 'Aantekeningen maandag 26 oktober — Zo bouwde ik mijn kloon' },
     { src: '/lesson-notes/ChatGPT Image Oct 26, 2026, 05_55_59 PM-3.png', alt: 'Aantekeningen maandag 26 oktober — Veiligheid, fouten en inzichten' },
+  ],
+  '2026-11-02': [
+    { src: '/lesson-notes/2026-11-02-ai-video-studio.png', alt: 'Lesnotities maandag 2 november — AI-videostudio, werkwijze en Terminal' },
   ],
 };
 
@@ -182,54 +184,15 @@ export function saveStoredData(data: StoredData): void {
   }
 }
 
-async function getRemoteUserId(): Promise<string | null> {
-  if (!supabase) return null;
-  const { data: sessionData } = await supabase.auth.getSession();
-  if (sessionData.session?.user.id) return sessionData.session.user.id;
-  const { data, error } = await supabase.auth.signInAnonymously();
-  return error ? null : data.user?.id ?? null;
-}
-
 export async function loadRemoteData(): Promise<StoredData | null> {
-  const userId = await getRemoteUserId();
-  if (!userId || !supabase) return null;
-
-  const { data, error } = await supabase
-    .from('lesson_notes')
-    .select('id, date_iso, label, note, is_custom')
-    .eq('user_id', userId)
-    .order('date_iso', { ascending: true });
-
-  if (error) return null;
-
-  const notes: Record<string, string> = {};
-  const customLessons: LessonPage[] = [];
-  (data || []).forEach((row) => {
-    notes[row.id] = row.note || '';
-    if (row.is_custom) {
-      const lesson = buildLessonPage(row.date_iso, row.label || undefined);
-      lesson.id = row.id;
-      customLessons.push(lesson);
-    }
-  });
-  return { notes, customLessons };
+  return null;
 }
 
 export async function saveRemoteLesson(lesson: LessonPage, note: string): Promise<void> {
-  const userId = await getRemoteUserId();
-  if (!userId || !supabase) return;
-  await supabase.from('lesson_notes').upsert({
-    id: lesson.id,
-    user_id: userId,
-    date_iso: lesson.dateISO,
-    label: lesson.label || null,
-    note,
-    is_custom: lesson.isCustom,
-  });
+  void lesson;
+  void note;
 }
 
 export async function deleteRemoteLesson(id: string): Promise<void> {
-  const userId = await getRemoteUserId();
-  if (!userId || !supabase) return;
-  await supabase.from('lesson_notes').delete().eq('id', id).eq('user_id', userId);
+  void id;
 }

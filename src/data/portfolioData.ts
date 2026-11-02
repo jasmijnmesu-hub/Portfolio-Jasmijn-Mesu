@@ -8,7 +8,6 @@
  */
 
 import { StudentProfile, LearningOutcome, Sprint, EvidenceItem } from '../types';
-import { supabase } from '../lib/supabase';
 
 /**
  * Direct downloadbaar Excel-bestand in de /public map
@@ -494,7 +493,7 @@ export let sprintsData: Sprint[] = [
     learned: 'Ik heb geleerd hoe ik een eigen idee kan vertalen naar een bedrijfsplan en een eerste prototype. Ook heb ik nieuwe codingtools verkend en geleerd hoe ik een agent kan inzetten voor een concreet werkprobleem. Bij Regelroute heb ik beter leren nadenken over privacy, betrouwbaarheid, transparantie en toegankelijkheid voor jongeren. Daarnaast ontdekte ik dat de beschikbare licenties bepalen welke Copilot-mogelijkheden ik daadwerkelijk kan gebruiken.',
     presentationUrl: '',
     learningOutcomes: ['LU2', 'LU3', 'LU4', 'LU5'],
-    evidenceIds: ['BEW-10', 'BEW-11', 'BEW-12', 'BEW-13'],
+    evidenceIds: ['BEW-10', 'BEW-11', 'BEW-12', 'BEW-13', 'BEW-14'],
     stories: [
       {
         id: 'US',
@@ -780,8 +779,20 @@ export let initialEvidenceItems: EvidenceItem[] = [
   {
     id: 'BEW-10',
     title: 'Story 1: Regelroute — onderwijsconcept en prototype',
-    description: 'Bewijs van mijn eerste uitwerking van Regelroute. Ik werkte het idee uit tot een onderwijsconcept voor jongeren van 12 tot 24 jaar, maakte een bedrijfsplan, claimde het domein en bouwde een eerste website. Ook besprak ik het concept met een contactpersoon van Simulise.',
-    summary: 'Bedrijfsplan en eerste website van Regelroute, inclusief de bespreking met een mogelijke opdrachtgever.',
+    description: `Voor Story 1 heb ik mijn idee voor RegelRoute uitgewerkt tot een concreet onderwijsconcept en een eerste werkend websiteprototype. RegelRoute is bedoeld voor jongeren van 12 tot 24 jaar die willen leren hoe ze belangrijke zaken in het volwassen leven zelf kunnen begrijpen en regelen. Denk aan een eerste bankrekening, salaris, DigiD, zorgverzekering, huurcontract en andere momenten waarop veel nieuwe informatie op hen afkomt.
+
+De website geeft jongeren geen ingewikkelde uitleg in formele taal, maar maakt een situatie overzichtelijk in kleine stappen. De gebruiker kan een onderwerp of thema kiezen, de uitleg rustig doorlopen, oefenen met een voorbeeld en daarna bepalen welke vervolgstap nodig is. De website neemt geen officiële aanvraag over: RegelRoute helpt de gebruiker om voorbereid en zelfstandig naar de juiste instantie te gaan.
+
+Ik heb eerst onderzocht welk probleem ik wilde oplossen en voor wie de website waardevol kan zijn. Daarna werkte ik het concept uit in een bedrijfsplan met de doelgroep, het probleem, de oplossing, de mogelijke onderwijswaarde en de manier waarop RegelRoute in het onderwijs gebruikt kan worden. Ik koos de naam RegelRoute, claimde het domein en werkte de eerste online versie uit op regelroute.vercel.app. Het concept heb ik ook besproken met een contactpersoon van Simulise, die wilde meedenken over de verdere ontwikkeling.
+
+De website heb ik gemaakt met Claude Code. Ik gaf Claude Code in gewone taal uitleg over de doelgroep, de gewenste uitstraling, de inhoud en de functies. De agent hielp met de technische opbouw, de pagina's, de navigatie en de interactieve onderdelen. Ik bleef zelf verantwoordelijk voor de keuzes: ik controleerde de teksten, keek of de pagina's logisch werkten, bepaalde welke informatie wel en niet in het prototype hoorde en stuurde bij wanneer iets niet aansloot bij jongeren of bij het doel van RegelRoute.
+
+Voor de visuele identiteit heb ik zelf collages gemaakt in Canva. Deze collages heb ik daarna in de website verwerkt. Daardoor is de vormgeving niet alleen door AI bedacht, maar bestaat het eindresultaat uit mijn eigen beeldkeuzes, composities en creatieve uitwerking in Canva, gecombineerd met de technische uitvoering met Claude Code. De collages ondersteunen de verschillende situaties en geven de website een herkenbare en warme uitstraling.
+
+In het prototype heb ik bewust aandacht besteed aan begrijpelijkheid en veiligheid. De teksten zijn laagdrempelig geschreven, de route door de website is overzichtelijk en voorbeelden worden duidelijk als voorbeeld herkenbaar gemaakt. Ik gebruik geen echte persoonsgegevens en laat zien dat officiële aanvragen altijd door de jongere zelf bij de betreffende instantie worden gedaan. Daarmee blijft RegelRoute een hulpmiddel om te leren en oefenen, en geen systeem dat beslissingen of officiële handelingen van de gebruiker overneemt.
+
+Het resultaat is een eerste werkend prototype waarmee ik mijn concept kan uitleggen en bespreken. Ik heb geleerd hoe ik een abstract idee kan vertalen naar een doelgroep, een onderwijsconcept, een visuele stijl en een online product. Ook heb ik ervaren dat Claude Code veel technisch werk kan uitvoeren, maar dat ik zelf de inhoud, het oordeel, de controle en de verantwoordelijkheid moet blijven houden. De website en de Canva-collages vormen samen het bewijs van mijn ontwerp- en ontwikkelproces.`,
+    summary: 'Ik werkte RegelRoute uit tot een onderwijsconcept en eerste websiteprototype voor jongeren van 12 tot 24 jaar. Ik bouwde de website met Claude Code, maakte de collages zelf in Canva en verwerkte deze in het prototype.',
     type: 'prototype',
     platform: 'Regelroute',
     externalUrl: 'https://regelroute.vercel.app/#/',
@@ -825,52 +836,32 @@ export let initialEvidenceItems: EvidenceItem[] = [
     learningOutcomes: ['LU4', 'LU5'],
     date: 'Bewijs volgt',
   },
+  {
+    id: 'BEW-14',
+    title: 'Story 5: Van idee tot video met een AI-agent',
+    description: `Op maandag 2 november 2026 heb ik de workshop "Van idee tot kennisclip met een AI-agent als montageteam" van Pascal Mariany uitgewerkt. Zijn uitgangspunt was: ik ben de regisseur en de AI-agent doet het technische montagewerk. De richting, smaak, verantwoordelijkheid en eindcontrole bleven bij mij.
+
+Mijn doel was een kennisclip voor mijn Show & Grow-moment te maken over RegelRoute: mijn concept voor jongeren van 12 tot 24 jaar die willen begrijpen en regelen wat er in het echte leven op hen afkomt, zoals een eerste bankrekening, salaris, DigiD, zorgverzekering of huurcontract.
+
+Ik heb slide 14, "In zes stappen je eigen videostudio", daadwerkelijk uitgevoerd op mijn MacBook Air (13-inch, M4, 16 GB, macOS Sequoia). Ik koos route A uit de workshop: stem en montage via de cloud en de agent, en het renderen lokaal op mijn laptop. Ik installeerde Homebrew, Node.js, ffmpeg, uv, Claude Code en Remotion. Daarnaast gebruikte ik dertien officiële Remotion-skills en mlx-whisper om gesproken woorden lokaal op de tijdlijn te zetten. Mijn projectmap bevat de code, schermbeelden, audio en huisregels in CLAUDE.md.
+
+Voor de stem maakte ik in ElevenLabs een Instant Voice Clone van mijn eigen stem met een opname van 1 minuut en 56 seconden. Ik testte verschillende instellingen. Stabiliteit 70 klonk goed maar vlakker; de beste combinatie was Eleven v4 met stabiliteit 60 en gelijkenis 75. Voor de slotzin gebruikte ik stabiliteit 50, zodat "Leren begrijpen. Leren regelen." enthousiaster en vloeiender klonk. Ik leerde dat een stemkloon ook de energie en haperingen uit de opname overneemt.
+
+De agent werkte in een vaste keten. Eerst schreef hij een script dat ik kon redigeren. Daarna genereerde hij de voice-over, bepaalde hij woordtijden uit de pauzes, bouwde hij kaarten en animaties in Remotion en maakte hij een preview. Avatar, muziek en publiceren heb ik bewust overgeslagen: die waren niet nodig voor deze video. Ik bekeek iedere preview zelf en gaf feedback. Claude Code vroeg steeds toestemming voor commando's en bestandswijzigingen; ik koos niet voor automatische modus.
+
+In CLAUDE.md legde ik vaste regels vast: natuurlijk Nederlands, alleen verzonnen gegevens in beeld, eerst kosten schatten en mijn toestemming vragen, nooit uploaden, mailen of betalen zonder mijn toestemming, altijd een label "Gemaakt met AI" en mijn steminstellingen. Ook beperkte ik de rechten van de ElevenLabs API-sleutel. Toen een sleutel per ongeluk zichtbaar werd in een screenshot, heb ik die vervangen.
+
+Na de eerste preview liet ik de positieve haak "Het echte leven leer je door het te doen." gebruiken, tekst passend maken op alle kaarten, de nepvraag duidelijk labelen met "Voorbeeld" en de lange pauze in de slotzin verkorten naar 0,17 seconde. De kaart "Huurcontract" kreeg dezelfde lettergrootte als de andere kaarten. Elke feedbackronde werd vertaald naar een vaste regel in CLAUDE.md, zodat ik dezelfde opmerking niet opnieuw hoef te maken.
+
+Het resultaat is een liggende video van precies 30 seconden in 1920 x 1080 pixels en ongeveer 8 MB groot. De video bevat ondertitels, echte schermbeelden van mijn eigen website, een grote cursor met klik-effecten, kaarten en animaties, mijn eigen stemkloon en gedurende de hele video het label "Gemaakt met AI". De video legt RegelRoute uit met de stappen Ontdek, Begrijp, Oefen en Regel. Voor oefeningen gebruik ik verzonnen gegevens die als voorbeeld zijn gelabeld. Officiële aanvragen doet de gebruiker zelf bij de betreffende instantie.
+
+Ik heb bewust verantwoord gewerkt: alleen mijn eigen stem is gebruikt, er staat geen muziek of logo van anderen in, de beelden komen van mijn eigen website en er zijn geen echte persoonsgegevens verwerkt. De video is nog niet gepubliceerd; er wordt niets geüpload of gedeeld zonder mijn toestemming. Het videobestand is als lokaal bewijs toegevoegd, zodat het resultaat direct bekeken kan worden.`,
+    summary: 'Kennisclip van 30 seconden over RegelRoute, gemaakt met Claude Code, Remotion, ElevenLabs en mlx-whisper. Ik regisseerde de inhoud en feedback; de AI-agent deed het technische videowerk. Het resultaat bevat ondertitels, echte schermbeelden, mijn eigen stemkloon en het label "Gemaakt met AI".',
+    type: 'video',
+    platform: 'Lokale video',
+    externalUrl: '/RegelRoute.mp4',
+    sprintId: 4,
+    learningOutcomes: ['LU2', 'LU3', 'LU4', 'LU5'],
+    date: '2 november 2026',
+  },
 ];
-
-interface PortfolioContentRecord {
-  profile: StudentProfile;
-  learning_outcomes: LearningOutcome[];
-  sprints: Sprint[];
-  evidence: EvidenceItem[];
-}
-
-export async function loadPortfolioData(): Promise<boolean> {
-  if (!supabase) return false;
-
-  const { data, error } = await supabase
-    .from('portfolio_content')
-    .select('profile, learning_outcomes, sprints, evidence')
-    .eq('id', 'main')
-    .maybeSingle();
-
-  if (error || !data) return false;
-
-  const content = data as PortfolioContentRecord;
-  const localLearningOutcomes = learningOutcomes;
-  const localSprint4 = sprintsData.find((sprint) => sprint.id === 4);
-  const localSprint4Evidence = initialEvidenceItems.filter((item) => item.sprintId === 4);
-  Object.assign(studentProfile, content.profile);
-  learningOutcomes = content.learning_outcomes.map((outcome) => {
-    const localOutcome = localLearningOutcomes.find((item) => item.id === outcome.id);
-    return localOutcome ? { ...outcome, currentCount: localOutcome.currentCount } : outcome;
-  });
-  sprintsData = content.sprints.map((sprint) => sprint.id === 4 && localSprint4 ? localSprint4 : sprint);
-  initialEvidenceItems = [
-    ...content.evidence,
-    ...localSprint4Evidence.filter(
-      (localItem) => !content.evidence.some((remoteItem) => remoteItem.id === localItem.id),
-    ),
-  ];
-  const datacampEvidence = initialEvidenceItems.find((item) => item.id === 'BEW-04');
-  if (datacampEvidence) {
-    Object.assign(datacampEvidence, {
-      platform: 'DataCamp',
-      externalUrl: DATACAMP_AI_AGENTS_URL,
-      pdfUrl: DATACAMP_SUMMARY_PDF,
-      imageUrl: DATACAMP_COMPLETION_IMAGE,
-      description: 'Ik heb de DataCamp-cursus over AI-agents gedaan. Ik wilde begrijpen wat een AI-agent precies is, omdat ik denk dat ik er in mijn werk als organisator steeds vaker mee te maken krijg. Ik heb alle video\'s en oefeningen gedaan en de drie hoofdstukken samengevat in mijn eigen woorden, met een begrippenlijst erbij.\n\nIk leerde dat een agent uit drie delen bestaat. Het model is het brein: dat denkt na en bedenkt de stappen. De tools zijn het lichaam: daarmee kan de agent echt iets doen, zoals een agenda bekijken of een mail sturen. De orkestratie is de besturing: die houdt bij wat de agent al heeft gedaan en herhaalt de stappen tot het doel is bereikt. Een gewone chatbot geeft steeds hetzelfde antwoord, maar een agent bedenkt zelf wat er nodig is.\n\nIk leerde ook dat je niet altijd een agent nodig hebt. Is een vraag simpel en voorspelbaar, zoals "hoe volg ik mijn bestelling?", dan is een chatbot genoeg. Is het complex en verschilt het per situatie, dan past een agent beter. Bij een agent leerde ik ook over guardrails. Dat zijn regels die de agent veilig houden, bijvoorbeeld dat hij geen privégegevens deelt en dat een mens risicovolle acties eerst goedkeurt.\n\nDit heb ik gekoppeld aan mijn eigen werk bij events. "Wanneer is de volgende masterclass?" kan een chatbot beantwoorden. Maar als een spreker wegvalt, moet iemand in agenda\'s en mails kijken, een vervanger zoeken en de planning en de zaal checken. Dat is werk voor een agent.\n\nWat ik hiervan meeneem: bij mijn eigen AI-oplossing kan ik nu bewust kiezen tussen een chatbot, een automatisering of een agent, in plaats van meteen voor het moeilijkste te gaan. Dat sluit aan op mijn onderzoek bij Blue Current. Daar kan ik nu kritisch kijken welk soort oplossing echt past.',
-      summary: 'Ik maakte een uitgebreide samenvatting van de DataCamp-cursus, inclusief begrippenlijst en een onderbouwde vertaling van workflows versus agents naar mijn werk bij ABN AMRO en mijn minor.',
-    });
-  }
-  return true;
-}

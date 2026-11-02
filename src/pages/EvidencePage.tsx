@@ -98,7 +98,7 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
       
       {/* Header */}
       <motion.div
-        initial="hidden"
+        initial="show"
         animate="show"
         variants={fadeUp}
         transition={fadeUpTransition}
@@ -211,7 +211,7 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
         </div>
       ) : (
         <motion.div
-          initial="hidden"
+          initial="show"
           whileInView="show"
           viewport={{ once: true, amount: 0.15 }}
           variants={cardStagger}
@@ -265,6 +265,18 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
                   <p className="text-xs sm:text-sm font-sans text-[#1B2A24]/85 leading-relaxed whitespace-pre-line">
                     {item.description}
                   </p>
+
+                  {item.type === 'video' && (
+                    <video
+                      className="w-full aspect-video border border-[#1B2A24]/10 bg-[#1B2A24]"
+                      controls
+                      preload="metadata"
+                      aria-label={`Video bij ${item.title}`}
+                    >
+                      <source src={item.externalUrl} type="video/mp4" />
+                      Je browser kan deze video niet afspelen.
+                    </video>
+                  )}
 
                   {item.imageUrl && (
                     <img
