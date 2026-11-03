@@ -278,13 +278,24 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
                     </video>
                   )}
 
-                  {item.imageUrl && (
+                  {item.imageUrls ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
+                      {item.imageUrls.map((imageUrl, index) => (
+                        <img
+                          key={imageUrl}
+                          src={imageUrl}
+                          alt={`Bewijs van ${item.title}, afbeelding ${index + 1}`}
+                          className="w-full h-auto border border-[#1B2A24]/10"
+                        />
+                      ))}
+                    </div>
+                  ) : item.imageUrl ? (
                     <img
                       src={item.imageUrl}
                       alt={`Bewijs van ${item.title}`}
                       className="w-full h-auto border border-[#1B2A24]/10"
                     />
-                  )}
+                  ) : null}
 
                   {/* 8. Meerdere kleine labels voor elke gekoppelde leeruitkomst */}
                   <div className="pt-2 flex flex-wrap items-center gap-1.5">

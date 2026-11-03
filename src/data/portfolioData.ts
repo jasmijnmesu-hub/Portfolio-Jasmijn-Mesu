@@ -44,7 +44,7 @@ export const studentProfile: StudentProfile = {
   {
     id: 'LU1',
     code: 'LU1',
-    title: 'AI-impact op de beroepspraktijk analyseren en evalueren',
+    title: 'AI impact op de beroepspraktijk analyseren en evalueren',
     shortDescription: 'Onderzoeken hoe AI organisatorische en facilitaire werkprocessen verandert en kansen identificeren.',
     status: 'afgerond',
     statusText: 'Afgerond op 14 oktober 2026',
@@ -53,7 +53,7 @@ export const studentProfile: StudentProfile = {
     researched: 'Ik onderzocht welke gratis AI-cursussen en certificaten van erkende aanbieders aansluiten bij mijn interesses en toekomstige loopbaan. Ik vergeleek minimaal vijf cursussen van minimaal drie aanbieders op relevantie, erkenning, kosten, tijd, niveau en bewijs van afronding. Daarnaast onderzocht ik hoe The Career Brief actuele ontwikkelingen binnen AI, business en mijn toekomstige werkveld kan verzamelen en verwerken.',
     created: 'Ik ontwikkelde The Career Brief: een AI-gestuurd weekmagazine met twaalf vaste hoofdstukken, uitgebreide artikelen, een cover en een professionele HTML-opmaak. Ik testte een proefeditie voor 6 tot en met 12 oktober 2026 in Gmail op een iPhone. Ook maakte ik versie 3 van de website van Ronald Boiten, verwijderde ik de webshoponderdelen en bracht ik zijn ontwerpen en persoonlijke stijl beter naar voren.',
     learned: 'Deze sprint heb ik geleerd dat het ontwikkelen van een AI-toepassing verder gaat dan alleen een goede prompt schrijven. Bij The Career Brief ontdekte ik dat er aanvullende koppelingen nodig zijn om een nieuwsbrief volledig automatisch te versturen. Ook heb ik geleerd hoe ik AI kan gebruiken om een website te verbeteren op basis van feedback van een opdrachtgever. Door mijn onderzoek naar AI-cursussen heb ik daarnaast meer inzicht gekregen in welke vaardigheden ik zelf wil ontwikkelen.',
-    title: 'Praktijkgerichte AI-oplossing ontwerpen, realiseren en presenteren',
+    title: 'Praktijkgerichte AI oplossing ontwerpen, realiseren en presenteren',
     learningOutcomes: ['LU1', 'LU2', 'LU4', 'LU5'],
     fullDescription: 'De student ontwerpt, realiseert en presenteert een iteratief getoetste AI-gedreven oplossing voor een authentiek praktijkvraagstuk. De oplossing verbindt behoeften van eindgebruikers met technische haalbaarheid en functionele bruikbaarheid.',
     stories: [
@@ -120,7 +120,7 @@ export const studentProfile: StudentProfile = {
     mastery: [
       {
         outcome: 'LU1',
-        title: 'AI-impact op de beroepspraktijk analyseren en evalueren',
+        title: 'AI impact op de beroepspraktijk analyseren en evalueren',
         level: 'V',
         evidence: 'Met The Career Brief heb ik onderzocht welke AI-ontwikkelingen invloed hebben op mijn toekomstige werk, bijvoorbeeld binnen projectmanagement, consultancy en business. Ik heb onderzocht welke onderwerpen relevant zijn en hoe AI het werk binnen organisaties verandert. Daarnaast heb ik onderzoek gedaan naar gratis AI-cursussen en certificaten om te bepalen welke vaardigheden ik zelf verder wil ontwikkelen. Hieruit concludeer ik dat AI-agents en automatisering voor mij belangrijke vaardigheden worden, omdat een agent al een groot deel van het onderzoekswerk kan overnemen. Daarom kies ik cursussen die hierop aansluiten.',
       },
@@ -132,7 +132,7 @@ export const studentProfile: StudentProfile = {
       },
       {
         outcome: 'LU3',
-        title: 'Ethiek en verantwoordelijk AI-gebruik beoordelen',
+        title: 'Ethiek en verantwoordelijk AI gebruik beoordelen',
         level: '-',
         evidence: 'Bij The Career Brief heb ik aandacht besteed aan betrouwbare bronnen, het controleren van informatie en het verantwoord gebruiken van afbeeldingen. Ik heb hiervoor instructies opgenomen in mijn prompt. Het daadwerkelijk testen en beoordelen hiervan wil ik in een volgende sprint verder oppakken.',
       },
@@ -160,7 +160,7 @@ export const studentProfile: StudentProfile = {
   {
     id: 'LU3',
     code: 'LU3',
-    title: 'Ethiek en verantwoord AI-gebruik beoordelen',
+    title: 'Ethiek en verantwoord AI gebruik beoordelen',
     shortDescription: 'Kritisch reflecteren op ethiek, privacy, transparantie en mensgerichte randvoorwaarden bij AI-inzet.',
     fullDescription: 'De student toetst AI-toepassingen aan ethische kaders, wet- en regelgeving zoals privacy en databescherming en maatschappelijke impact. Hierbij staat het borgen van mensgerichtheid, inclusie en bias-preventie centraal.',
     targetCount: 2,
@@ -169,7 +169,7 @@ export const studentProfile: StudentProfile = {
   {
     id: 'LU4',
     code: 'LU4',
-    title: 'AI-tools en technieken gebruiken',
+    title: 'AI tools en technieken gebruiken',
     shortDescription: 'Doelgericht selecteren en toepassen van moderne AI-technologieën en werkwijzen.',
     fullDescription: 'De student maakt doelgericht en beargumenteerd gebruik van actuele AI-technologieën, prompting, API-structuren of no-code/low-code automatiseringen om vraagstukken op te lossen en processen te optimaliseren.',
     targetCount: 4,
@@ -190,7 +190,7 @@ export let learningOutcomes: LearningOutcome[] = [
   {
     id: 'LU1',
     code: 'LU1',
-    title: 'AI-impact op de beroepspraktijk analyseren en evalueren',
+    title: 'AI impact op de beroepspraktijk analyseren en evalueren',
     shortDescription: 'Onderzoeken hoe AI organisatorische en facilitaire werkprocessen verandert en kansen identificeren.',
     fullDescription: 'De student analyseert en evalueert systematisch welke impact artificiële intelligentie heeft op de huidige en toekomstige beroepspraktijk binnen het facilitaire werkveld, met specifieke focus op procesoptimalisatie, werkcoördinatie en mens-techniek interactie.',
     targetCount: 2,
@@ -199,7 +199,7 @@ export let learningOutcomes: LearningOutcome[] = [
   {
     id: 'LU2',
     code: 'LU2',
-    title: 'Praktijkgerichte AI-oplossing ontwerpen, realiseren en presenteren',
+    title: 'Praktijkgerichte AI oplossing ontwerpen, realiseren en presenteren',
     shortDescription: 'Een tastbare, werkende AI-oplossing ontwerpen en bouwen die een concreet organisatorisch knelpunt oplost.',
     fullDescription: 'De student ontwerpt, realiseert en presenteert een iteratief getoetste AI-gedreven oplossing voor een authentiek praktijkvraagstuk. De oplossing verbindt behoeften van eindgebruikers met technische haalbaarheid en functionele bruikbaarheid.',
     targetCount: 4,
@@ -208,7 +208,7 @@ export let learningOutcomes: LearningOutcome[] = [
   {
     id: 'LU3',
     code: 'LU3',
-    title: 'Ethiek en verantwoord AI-gebruik beoordelen',
+    title: 'Ethiek en verantwoord AI gebruik beoordelen',
     shortDescription: 'Kritisch reflecteren op ethiek, privacy, transparantie en mensgerichte randvoorwaarden bij AI-inzet.',
     fullDescription: 'De student toetst AI-toepassingen aan ethische kaders, wet- en regelgeving zoals privacy en databescherming en maatschappelijke impact. Hierbij staat het borgen van mensgerichtheid, inclusie en bias-preventie centraal.',
     targetCount: 2,
@@ -217,7 +217,7 @@ export let learningOutcomes: LearningOutcome[] = [
   {
     id: 'LU4',
     code: 'LU4',
-    title: 'AI-tools en technieken gebruiken',
+    title: 'AI tools en technieken gebruiken',
     shortDescription: 'Doelgericht selecteren en toepassen van moderne AI-technologieën en werkwijzen.',
     fullDescription: 'De student maakt doelgericht en beargumenteerd gebruik van actuele AI-technologieën, prompting, API-structuren of no-code/low-code automatiseringen om vraagstukken op te lossen en processen te optimaliseren.',
     targetCount: 4,
@@ -443,7 +443,7 @@ export let sprintsData: Sprint[] = [
     mastery: [
       {
         outcome: 'LU1',
-        title: 'AI-impact op de beroepspraktijk analyseren en evalueren',
+        title: 'AI impact op de beroepspraktijk analyseren en evalueren',
         level: 'V',
         evidence: 'Met The Career Brief heb ik onderzocht welke AI-ontwikkelingen invloed hebben op mijn toekomstige werk, bijvoorbeeld binnen projectmanagement, consultancy en business. Ik heb onderzocht welke onderwerpen relevant zijn en hoe AI het werk binnen organisaties verandert. Daarnaast heb ik onderzoek gedaan naar gratis AI-cursussen en certificaten om te bepalen welke vaardigheden ik zelf verder wil ontwikkelen. Hieruit concludeer ik dat AI-agents en automatisering voor mij belangrijke vaardigheden worden, omdat een agent al een groot deel van het onderzoekswerk kan overnemen. Daarom kies ik cursussen die hierop aansluiten.',
       },
@@ -455,7 +455,7 @@ export let sprintsData: Sprint[] = [
       },
       {
         outcome: 'LU3',
-        title: 'Ethiek en verantwoordelijk AI-gebruik beoordelen',
+        title: 'Ethiek en verantwoordelijk AI gebruik beoordelen',
         level: '-',
         evidence: 'Bij The Career Brief heb ik aandacht besteed aan betrouwbare bronnen, het controleren van informatie en het verantwoord gebruiken van afbeeldingen. Ik heb hiervoor instructies opgenomen in mijn prompt. Het daadwerkelijk testen en beoordelen hiervan wil ik in een volgende sprint verder oppakken.',
       },
@@ -541,14 +541,14 @@ export let sprintsData: Sprint[] = [
         id: 'US',
         description: 'Als medewerker wil ik voor mijn manager een Copilot-agent maken die haar mailbox overzichtelijker maakt, zodat zij actiepunten, prioriteiten en deadlines sneller herkent.',
         acceptanceCriteria: [
-          'Agent gebouwd met Microsoft Copilot Agent Builder.',
-          'Agent ingericht op het samenvatten en ordenen van e-mails en het herkennen van acties.',
-          'Vastgelegd waarom Copilot Studio nog niet kon worden gebruikt: er is geen licentie.',
+          'AI-agent Mailbox Assistant ontwikkeld binnen Microsoft 365 Copilot.',
+          'Agent ingericht om het Postvak IN te analyseren, e-mails te classificeren en prioriteiten en actiepunten zichtbaar te maken.',
+          'Vijf e-mailcategorieën, prioriteitsregels, gewenste actielijst en veiligheidsregels vastgelegd.',
         ],
         qualityCriteria: [
-          'Resultaten en volledigheid van actiepunten met de manager toetsen.',
-          'Alleen toegang tot mailboxgegevens binnen de toegestane organisatieomgeving en rechten.',
-          'Geen vertrouwelijke mailinhoud opnemen in portfolio-bewijs.',
+          'De agent analyseert en adviseert, maar verwijdert, verplaatst of archiveert geen e-mails zelfstandig.',
+          'De agent verzint geen ontbrekende informatie, zoals een deadline, en gebruikt alleen mailboxgegevens binnen de toegestane organisatieomgeving en rechten.',
+          'De poster en toelichting bevatten geen vertrouwelijke mailinhoud; de werking en ontwerpkeuzes zijn wel controleerbaar beschreven.',
         ],
       },
     ],
@@ -569,19 +569,19 @@ export let sprintsData: Sprint[] = [
     mastery: [
       {
         outcome: 'LU2',
-        title: 'Praktijkgerichte AI-oplossing ontwerpen, realiseren en presenteren',
+        title: 'Praktijkgerichte AI oplossing ontwerpen, realiseren en presenteren',
         level: 'V',
         evidence: 'Ik heb de eerste website en het bedrijfsplan van Regelroute uitgewerkt. Daarmee heb ik een eigen idee vertaald naar een concreet concept en prototype dat ik met een mogelijke opdrachtgever kan bespreken.',
       },
       {
         outcome: 'LU3',
-        title: 'Ethiek en verantwoord AI-gebruik beoordelen',
+        title: 'Ethiek en verantwoord AI gebruik beoordelen',
         level: 'V',
         evidence: 'Ik heb de ethische risico’s van Regelroute afgebakend: privacy van minderjarigen, betrouwbaarheid, transparantie en toegankelijkheid. Hiervoor heb ik een risicoanalyse met maatregelen en officiële bronnen afgerond.',
       },
       {
         outcome: 'LU4',
-        title: 'AI-tools en technieken gebruiken',
+        title: 'AI tools en technieken gebruiken',
         level: 'V',
         evidence: 'Ik heb Codex ontdekt en verkend en daarnaast gewerkt met Microsoft Copilot Agent Builder. Copilot Studio was niet beschikbaar vanwege een ontbrekende licentie. De concrete testresultaten van de agent wil ik verder aanvullen.',
       },
@@ -692,7 +692,7 @@ export let initialEvidenceItems: EvidenceItem[] = [
   },
   {
     id: 'BEW-03',
-    title: 'Applicatie: AI-Kennisassistent voor NEN- en ISO-normen in de Bouw',
+    title: 'Applicatie: AI Kennisassistent voor NEN en ISO normen in de Bouw',
     description: 'Aanleiding\nIk weet uit de praktijk dat bedrijven het lastig vinden om wijzigingen in bouwnormen bij te houden. Informatie staat verspreid over verschillende websites en nieuwsbrieven. Daarom koos ik dit als herkenbaar onderwerp om te onderzoeken wat AI hierbij kan betekenen.\n\nAanpak\nIk gaf Claude Code gerichte prompts om te verkennen wat het model al wist over NEN- en ISO-bouwnormen en welke opzet het voorstelde. Ik controleerde de antwoorden op fouten en verzonnen informatie. Daarna werkte ik samen met Claude een klein dashboard uit. Die dashboardvorm stelde Claude voor toen ik vroeg hoe normcontroles overzichtelijk kunnen worden weergegeven.\n\nResultaat en grens\nIk pushte het prototype naar GitHub en koppelde de repository aan Vercel, waardoor het zelfstandig live werd gezet op normchecker.vercel.app. Het doel was niet om meteen een product af te leveren dat een bedrijf binnen twee weken kan gebruiken. Ik wilde de volledige werkwijze ervaren: van lokaal bestand, via prompting en controle, naar een eerste online prototype. Daarom benoem ik ook eerlijk dat norminhoud altijd aan officiële bronnen moet worden getoetst.',
     summary: 'Ik bouwde zelfstandig een klein live prototype voor het volgen van NEN- en ISO-bouwnormen en onderzocht daarbij bewust de grenzen van wat AI hierover weet.',
     type: 'prototype',
@@ -704,7 +704,7 @@ export let initialEvidenceItems: EvidenceItem[] = [
   },
   {
     id: 'BEW-04',
-    title: 'Verdieping: AI-agents via DataCamp',
+    title: 'Verdieping: AI agents via DataCamp',
     description: 'Ik heb de DataCamp-cursus over AI-agents gedaan. Ik wilde begrijpen wat een AI-agent precies is, omdat ik denk dat ik er in mijn werk als organisator steeds vaker mee te maken krijg. Ik heb alle video\'s en oefeningen gedaan en de drie hoofdstukken samengevat in mijn eigen woorden, met een begrippenlijst erbij.\n\nIk leerde dat een agent uit drie delen bestaat. Het model is het brein: dat denkt na en bedenkt de stappen. De tools zijn het lichaam: daarmee kan de agent echt iets doen, zoals een agenda bekijken of een mail sturen. De orkestratie is de besturing: die houdt bij wat de agent al heeft gedaan en herhaalt de stappen tot het doel is bereikt. Een gewone chatbot geeft steeds hetzelfde antwoord, maar een agent bedenkt zelf wat er nodig is.\n\nIk leerde ook dat je niet altijd een agent nodig hebt. Is een vraag simpel en voorspelbaar, zoals "hoe volg ik mijn bestelling?", dan is een chatbot genoeg. Is het complex en verschilt het per situatie, dan past een agent beter. Bij een agent leerde ik ook over guardrails. Dat zijn regels die de agent veilig houden, bijvoorbeeld dat hij geen privégegevens deelt en dat een mens risicovolle acties eerst goedkeurt.\n\nDit heb ik gekoppeld aan mijn eigen werk bij events. "Wanneer is de volgende masterclass?" kan een chatbot beantwoorden. Maar als een spreker wegvalt, moet iemand in agenda\'s en mails kijken, een vervanger zoeken en de planning en de zaal checken. Dat is werk voor een agent.\n\nWat ik hiervan meeneem: bij mijn eigen AI-oplossing kan ik nu bewust kiezen tussen een chatbot, een automatisering of een agent, in plaats van meteen voor het moeilijkste te gaan. Dat sluit aan op mijn onderzoek bij Blue Current. Daar kan ik nu kritisch kijken welk soort oplossing echt past.',
     summary: 'Ik maakte een uitgebreide samenvatting van de DataCamp-cursus, inclusief begrippenlijst en een onderbouwde vertaling van workflows versus agents naar mijn werk bij ABN AMRO en mijn minor.',
     type: 'document',
@@ -718,7 +718,7 @@ export let initialEvidenceItems: EvidenceItem[] = [
   },
   {
     id: 'BEW-05',
-    title: 'Onderzoek: AI-kansen voor Blue Current',
+    title: 'Onderzoek: AI kansen voor Blue Current',
     description: 'Ik heb onderzoek gedaan naar Blue Current, een laadpalenbedrijf uit Utrecht. Ik wil daar een AI-opdracht doen. Voor het intakegesprek wilde ik eerst weten wat ze al doen, zodat ik niets bedenk wat ze al hebben.\n\nIk heb daarvoor verschillende soorten bronnen naast elkaar gelegd: hun website, hun handleiding, rapporten over de laadmarkt en wetenschappelijk onderzoek. Zo kon ik controleren of dingen echt kloppen. Een taalmodel heb ik gebruikt om te vergelijken, maar niet als bron.\n\nIk ontdekte dat Blue Current al slim laadt. Het laadvermogen past zich automatisch aan als er te veel stroom wordt gebruikt, en er zijn laadprofielen, bijvoorbeeld voor zonne-energie. Dat is slim, maar het is nog geen AI, want het zijn vaste regels. Wel gebruiken ze al één echte AI-tool: Planbot van Bessy. Die plant afspraken voor servicemonteurs. Of de chat op hun website AI is, kon ik nergens vinden. Daarom schrijf ik dat niet op als feit, maar vraag ik het in het intakegesprek.\n\nOp basis hiervan zie ik twee ideeën die goed passen. Het eerste is voorspellend onderhoud: een model voorspelt welke laadpunten binnenkort uitvallen. Zo voorkom je storingen, terwijl Planbot pas werkt nadat een klant iets meldt. Het tweede is voorspellend slim laden: het systeem kijkt vooruit, bijvoorbeeld naar verbruik of vertrektijd, in plaats van alleen te reageren. Beide passen bij hun groei en bij de drukte op het stroomnet.\n\nIk heb drie dingen geleerd. Eén: slim is niet hetzelfde als AI. Twee: check eerst wat er al is voordat je een idee bedenkt. Drie: of mijn idee kan, hangt af van de data die ik mag gebruiken. Dat ga ik nu vragen in het intakegesprek.',
     summary: 'Ik onderzoek Blue Current en werk drie haalbare AI-toepassingen en een gestructureerde intakevragenlijst uit.',
     type: 'document',
@@ -742,7 +742,7 @@ export let initialEvidenceItems: EvidenceItem[] = [
   },
   {
     id: 'BEW-07',
-    title: 'AI-workflow: The Career Brief',
+    title: 'AI workflow: The Career Brief',
     description: 'Aanleiding\nIk wil wekelijks zelfstandig op de hoogte blijven van actuele ontwikkelingen binnen AI, business en mijn toekomstige werkveld. Daarom bedacht ik The Career Brief: een persoonlijk weekmagazine waarin een AI-workflow nieuws en ontwikkelingen onderzoekt, betrouwbare bronnen selecteert en de informatie overzichtelijk verwerkt. Met dit project leer ik tegelijk hoe ik AI-agents en automatisering kan inzetten om informatie te verzamelen, te verwerken en uiteindelijk via Gmail te versturen.\n\nAanpak\nIk ontwikkelde eerst een uitgebreide masterprompt met een vaste indeling van twaalf hoofdstukken, een cover en een samenvatting. In de prompt legde ik de rol, context, stappen, gewenste opmaak en eisen vast. Daarna maakte ik een proefeditie over de periode 6 tot en met 12 oktober 2026. De workflow bestaat uit een stappenplan met bronnen, een taalmodel, de verwerking van de artikelen en de verzending als HTML-mail. Ik werkte de inhoud, schrijfstijl en professionele opmaak uit en testte verschillende versies.\n\nControle en transparantie\nIk controleerde de links en feiten in de artikelen en legde gevonden fouten vast. Ook beschreef ik duidelijk welke onderdelen door AI zijn gedaan, welke keuzes ik zelf heb gemaakt en wat de grenzen van de workflow zijn. Ik testte de HTML-mail in Gmail op een iPhone op leesbaarheid en volledigheid en hield rekening met de limiet van Gmail. Zo controleerde ik niet alleen de inhoud, maar ook of het eindresultaat in de praktijk bruikbaar was.\n\nResultaat en grens\nHet resultaat is een volledige proefeditie van The Career Brief met twaalf vaste hoofdstukken, uitgebreide artikelen, een cover en een professionele HTML-opmaak. De prompt en het proces zijn zo opgebouwd dat ik ze later kan overzetten naar Make of n8n. De automatische verzending via Gmail werkt nog niet volledig. Ik ontdekte dat hiervoor aanvullende koppelingen en mogelijk een API nodig zijn. Daarom is de volgende stap in Sprint 4 om Make, n8n en API-koppelingen verder te onderzoeken.\n\nWat ik geleerd heb\nIk heb geleerd dat een goede prompt alleen niet genoeg is om een AI-toepassing volledig automatisch te laten werken. De workflow moet ook betrouwbare bronnen, controle, transparantie, veilige HTML en een technische verzendkoppeling bevatten. Ik heb daarnaast geleerd om een idee eerst als proefeditie te testen en pas daarna verder te automatiseren.',
     summary: 'Ik ontwikkelde The Career Brief als herbruikbare AI-workflow met twaalf hoofdstukken, controleerde de proefeditie in Gmail en bracht in kaart welke Make-, n8n- en API-koppelingen nog nodig zijn.',
     type: 'document',
@@ -766,7 +766,7 @@ export let initialEvidenceItems: EvidenceItem[] = [
   },
   {
     id: 'BEW-09',
-    title: 'Onderzoek: gratis AI-cursussen en certificaten',
+    title: 'Onderzoek: gratis AI cursussen en certificaten',
     description: 'Aanleiding\nIk wil bewuster kiezen welke AI-kennis en vaardigheden ik verder ontwikkel voor mijn toekomstige loopbaan. Daarom onderzocht ik welke gratis AI-cursussen en certificaten van erkende aanbieders aansluiten bij mijn interesses. Ik wilde niet alleen een cursus kiezen omdat die goed klinkt, maar ook weten wat het bewijs van afronding betekent en of de cursus mijn cv en LinkedIn-profiel echt kan versterken.\n\nAanpak\nIk maakte een vergelijkende tabel met minimaal vijf cursussen van minimaal drie aanbieders. Voor elke cursus keek ik naar relevantie voor mijn interesses en toekomstige werk, de erkenning van de aanbieder, kosten, tijdsinvestering, niveau en het bewijs dat ik na afronding ontvang. Daarnaast legde ik het verschil uit tussen een deelnamebewijs, badge, certificaat en officiële certificering. Op basis van deze vergelijking stelde ik een onderbouwde top 3 samen van cursussen die ik wil volgen.\n\nControle en bronvermelding\nIk gebruikte AI om mogelijkheden te verkennen, maar controleerde de informatie daarna op de officiële cursuspagina\'s van de aanbieders. Zo controleerde ik of de cursus nog bestaat, wat de voorwaarden zijn en welk bewijs van afronding daadwerkelijk wordt gegeven. Ik legde de gebruikte taalmodellen en prompts vast in een bijlage en noteerde de gecontroleerde bronnen volgens APA 7. Hierdoor is duidelijk welke informatie uit het AI-onderzoek kwam en welke gegevens ik zelf heb geverifieerd.\n\nResultaat en keuze\nHet resultaat is een overzichtelijke vergelijking met minimaal vijf cursussen, een begrippenlijst over verschillende soorten certificaten en een onderbouwde top 3. De vergelijking helpt mij om een bewuste keuze te maken in plaats van willekeurig een cursus te starten. Ik kan de uitkomsten gebruiken om mijn verdere leerpad te plannen en relevante afgeronde cursussen later aan mijn cv en LinkedIn-profiel toe te voegen.\n\nWat ik geleerd heb\nIk heb geleerd dat een deelnamebewijs, badge, certificaat en officiële certificering niet hetzelfde betekenen. Ook heb ik geleerd dat ik AI-onderzoek altijd moet controleren op de officiële bron voordat ik een cursus als erkend of relevant presenteer. Door vooraf criteria vast te leggen, kan ik mijn keuze beter uitleggen en gerichter bepalen welke vaardigheden ik in Sprint 4 en daarna wil ontwikkelen.',
     summary: 'Ik vergeleek minimaal vijf gratis AI-cursussen van drie aanbieders, controleerde de informatie op officiële cursuspagina\'s en stelde een onderbouwde top 3 samen voor mijn verdere leerpad.',
     type: 'document',
@@ -778,7 +778,7 @@ export let initialEvidenceItems: EvidenceItem[] = [
   },
   {
     id: 'BEW-10',
-    title: 'Story 1: Regelroute — onderwijsconcept en prototype',
+    title: 'Story 1: Regelroute, onderwijsconcept en prototype',
     description: `Voor Story 1 heb ik mijn idee voor RegelRoute uitgewerkt tot een concreet onderwijsconcept en een eerste werkend websiteprototype. RegelRoute is bedoeld voor jongeren van 12 tot 24 jaar die willen leren hoe ze belangrijke zaken in het volwassen leven zelf kunnen begrijpen en regelen. Denk aan een eerste bankrekening, salaris, DigiD, zorgverzekering, huurcontract en andere momenten waarop veel nieuwe informatie op hen afkomt.
 
 De website geeft jongeren geen ingewikkelde uitleg in formele taal, maar maakt een situatie overzichtelijk in kleine stappen. De gebruiker kan een onderwerp of thema kiezen, de uitleg rustig doorlopen, oefenen met een voorbeeld en daarna bepalen welke vervolgstap nodig is. De website neemt geen officiële aanvraag over: RegelRoute helpt de gebruiker om voorbereid en zelfstandig naar de juiste instantie te gaan.
@@ -802,15 +802,19 @@ Het resultaat is een eerste werkend prototype waarmee ik mijn concept kan uitleg
   },
   {
     id: 'BEW-11',
-    title: 'Story 2: Codex — verkenning als codingtool',
-    description: 'Hier voeg ik mijn bewijs toe van de verkenning van Codex. Ik leg vast welke taken ik met Codex heb getest voor het schrijven, begrijpen en aanpassen van code en welke verschillen ik heb ervaren ten opzichte van Claude Code.',
-    summary: 'Bewijsstuk voor mijn vergelijking van Codex en Claude Code, met een concreet voorbeeld of screenshot.',
+    title: 'Story 2: Codex, verkenning als codingtool',
+    description: 'Voor dit bewijsstuk heb ik Codex verkend als codingtool voor het schrijven, begrijpen en aanpassen van code. Ik onderzocht de verschillende manieren waarop Codex kan worden gebruikt, vergeleek Codex met Claude Code en legde mijn belangrijkste werkwijze, tips en aandachtspunten vast in deze twee visuele samenvattingen.',
+    summary: 'Twee visuele samenvattingen van mijn verkenning van Codex, met de belangrijkste functies, verschillen met Claude Code en praktische tips.',
     type: 'document',
-    platform: 'Nog toe te voegen',
-    externalUrl: '#',
+    platform: 'Codex',
+    externalUrl: '/assets/evidence/Codex-Essentials-Infographic.png',
+    imageUrls: [
+      '/assets/evidence/Codex-Essentials-Infographic.png',
+      '/assets/evidence/Codex-Lesson-Notes.png',
+    ],
     sprintId: 4,
     learningOutcomes: ['LU4', 'LU5'],
-    date: 'Bewijs volgt',
+    date: 'Sprint 4 · november 2026',
   },
   {
     id: 'BEW-12',
@@ -826,19 +830,26 @@ Het resultaat is een eerste werkend prototype waarmee ik mijn concept kan uitleg
   },
   {
     id: 'BEW-13',
-    title: 'Story 4: Copilot-agent voor de mailbox',
-    description: 'Hier voeg ik mijn bewijs toe van de Copilot-agent die ik voor mijn manager heb ingericht. De agent helpt bij het samenvatten en ordenen van e-mails en het herkennen van actiepunten, prioriteiten en deadlines. Vertrouwelijke mailinhoud wordt niet opgenomen in het portfolio.',
-    summary: 'Bewijsstuk voor de inrichting en veilige afbakening van de Copilot-agent in de organisatieomgeving.',
+    title: 'Story 4: Copilot agent voor de mailbox',
+    description: `Voor mijn manager bij ABN AMRO MeesPierson heb ik binnen Microsoft 365 Copilot een AI-agent ontwikkeld: de Mailbox Assistant. De aanleiding was een praktisch probleem: een mailbox kan door de hoeveelheid dagelijkse e-mails snel onoverzichtelijk worden. De agent analyseert het Postvak IN, herkent welke acties nodig zijn en helpt om prioriteiten te stellen. Het uitgangspunt is dat de inbox een werkvoorraad is en geen archief.
+
+Ik heb de agent ingericht door eerst de rol en het doel te bepalen. Daarna heb ik vastgelegd dat een analyse standaard alleen het Postvak IN gebruikt. Ook ontwikkelde ik classificatieregels waarmee e-mails worden ingedeeld in vijf categorieën: actie nodig, belangrijk, controleren, nieuwsbrief of notificatie en kan worden gearchiveerd. Vervolgens voegde ik regels toe voor hoge, gemiddelde en lage prioriteit. Daarbij kijkt de agent onder andere naar deadlines, expliciete verzoeken en mogelijke risico's.
+
+Om te voorkomen dat de agent alleen lange samenvattingen geeft, heb ik de gewenste output ingericht als een overzichtelijke actielijst met concrete vervolgstappen. Ook heb ik veiligheidsregels toegevoegd: de agent mag niet zelfstandig e-mails verwijderen, verplaatsen of archiveren en mag geen informatie verzinnen wanneer bijvoorbeeld een deadline ontbreekt. De agent analyseert en adviseert dus, maar voert niet zelfstandig mailboxacties uit.
+
+De grootste uitdaging was het vertalen van een algemene wens naar concrete instructies. Ik moest vooraf bepalen wanneer een e-mail belangrijk is, welke prioriteit passend is en wanneer geen verdere actie nodig is. Hierdoor heb ik geleerd dat het bouwen van een AI-agent meer is dan een goede prompt schrijven: duidelijke kaders, controle en betrouwbaarheid zijn minstens zo belangrijk. De poster laat de rol, werking, classificatie, prioriteiten en veiligheidsgrenzen van de Mailbox Assistant zien. Vertrouwelijke mailinhoud is niet opgenomen in dit portfolio-bewijs.`,
+    summary: 'Poster en toelichting van de Mailbox Assistant die ik binnen Microsoft 365 Copilot heb ingericht voor mijn manager bij ABN AMRO MeesPierson. De agent analyseert en classificeert e-mails, bepaalt prioriteiten en vertaalt deze naar een actielijst, binnen duidelijke veiligheidsgrenzen.',
     type: 'prototype',
-    platform: 'Nog toe te voegen',
-    externalUrl: '#',
+    platform: 'Microsoft 365 Copilot',
+    externalUrl: '/assets/evidence/AI-Mailbox-Assistant-poster.png',
+    imageUrl: '/assets/evidence/AI-Mailbox-Assistant-poster.png',
     sprintId: 4,
     learningOutcomes: ['LU4', 'LU5'],
-    date: 'Bewijs volgt',
+    date: 'Sprint 4 · november 2026',
   },
   {
     id: 'BEW-14',
-    title: 'Story 5: Van idee tot video met een AI-agent',
+    title: 'Story 5: Van idee tot video met een AI agent',
     description: `Op maandag 2 november 2026 heb ik de workshop "Van idee tot kennisclip met een AI-agent als montageteam" van Pascal Mariany uitgewerkt. Zijn uitgangspunt was: ik ben de regisseur en de AI-agent doet het technische montagewerk. De richting, smaak, verantwoordelijkheid en eindcontrole bleven bij mij.
 
 Mijn doel was een kennisclip voor mijn Show & Grow-moment te maken over RegelRoute: mijn concept voor jongeren van 12 tot 24 jaar die willen begrijpen en regelen wat er in het echte leven op hen afkomt, zoals een eerste bankrekening, salaris, DigiD, zorgverzekering of huurcontract.

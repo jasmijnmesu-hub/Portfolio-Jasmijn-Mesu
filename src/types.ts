@@ -70,6 +70,7 @@ export interface EvidenceItem {
   description: string;
   summary?: string;
   imageUrl?: string;
+  imageUrls?: string[];
   type: EvidenceType;
   platform: string; // e.g., 'OneDrive', 'YouTube', 'SharePoint', 'Canva'
   externalUrl: string;
