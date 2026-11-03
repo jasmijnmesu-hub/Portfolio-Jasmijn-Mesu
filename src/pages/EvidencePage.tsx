@@ -43,6 +43,7 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
     initialSprintFilter ? String(initialSprintFilter) : 'ALL'
   );
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null);
   const hasActiveFilters = selectedLu !== 'ALL' || selectedSprint !== 'ALL' || searchQuery.trim() !== '';
 
   const clearFilters = () => {
@@ -271,6 +272,9 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
                       className="w-full aspect-video border border-[#1B2A24]/10 bg-[#1B2A24]"
                       controls
                       preload="metadata"
+                      muted={false}
+                      defaultMuted={false}
+                      playsInline
                       aria-label={`Video bij ${item.title}`}
                     >
                       <source src={item.externalUrl} type="video/mp4" />
@@ -281,20 +285,40 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
                   {item.imageUrls ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl mx-auto">
                       {item.imageUrls.map((imageUrl, index) => (
-                        <img
+                        <button
                           key={imageUrl}
-                          src={imageUrl}
-                          alt={`Bewijs van ${item.title}, afbeelding ${index + 1}`}
-                          className="w-full h-auto border border-[#1B2A24]/10"
-                        />
+                          type="button"
+                          onClick={() => setSelectedImage({
+                            src: imageUrl,
+                            alt: `Vergrote weergave van bewijs van ${item.title}, afbeelding ${index + 1}`,
+                          })}
+                          className="cursor-zoom-in border border-[#1B2A24]/10 focus:outline-hidden focus:ring-2 focus:ring-[#9C4A32]"
+                          aria-label={`Vergroot afbeelding ${index + 1} van ${item.title}`}
+                        >
+                          <img
+                            src={imageUrl}
+                            alt={`Bewijs van ${item.title}, afbeelding ${index + 1}`}
+                            className="w-full h-auto"
+                          />
+                        </button>
                       ))}
                     </div>
                   ) : item.imageUrl ? (
-                    <img
-                      src={item.imageUrl}
-                      alt={`Bewijs van ${item.title}`}
-                      className="w-full h-auto border border-[#1B2A24]/10"
-                    />
+                    <button
+                      type="button"
+                      onClick={() => setSelectedImage({
+                        src: item.imageUrl!,
+                        alt: `Vergrote weergave van bewijs van ${item.title}`,
+                      })}
+                      className="w-full cursor-zoom-in border border-[#1B2A24]/10 focus:outline-hidden focus:ring-2 focus:ring-[#9C4A32]"
+                      aria-label={`Vergroot afbeelding van ${item.title}`}
+                    >
+                      <img
+                        src={item.imageUrl}
+                        alt={`Bewijs van ${item.title}`}
+                        className="w-full h-auto"
+                      />
+                    </button>
                   ) : null}
 
                   {/* 8. Meerdere kleine labels voor elke gekoppelde leeruitkomst */}
@@ -337,7 +361,7 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
                   ) : item.externalUrl.endsWith('.xlsx') ? (
                     <a
                       href={item.externalUrl}
-                      download="Integraal_Sprint_Logboek_Officieel.xlsx"
+                      download="Integraal_Sprint_Logboek_Sprint_4_3NOV.xlsx"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#EDE6D8] hover:bg-white text-[#1B2A24] hover:text-[#9C4A32] border border-[#1B2A24]/10 hover:border-[#9C4A32] text-xs font-medium uppercase tracking-wider transition-colors cursor-pointer"
@@ -388,6 +412,36 @@ export const EvidencePage: React.FC<EvidencePageProps> = ({
         </motion.div>
       )}
 
+      {selectedImage && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Vergrote bewijsafbeelding"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#1B2A24]/85 p-4 sm:p-8"
+          onClick={() => setSelectedImage(null)}
+          onKeyDown={(event) => {
+            if (event.key === 'Escape') {
+              setSelectedImage(null);
+            }
+          }}
+          tabIndex={-1}
+        >
+          <button
+            type="button"
+            onClick={() => setSelectedImage(null)}
+            className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center bg-[#EDE6D8] text-2xl leading-none text-[#1B2A24] hover:bg-white focus:outline-hidden focus:ring-2 focus:ring-[#9C4A32]"
+            aria-label="Sluit vergrote afbeelding"
+          >
+            ×
+          </button>
+          <img
+            src={selectedImage.src}
+            alt={selectedImage.alt}
+            className="max-h-[90vh] max-w-[95vw] object-contain shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   );
 };

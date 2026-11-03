@@ -12,7 +12,7 @@ import { StudentProfile, LearningOutcome, Sprint, EvidenceItem } from '../types'
 /**
  * Direct downloadbaar Excel-bestand in de /public map
  */
-export const SPRINT_LOGBOEK_DOWNLOAD = '/Integraal_Sprint_Logboek_Officieel.xlsx';
+export const SPRINT_LOGBOEK_DOWNLOAD = '/Integraal_Sprint_Logboek_Sprint_4_3NOV.xlsx';
 export const AI_RESEARCH_REPORT_PDF = '/assets/evidence/onderzoek-impact-ai-organiseren-samenwerken.pdf';
 export const BLUE_CURRENT_RESEARCH_PDF = '/assets/evidence/Vooronderzoek_AI-kansen_Blue_Current.pdf';
 export const DATACAMP_AI_AGENTS_URL = 'https://app.datacamp.com/learn/courses/introduction-to-ai-agents';
@@ -487,10 +487,10 @@ export let sprintsData: Sprint[] = [
     status: 'bezig',
     statusText: 'Huidige sprint',
     focus: 'Regelroute uitwerken tot een concreet onderwijsconcept, ethische randvoorwaarden onderzoeken en AI-tools testen in twee praktijkgerichte toepassingen',
-    summary: 'In Sprint 4 werkte ik Regelroute uit: een toegankelijk concept voor jongeren van 12 tot 24 jaar dat betrouwbare informatie begrijpelijk maakt. Ik maakte een bedrijfsplan, koos de naam, claimde het domein en bouwde een eerste website. Daarnaast onderzocht ik de ethische risico’s van AI voor jongeren, verkende ik Codex en bouwde ik met Microsoft Copilot Agent Builder een agent die mijn manager helpt om mailboxen overzichtelijker te maken.',
-    researched: 'Ik onderzocht hoe Regelroute kan worden ingezet binnen het onderwijs en welke risico’s daarbij aandacht vragen. Mijn risicoanalyse richtte zich op privacy van minderjarigen, bronbetrouwbaarheid, transparantie en toegankelijkheid. Per risico formuleerde ik maatregelen en ik onderbouwde het onderzoek met officiële bronnen, waaronder de Autoriteit Persoonsgegevens en de Rijksoverheid. Ook onderzocht ik Codex als programmeerhulpmiddel en legde ik vast waarom Copilot Studio niet beschikbaar was: voor mijn werkomgeving ontbreekt de benodigde licentie.',
-    created: 'Ik werkte het bedrijfsplan van Regelroute uit, koos de naam, claimde het domein en bouwde de eerste website: https://regelroute.vercel.app/. Daarnaast maakte ik met Microsoft Copilot Agent Builder een agent voor mijn manager. Deze agent helpt bij het samenvatten en ordenen van e-mails en het herkennen van actiepunten, prioriteiten en deadlines. Ik verkende Codex voor het schrijven, begrijpen en aanpassen van code en hield de verschillen met Claude Code bij.',
-    learned: 'Ik heb geleerd hoe ik een eigen idee kan vertalen naar een bedrijfsplan en een eerste prototype. Ook heb ik nieuwe codingtools verkend en geleerd hoe ik een agent kan inzetten voor een concreet werkprobleem. Bij Regelroute heb ik beter leren nadenken over privacy, betrouwbaarheid, transparantie en toegankelijkheid voor jongeren. Daarnaast ontdekte ik dat de beschikbare licenties bepalen welke Copilot-mogelijkheden ik daadwerkelijk kan gebruiken.',
+    summary: 'In Sprint 4 werkte ik Regelroute uit: een toegankelijk concept voor jongeren van 12 tot 24 jaar dat betrouwbare informatie begrijpelijk maakt. Ik maakte een bedrijfsplan, koos de naam, claimde het domein en bouwde een eerste website. Daarnaast onderzocht ik de ethische risico’s van AI voor jongeren, ontwikkelde ik met Codex ETHICHECK, bouwde ik met Microsoft Copilot Agent Builder een mailboxagent en maakte ik met een AI-agent een kennisclip over RegelRoute.',
+    researched: 'Ik onderzocht hoe Regelroute kan worden ingezet binnen het onderwijs en welke risico’s daarbij aandacht vragen. Mijn risicoanalyse richtte zich op privacy van minderjarigen, bronbetrouwbaarheid, transparantie en toegankelijkheid. Per risico formuleerde ik maatregelen en ik onderbouwde het onderzoek met officiële bronnen, waaronder de Autoriteit Persoonsgegevens en de Rijksoverheid. Ook onderzocht ik Codex als programmeerhulpmiddel, werkte ik een workshop over AI-video uit en legde ik vast waarom Copilot Studio niet beschikbaar was: voor mijn werkomgeving ontbreekt de benodigde licentie.',
+    created: 'Ik werkte het bedrijfsplan van Regelroute uit, koos de naam, claimde het domein en bouwde de eerste website: https://regelroute.vercel.app/. Daarnaast ontwikkelde ik met Codex ETHICHECK, maakte ik met Microsoft Copilot Agent Builder een mailboxagent voor mijn manager en produceerde ik met Claude Code, Remotion, ElevenLabs en mlx-whisper een kennisclip over RegelRoute.',
+    learned: 'Ik heb geleerd hoe ik een eigen idee kan vertalen naar een bedrijfsplan, prototype en kennisclip. Ook heb ik nieuwe codingtools verkend, een AI-agent ingezet voor een concreet werkprobleem en geleerd hoe ik AI als technisch montageteam kan gebruiken terwijl ik zelf de regie en eindcontrole houd. Bij Regelroute heb ik beter leren nadenken over privacy, betrouwbaarheid, transparantie en toegankelijkheid voor jongeren. Daarnaast ontdekte ik dat de beschikbare licenties bepalen welke Copilot-mogelijkheden ik daadwerkelijk kan gebruiken.',
     presentationUrl: '',
     learningOutcomes: ['LU2', 'LU3', 'LU4', 'LU5'],
     evidenceIds: ['BEW-10', 'BEW-11', 'BEW-12', 'BEW-13', 'BEW-14'],
@@ -511,16 +511,18 @@ export let sprintsData: Sprint[] = [
       },
       {
         id: 'LS',
-        description: 'Als student wil ik Codex uitproberen, omdat deze tool in mijn ChatGPT-abonnement zit, zodat ik ontdek hoe ik AI naast Claude Code kan gebruiken voor programmeren.',
+        description: 'Als student wil ik Codex gebruiken om zelfstandig een digitaal product te ontwikkelen, zodat ik ontdek hoe ik van een idee naar een werkende en online gepubliceerde website kan gaan.',
         acceptanceCriteria: [
-          'Beschikbaarheid van Codex ontdekt.',
-          'Codex verkend voor het schrijven, begrijpen en aanpassen van code.',
-          'Eerste ervaringen vastgelegd, inclusief verschillen met Claude Code.',
+          'Codex geïnstalleerd en gebruikt via de Terminal op mijn Mac.',
+          'Met Codex een werkende website voor ETHICHECK ontwikkeld.',
+          'De website gepubliceerd met Git, GitHub en Vercel.',
+          'Ervaringen vastgelegd, inclusief de samenwerking tussen Codex, Next.js, TypeScript, Git, GitHub en Vercel.',
         ],
         qualityCriteria: [
-          'Beschrijven welke taken daadwerkelijk zijn getest.',
-          'Een concreet voorbeeld of screenshot als bewijs toevoegen.',
-          'Niet claimen dat een project met Codex is gebouwd zonder bewijs.',
+          'Beschrijven welke taken daadwerkelijk met Codex zijn uitgevoerd, zoals bestanden maken, code aanpassen en feedback verwerken.',
+          'Het resultaat controleren en bijsturen wanneer de werking of vormgeving niet aansloot bij het doel.',
+          'Benoemen dat Codex niet zelfstandig de eerste Git-commit kon uitvoeren door beperkte toegangsrechten.',
+          'Niet alleen beschrijven wat Codex heeft gemaakt, maar ook wat ik zelf heb beoordeeld, besloten en geleerd.',
         ],
       },
       {
@@ -549,6 +551,22 @@ export let sprintsData: Sprint[] = [
           'De agent analyseert en adviseert, maar verwijdert, verplaatst of archiveert geen e-mails zelfstandig.',
           'De agent verzint geen ontbrekende informatie, zoals een deadline, en gebruikt alleen mailboxgegevens binnen de toegestane organisatieomgeving en rechten.',
           'De poster en toelichting bevatten geen vertrouwelijke mailinhoud; de werking en ontwerpkeuzes zijn wel controleerbaar beschreven.',
+        ],
+      },
+      {
+        id: 'US',
+        description: 'Als student wil ik met een AI-agent een korte kennisclip over RegelRoute maken, zodat ik leer hoe ik AI kan inzetten voor script, stem, montage en animatie terwijl ik zelf de inhoud en eindcontrole behoud.',
+        acceptanceCriteria: [
+          'Een kennisclip over RegelRoute gemaakt voor het Show & Grow-moment.',
+          'De workshoproute voor een eigen videostudio daadwerkelijk uitgevoerd met Claude Code, Remotion, ElevenLabs en mlx-whisper.',
+          'Een liggende video van 30 seconden met ondertitels, schermbeelden, animaties en mijn eigen stemkloon opgeleverd.',
+          'De video lokaal gerenderd en als bewijs toegevoegd.',
+        ],
+        qualityCriteria: [
+          'Ik blijf verantwoordelijk voor script, richting, feedback en eindcontrole; de AI-agent voert het technische montagewerk uit.',
+          'Alleen verzonnen gegevens en eigen beeld- en geluidsmateriaal gebruiken; geen echte persoonsgegevens verwerken.',
+          'Veiligheidsregels vastleggen voor toestemming, kosten, uploaden, API-gebruik en het label "Gemaakt met AI".',
+          'Iedere preview controleren en feedback vertalen naar concrete verbeteringen in de video.',
         ],
       },
     ],
@@ -583,18 +601,18 @@ export let sprintsData: Sprint[] = [
         outcome: 'LU4',
         title: 'AI tools en technieken gebruiken',
         level: 'V',
-        evidence: 'Ik heb Codex ontdekt en verkend en daarnaast gewerkt met Microsoft Copilot Agent Builder. Copilot Studio was niet beschikbaar vanwege een ontbrekende licentie. De concrete testresultaten van de agent wil ik verder aanvullen.',
+        evidence: 'Ik heb Codex ontdekt en verkend, gewerkt met Microsoft Copilot Agent Builder en een AI-agent ingezet voor het maken van een kennisclip met Claude Code, Remotion, ElevenLabs en mlx-whisper. Copilot Studio was niet beschikbaar vanwege een ontbrekende licentie.',
       },
       {
         outcome: 'LU5',
         title: 'Zelfstandig en zelfsturend werken',
         level: 'V',
-        evidence: 'Ik heb zelf het idee voor Regelroute ontwikkeld, het bedrijfsplan en prototype gemaakt en een mogelijke opdrachtgever benaderd. Ik heb n8n bewust doorgeschoven naar Sprint 5 om eerst de huidige concepten en tools goed af te ronden.',
+        evidence: 'Ik heb zelf het idee voor Regelroute ontwikkeld, het bedrijfsplan en prototype gemaakt, een mogelijke opdrachtgever benaderd en de productie van een kennisclip geregisseerd. Ik hield de eindcontrole bij het werken met Codex, Copilot en de video-agent en heb n8n bewust doorgeschoven naar Sprint 5.',
       },
     ],
     reflection: {
       date: 'Sprint 4',
-      learned: 'Ik heb geleerd hoe ik een eigen concept kan omzetten naar een bedrijfsplan en prototype, nieuwe codingtools kan verkennen en een agent kan inzetten voor een concreet werkprobleem.',
+      learned: 'Ik heb geleerd hoe ik een eigen concept kan omzetten naar een bedrijfsplan, prototype en kennisclip, nieuwe codingtools kan verkennen en AI-agents kan inzetten voor zowel een concreet werkprobleem als technisch videowerk.',
       keep: 'Ik wil blijven werken vanuit echte problemen, zelfstandig experimenteren en vroeg feedback ophalen bij mensen uit de praktijk.',
       change: 'Ik wil nauw samenwerken met de eigenaar van Simulise om het idee verder uit te werken. Daarnaast wil ik binnen het bedrijf waar ik werk vragen naar meer licenties, zodat ik meer mogelijkheden kan uitvoeren en testen.',
     },
@@ -803,11 +821,17 @@ Het resultaat is een eerste werkend prototype waarmee ik mijn concept kan uitleg
   {
     id: 'BEW-11',
     title: 'Story 2: Codex, verkenning als codingtool',
-    description: 'Voor dit bewijsstuk heb ik Codex verkend als codingtool voor het schrijven, begrijpen en aanpassen van code. Ik onderzocht de verschillende manieren waarop Codex kan worden gebruikt, vergeleek Codex met Claude Code en legde mijn belangrijkste werkwijze, tips en aandachtspunten vast in deze twee visuele samenvattingen.',
-    summary: 'Twee visuele samenvattingen van mijn verkenning van Codex, met de belangrijkste functies, verschillen met Claude Code en praktische tips.',
+    description: `Tijdens deze sprint wilde ik ontdekken wat Codex kan en hoe ik het kan gebruiken om zelfstandig een digitaal product te ontwikkelen. Ik installeerde Codex op mijn Mac en leerde via de Terminal opdrachten te geven. Vanuit de gastles over AI en ethiek ontstond het idee voor ETHICHECK: een website waarmee gebruikers kunnen onderzoeken welke ethische aandachtspunten bij hun AI-idee of project spelen. De website geeft daarnaast uitleg over ethiek en verantwoord AI-gebruik.
+
+Met Codex ontwikkelde ik ETHICHECK stap voor stap. Ik gaf instructies over de inhoud, functionaliteit en vormgeving en liet Codex de benodigde bestanden en code maken. Wanneer iets niet werkte of het ontwerp niet aansloot bij mijn bedoeling, gaf ik feedback en liet ik Codex aanpassingen uitvoeren. Daardoor begon ik tijdens het bouwen steeds beter te begrijpen hoe een website technisch is opgebouwd. Ik leerde werken met Terminal, Next.js en TypeScript en gebruikte uiteindelijk ook Git, GitHub en Vercel om ETHICHECK online te publiceren.
+
+Ik liep tegen een beperking aan toen Codex niet zelfstandig mijn eerste Git commit kon uitvoeren door beperkte toegangsrechten. Daardoor ontdekte ik dat ik als gebruiker moet begrijpen wat een AI agent doet, welke handelingen toegang vereisen en wanneer ik zelf moet ingrijpen. Codex genereert dus niet alleen code: het kan tijdens verschillende onderdelen van softwareontwikkeling ondersteunen, maar ik blijf verantwoordelijk voor het uitleggen van mijn doel, het beoordelen van het resultaat en het begrijpen van de samenwerking tussen de gebruikte tools.
+
+De twee visuele samenvattingen laten zien wat ik over Codex heb geleerd, waaronder de verschillende manieren van werken, de vergelijking met Claude Code, praktische functies en mijn eigen werkwijze.`,
+    summary: 'Met Codex ontwikkelde en publiceerde ik ETHICHECK, een website over ethische aandachtspunten bij AI-ideeën. Ik leerde werken met Terminal, Next.js, TypeScript, Git, GitHub en Vercel en hield zelf de controle over keuzes, feedback en beoordeling.',
     type: 'document',
-    platform: 'Codex',
-    externalUrl: '/assets/evidence/Codex-Essentials-Infographic.png',
+    platform: 'Codex, GitHub en Vercel',
+    externalUrl: 'https://ethicheck.vercel.app/',
     imageUrls: [
       '/assets/evidence/Codex-Essentials-Infographic.png',
       '/assets/evidence/Codex-Lesson-Notes.png',
@@ -819,14 +843,20 @@ Het resultaat is een eerste werkend prototype waarmee ik mijn concept kan uitleg
   {
     id: 'BEW-12',
     title: 'Story 3: Ethische risicoanalyse voor Regelroute',
-    description: 'Hier voeg ik mijn bewijs toe van de risicoanalyse voor Regelroute. De analyse behandelt privacy van minderjarigen, bronbetrouwbaarheid, transparantie en toegankelijkheid. Per risico werk ik een concrete maatregel uit en verwijs ik naar officiële bronnen.',
-    summary: 'Bewijsstuk voor de ethische risicoanalyse en de maatregelen voor veilig en verantwoord gebruik.',
+    description: `Voor mijn leerdoel ethiek onderzocht ik hoe ik AI verantwoord kan gebruiken binnen RegelRoute, mijn project voor jongeren over onderwerpen zoals DigiD, loonstroken, belastingen en zorgverzekeringen. Ik gebruikte de gastles van Levien Nordeman, Perplexity en ChatGPT Deep Research. De uitkomsten vergeleek ik met andere AI modellen en officiële bronnen van onder andere de Autoriteit Persoonsgegevens, de Rijksoverheid en het Europees Parlement.
+
+Mijn belangrijkste inzicht is dat je niet alleen moet kijken naar wat AI kan, maar ook naar de gevolgen voor gebruikers. De vergelijking tussen de houthakker en de bioloog hielp mij hierbij: de houthakker kijkt naar het doel, terwijl de bioloog het hele systeem en bedoelde en onbedoelde gevolgen bekijkt. Daarom onderzocht ik wat er kan gebeuren als een chatbot verkeerde informatie geeft, persoonlijke gegevens verwerkt of jongeren afhankelijker maakt.
+
+De belangrijkste risico’s voor RegelRoute zijn privacy, betrouwbaarheid, bias, transparantie en afhankelijkheid. Ik onderzocht hierbij de AVG, dataminimalisatie, privacy by design, hallucinaties en RAG. RAG kan antwoorden baseren op geselecteerde bronnen zoals DUO of de Belastingdienst, maar is geen garantie voor juistheid. Broncontrole en menselijke controle blijven daarom nodig. Ook moeten jongeren weten dat zij met AI praten en de uitkomst kritisch kunnen beoordelen. Dit vraagt om AI geletterdheid en begrijpelijke uitleg.
+
+Ik verwerkte de risico’s in een risicomatrix en keek naar de AI Act, auteursrecht en kinderrechten. Met safety by design wil ik veiligheid al tijdens het ontwerp regelen. RegelRoute moet daarom wel uitleg geven en naar officiële bronnen verwijzen, maar geen financiële of juridische beslissingen nemen. Ik wil eerst werken met gecontroleerde uitleg en oefeningen en pas daarna onderzoeken of een beperkte AI assistent iets toevoegt. Een technisch goed werkende AI is niet automatisch verantwoord; als ontwikkelaar moet ik ook durven besluiten om iets nog niet te bouwen. De bijgevoegde risicoanalyse werkt deze keuzes verder uit.`,
+    summary: 'Ethische risicoanalyse voor RegelRoute over privacy, betrouwbaarheid, bias, transparantie en afhankelijkheid, met aandacht voor privacy by design, RAG, AI geletterdheid en safety by design.',
     type: 'document',
-    platform: 'Nog toe te voegen',
-    externalUrl: '#',
+    platform: 'PDF',
+    externalUrl: '/assets/evidence/RegelRoute_Ethische_Risicoanalyse_Jasmijn_Mesu.pdf',
     sprintId: 4,
     learningOutcomes: ['LU3', 'LU2'],
-    date: 'Bewijs volgt',
+    date: 'Sprint 4 · november 2026',
   },
   {
     id: 'BEW-13',

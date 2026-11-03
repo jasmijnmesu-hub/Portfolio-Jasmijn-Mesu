@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { NavTab } from './types';
+import { sprintsData } from './data/portfolioData';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { LearningOutcomesPage } from './pages/LearningOutcomesPage';
 import { SprintsPage } from './pages/SprintsPage';
+import { SprintDetailPage } from './pages/SprintDetailPage';
 import { EvidencePage } from './pages/EvidencePage';
 import { ContactPage } from './pages/ContactPage';
 import { LearningLogPage } from './pages/LearningLogPage';
@@ -15,6 +17,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<NavTab>('home');
   const [evidenceLuFilter, setEvidenceLuFilter] = useState<string | undefined>(undefined);
   const [evidenceSprintFilter, setEvidenceSprintFilter] = useState<number | undefined>(undefined);
+  const [selectedSprintId, setSelectedSprintId] = useState<number | undefined>(undefined);
 
   // Sync with window.location.hash for shareable links & browser history
   useEffect(() => {
@@ -34,6 +37,9 @@ export default function App() {
   }, []);
 
   const handleSelectTab = (tab: NavTab) => {
+    if (tab !== 'sprints') {
+      setSelectedSprintId(undefined);
+    }
     if (tab === 'bewijzen') {
       setEvidenceLuFilter(undefined);
       setEvidenceSprintFilter(undefined);
@@ -59,6 +65,15 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleOpenSprint = (sprintId: number) => {
+    setSelectedSprintId(sprintId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const selectedSprint = selectedSprintId
+    ? sprintsData.find((sprint) => sprint.id === selectedSprintId)
+    : undefined;
+
   return (
     <div className="min-h-screen flex flex-col bg-[#EDE6D8] text-[#1B2A24] font-sans antialiased selection:bg-[#D8B7A6] selection:text-[#1B2A24]">
       {/* Fixed top navigation */}
@@ -79,7 +94,18 @@ export default function App() {
         )}
 
         {activeTab === 'sprints' && (
-          <SprintsPage onNavigateToEvidence={handleNavigateToEvidenceWithSprint} />
+          selectedSprint ? (
+            <SprintDetailPage
+              sprint={selectedSprint}
+              onBack={() => setSelectedSprintId(undefined)}
+              onNavigateToEvidence={handleNavigateToEvidenceWithSprint}
+            />
+          ) : (
+            <SprintsPage
+              onNavigateToEvidence={handleNavigateToEvidenceWithSprint}
+              onOpenSprint={handleOpenSprint}
+            />
+          )
         )}
 
         {activeTab === 'bewijzen' && (
