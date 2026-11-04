@@ -854,6 +854,7 @@ Ik verwerkte de risico’s in een risicomatrix en keek naar de AI Act, auteursre
     type: 'document',
     platform: 'PDF',
     externalUrl: '/assets/evidence/RegelRoute_Ethische_Risicoanalyse_Jasmijn_Mesu.pdf',
+    imageUrl: '/assets/evidence/Mijn-visie-op-AI-en-ethiek.png',
     sprintId: 4,
     learningOutcomes: ['LU3', 'LU2'],
     date: 'Sprint 4 · november 2026',
