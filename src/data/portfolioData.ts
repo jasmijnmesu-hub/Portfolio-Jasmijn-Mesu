@@ -12,7 +12,7 @@ import { StudentProfile, LearningOutcome, Sprint, EvidenceItem } from '../types'
 /**
  * Direct downloadbaar Excel-bestand in de /public map
  */
-export const SPRINT_LOGBOEK_DOWNLOAD = '/Integraal_Sprint_Logboek_Sprint_4_3NOV.xlsx';
+export const SPRINT_LOGBOEK_DOWNLOAD = '/Integraal_Sprint_Logboek_Sprint_5.xlsx';
 export const AI_RESEARCH_REPORT_PDF = '/assets/evidence/onderzoek-impact-ai-organiseren-samenwerken.pdf';
 export const BLUE_CURRENT_RESEARCH_PDF = '/assets/evidence/Vooronderzoek_AI-kansen_Blue_Current.pdf';
 export const DATACAMP_AI_AGENTS_URL = 'https://app.datacamp.com/learn/courses/introduction-to-ai-agents';
@@ -203,7 +203,7 @@ export let learningOutcomes: LearningOutcome[] = [
     shortDescription: 'Een tastbare, werkende AI-oplossing ontwerpen en bouwen die een concreet organisatorisch knelpunt oplost.',
     fullDescription: 'De student ontwerpt, realiseert en presenteert een iteratief getoetste AI-gedreven oplossing voor een authentiek praktijkvraagstuk. De oplossing verbindt behoeften van eindgebruikers met technische haalbaarheid en functionele bruikbaarheid.',
     targetCount: 4,
-    currentCount: 4,
+    currentCount: 5,
   },
   {
     id: 'LU3',
@@ -212,7 +212,7 @@ export let learningOutcomes: LearningOutcome[] = [
     shortDescription: 'Kritisch reflecteren op ethiek, privacy, transparantie en mensgerichte randvoorwaarden bij AI-inzet.',
     fullDescription: 'De student toetst AI-toepassingen aan ethische kaders, wet- en regelgeving zoals privacy en databescherming en maatschappelijke impact. Hierbij staat het borgen van mensgerichtheid, inclusie en bias-preventie centraal.',
     targetCount: 2,
-    currentCount: 1,
+    currentCount: 2,
   },
   {
     id: 'LU4',
@@ -221,7 +221,7 @@ export let learningOutcomes: LearningOutcome[] = [
     shortDescription: 'Doelgericht selecteren en toepassen van moderne AI-technologieën en werkwijzen.',
     fullDescription: 'De student maakt doelgericht en beargumenteerd gebruik van actuele AI-technologieën, prompting, API-structuren of no-code/low-code automatiseringen om vraagstukken op te lossen en processen te optimaliseren.',
     targetCount: 4,
-    currentCount: 4,
+    currentCount: 5,
   },
   {
     id: 'LU5',
@@ -230,7 +230,7 @@ export let learningOutcomes: LearningOutcome[] = [
     shortDescription: 'Proactief plannen in tweewekelijkse sprints, tijdig feedback ophalen en reflecteren op eigen groei.',
     fullDescription: 'De student toont een proactieve, methodische en onderzoekende houding. Werkt zelfstandig volgens agile sprintcycli, reflecteert aantoonbaar op de eigen professionele ontwikkeling en benut feedback van coaches en medestudenten constructief.',
     targetCount: 6,
-    currentCount: 4,
+    currentCount: 5,
   },
 ];
 
@@ -622,16 +622,106 @@ export let sprintsData: Sprint[] = [
     title: 'Sprint 5',
     period: '9 november 2026 tot en met 18 november 2026',
     showAndGrowDate: '18 november 2026',
-    status: 'gepland',
-    statusText: 'Nog te starten',
-    focus: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 5]',
-    summary: '[Korte samenvatting wordt ingevuld na Sprint 5]',
-    researched: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 5]',
-    created: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 5]',
-    learned: '[Wordt door Jasmijn ingevuld aan het begin of einde van Sprint 5]',
+    status: 'bezig',
+    statusText: 'In uitvoering',
+    focus: 'Verantwoord informatie verzamelen en beheren voor RegelRoute met een scraper, BronnenHub-dashboard en automatische APA-verwijzingen.',
+    summary: 'Ik heb de RegelRoute BronnenHub gebouwd: een dashboard dat openbare artikelen van Rijksoverheid en de Belastingdienst verzamelt, bronnen inzichtelijk maakt en automatisch APA-verwijzingen genereert. Ik onderzocht daarnaast de voorwaarden voor verantwoord hergebruik en werkte de opzet voor beoordelingsagents uit.',
+    researched: 'Ik onderzocht hoe scrapers webpagina’s vinden, teksten ophalen en opslaan. Ook onderzocht ik de voorwaarden voor hergebruik van teksten van Rijksoverheid en de Belastingdienst, met aandacht voor auteursrecht, privacy, betrouwbaarheid, bronvermelding en het voorkomen van overbelasting van websites.',
+    created: 'Ik bouwde een dashboard met 5.535 verzamelde artikelen: 3.929 van Rijksoverheid en 1.606 van de Belastingdienst. Het dashboard bevat onderdelen voor artikelen, leeftijden, onderwerpen, bronnen en logboek. Daarnaast voegde ik automatische APA-verwijzingen toe en werkte ik de rollen voor toekomstige beoordelingsagents uit.',
+    learned: 'Ik heb geleerd dat een scraper bouwen verder gaat dan teksten ophalen. Ik moet ook controleren of informatie mag worden hergebruikt, of de tekst volledig en betrouwbaar is en voor welke doelgroep deze geldt. Daarom houd ik verzamelen en beoordelen bewust apart en test ik nieuwe functies eerst op een kleine selectie.',
     presentationUrl: '',
-    learningOutcomes: [],
-    evidenceIds: [],
+    learningOutcomes: ['LU2', 'LU3', 'LU4', 'LU5'],
+    evidenceIds: ['BEW-15', 'BEW-16', 'BEW-17'],
+    stories: [
+      {
+        id: 'RS',
+        description: 'Als ontwikkelaar van RegelRoute wil ik onderzoeken hoe een scraper werkt en onder welke voorwaarden ik teksten van overheidswebsites mag verzamelen en gebruiken, zodat ik zorgvuldig omga met de informatie die ik aan jongeren wil aanbieden.',
+        acceptanceCriteria: [
+          'Ik heb onderzocht hoe een scraper webpagina’s vindt, teksten ophaalt en opslaat.',
+          'Ik heb de voorwaarden voor het hergebruik van teksten van Rijksoverheid en de Belastingdienst onderzocht.',
+          'Ik heb gekeken naar auteursrecht, privacy, betrouwbaarheid en het voorkomen van overbelasting van websites.',
+          'Ik heb afgewogen welke gevolgen onjuiste of verouderde informatie kan hebben voor gebruikers van RegelRoute.',
+          'Ik heb mijn bevindingen vertaald naar keuzes voor het verzamelen en beoordelen van artikelen.',
+        ],
+        qualityCriteria: [
+          'Mijn onderzoek is onderbouwd met officiële bronnen.',
+          'Ik maak onderscheid tussen informatie die openbaar is en informatie die ik mag hergebruiken.',
+          'Ik richt mij op openbare informatie over regels en regelingen en vermijd het verzamelen van persoonsgegevens.',
+          'De oorspronkelijke bron blijft terug te vinden.',
+          'Ik beschouw een opgehaald artikel pas als bruikbaar nadat de inhoud is beoordeeld.',
+        ],
+      },
+      {
+        id: 'US-1',
+        description: 'Als ontwikkelaar van RegelRoute wil ik een dashboard met een scraper bouwen dat artikelen van officiële websites verzamelt en bijhoudt, zodat ik de informatie voor mijn website op één plek kan beheren en voorbereiden op verdere beoordeling.',
+        acceptanceCriteria: [
+          'Het dashboard toont de verzamelde artikelen en de aangesloten bronnen.',
+          'De scraper heeft artikelen opgehaald van Rijksoverheid en de Belastingdienst.',
+          'Het dashboard geeft inzicht in gevonden pagina’s, opgehaalde artikelen en de voortgang van de beoordeling.',
+          'De informatie is te bekijken via Artikelen, Leeftijden, Onderwerpen, Bronnen en Logboek.',
+          'De opzet voor agents die artikelen gaan beoordelen en indelen is uitgewerkt.',
+          'Het systeem kan later worden uitgebreid met andere officiële websites.',
+        ],
+        qualityCriteria: [
+          'Er is onderscheid tussen gevonden pagina’s, opgehaalde artikelen en beoordeelde artikelen.',
+          'Het dashboard laat zien welke onderdelen werken en welke nog worden ontwikkeld.',
+          'Bij ieder artikel is de bron terug te vinden.',
+          'De indeling maakt het eenvoudig om informatie te zoeken en de voortgang te volgen.',
+          'Artikelen worden niet automatisch als geschikt voor RegelRoute beschouwd omdat ze zijn opgehaald.',
+        ],
+      },
+      {
+        id: 'US-2',
+        description: 'Als schrijver van RegelRoute wil ik dat ieder verzameld artikel automatisch een verwijzing volgens APA krijgt, zodat ik tijdens het schrijven direct kan zien hoe ik de bron in mijn tekst en bronnenlijst vermeld.',
+        acceptanceCriteria: [
+          'Ieder artikel heeft een verwijzing voor in de tekst en een vermelding voor de bronnenlijst.',
+          'Alle 5.535 verzamelde artikelen zijn voorzien van een gegenereerde verwijzing.',
+          'Nieuwe artikelen krijgen standaard een verwijzing wanneer ze worden verwerkt.',
+          'Het dashboard toont hoeveel artikelen een verwijzing hebben, zowel in totaal als per bron.',
+          'De bronnenlijst kan vanuit het dashboard worden gekopieerd.',
+        ],
+        qualityCriteria: [
+          'De verwijzingen worden opgebouwd uit beschikbare brongegevens, zoals organisatie, titel, datum en URL.',
+          'Ontbrekende gegevens worden niet verzonnen.',
+          'De verwijzingen volgen steeds dezelfde APA-richtlijnen.',
+          'Ik controleer voorbeelden om vast te stellen of de verwijzingen juist zijn.',
+          'In een uiteindelijke tekst gebruik ik alleen bronvermeldingen van artikelen die ik daadwerkelijk heb geraadpleegd.',
+        ],
+      },
+    ],
+    feedback: [],
+    mastery: [
+      {
+        outcome: 'LU2',
+        title: 'Praktijkgerichte AI oplossing ontwerpen, realiseren en presenteren',
+        level: 'V',
+        evidence: 'Ik heb een werkende RegelRoute BronnenHub met scraper en dashboard gebouwd. De oplossing verzamelt 5.535 artikelen van Rijksoverheid en de Belastingdienst, toont de bronnen en voortgang en maakt automatisch APA-verwijzingen. Daarmee heb ik een concrete behoefte uit mijn eigen project vertaald naar een werkende toepassing.',
+      },
+      {
+        outcome: 'LU3',
+        title: 'Ethiek en verantwoord AI gebruik beoordelen',
+        level: 'V',
+        evidence: 'Ik onderzocht auteursrecht, privacy, betrouwbaarheid en de gevolgen van onjuiste informatie voor jongeren. Ik houd het ophalen en beoordelen van artikelen apart, vermijd persoonsgegevens en zorg dat de oorspronkelijke bron terug te vinden blijft.',
+      },
+      {
+        outcome: 'LU4',
+        title: 'AI tools en technieken gebruiken',
+        level: 'V',
+        evidence: 'Ik ontwikkelde met ondersteuning van AI-programmeertools een scraper en dashboard. Ik werkte met sitemaps, het ophalen en opslaan van teksten, dashboardweergaven en geautomatiseerde APA-verwijzingen. Ook werkte ik de rollen voor toekomstige beoordelingsagents uit.',
+      },
+      {
+        outcome: 'LU5',
+        title: 'Zelfstandig en zelfsturend werken',
+        level: 'V',
+        evidence: 'Ik heb zelf bepaald wat RegelRoute nodig had om informatie te verzamelen en te beheren. Ik breidde het project stap voor stap uit met twee bronnen, een dashboard en automatische bronverwijzingen en stuurde mijn volgende stap bij nadat ik zag dat veel verzamelde artikelen nog niet automatisch bruikbaar zijn.',
+      },
+    ],
+    reflection: {
+      date: 'Sprint 5',
+      learned: 'Ik heb geleerd dat een scraper bouwen verder gaat dan teksten ophalen. Ik moet ook weten of ik de informatie mag gebruiken, of de tekst volledig is en voor wie deze geldt. Daarnaast heb ik ervaren dat het helpt om terugkerend werk, zoals bronverwijzingen maken, direct in het systeem op te nemen.',
+      keep: 'Ik blijf stap voor stap werken en tussendoor controleren wat het systeem doet. Ook blijf ik officiële bronnen gebruiken en onderscheid maken tussen verzamelde en beoordeelde informatie. Het dashboard helpt mij om overzicht te houden.',
+      change: 'Bij nieuwe functies wil ik eerder een kleine selectie testen voordat ik alles laat verwerken. Voor de agents begin ik daarom met een beperkt aantal artikelen. Ik vergelijk hun beoordeling met mijn eigen controle en pas de werkwijze aan voordat ik deze op de hele verzameling toepas.',
+    },
   },
   {
     id: 6,
@@ -905,5 +995,81 @@ Ik heb bewust verantwoord gewerkt: alleen mijn eigen stem is gebruikt, er staat 
     sprintId: 4,
     learningOutcomes: ['LU2', 'LU3', 'LU4', 'LU5'],
     date: '2 november 2026',
+  },
+  {
+    id: 'BEW-15',
+    title: 'Sprint 5 bewijs 1 — Onderzoek hergebruik en scraper',
+    description: `Voor RegelRoute wil ik jongeren helpen met informatie over onder andere geld, werk, studie, wonen en zorg. Daarvoor heb ik betrouwbare bronnen nodig. Omdat het veel tijd kost om alle artikelen zelf te zoeken en bij te houden, heb ik onderzocht hoe een scraper dit werk kan ondersteunen. Daarbij wilde ik begrijpen hoe de techniek werkt en onder welke voorwaarden ik teksten van overheidswebsites mag verzamelen en gebruiken.
+
+Ik ben begonnen met het uitzoeken van de werking van een scraper. Ik heb geleerd hoe het systeem webpagina’s vindt, teksten ophaalt en deze opslaat. Daarbij heb ik gekeken naar sitemaps, waarin websites hun pagina’s overzichtelijk aanbieden, en robots.txt, waarin instructies voor geautomatiseerde bezoekers staan. Deze kennis hielp mij om beter te begrijpen wat mijn scraper doet en welke afspraken ik bij het bouwen moet meenemen.
+
+Vervolgens heb ik onderzocht welke voorwaarden Rijksoverheid en de Belastingdienst stellen aan het hergebruik van hun informatie. Ik ontdekte dat veel teksten mogen worden hergebruikt, maar dat ik uitzonderingen per onderdeel moet controleren. Voor afbeeldingen gelden bijvoorbeeld andere voorwaarden. Ook heb ik gekeken naar privacy. Dat informatie openbaar staat, betekent niet dat ik eventuele persoonsgegevens zonder verdere afweging kan verzamelen of verspreiden.
+
+Daarnaast heb ik nagedacht over de gevolgen van fouten voor de gebruikers van RegelRoute. Een artikel kan van een officiële website komen, terwijl mijn scraper een deel van de tekst mist. Een agent kan vervolgens een uitzondering over het hoofd zien of informatie aan de verkeerde leeftijd koppelen. Daarom maak ik onderscheid tussen het verzamelen van een artikel en het beoordelen van de inhoud. De oorspronkelijke bron blijft beschikbaar, zodat ik kan controleren waar de informatie vandaan komt en in welke context deze is geschreven.
+
+De grootste uitdaging was om verder te kijken dan de vraag of de scraper technisch werkt. Ik moest ook afwegen of mijn manier van verzamelen en verwerken verantwoord is. Hierdoor heb ik geleerd dat een betrouwbare bron alleen niet genoeg is. Ook mijn eigen verwerking moet zorgvuldig zijn. Met dit onderzoek onderbouw ik de keuzes voor de BronnenHub en laat ik zien hoe ik rekening houd met de mensen die de informatie uiteindelijk gaan gebruiken.`,
+    summary: 'Onderzoek en onderbouwing van de keuzes voor verantwoord verzamelen en hergebruiken van overheidsinformatie.',
+    type: 'document',
+    platform: 'Bewijs toevoegen',
+    externalUrl: '#',
+    sprintId: 5,
+    learningOutcomes: ['LU3', 'LU5'],
+    date: 'Sprint 5',
+  },
+  {
+    id: 'BEW-16',
+    title: 'Sprint 5 bewijs 2 — RegelRoute BronnenHub dashboard',
+    description: `Voor RegelRoute heb ik een BronnenHub gebouwd waarin ik artikelen van officiële websites verzamel en beheer. De aanleiding was dat ik voor mijn website veel informatie nodig heb die verspreid staat over verschillende organisaties. Wanneer ik alles handmatig zou verzamelen, zou het lastig worden om overzicht te houden en later te controleren welke informatie nog bruikbaar is. Daarom wilde ik een systeem bouwen waarin het verzamelen en beheren samenkomen.
+
+Ik heb eerst bepaald welke informatie ik in het dashboard wilde kunnen zien. Daarbij ging het om de aangesloten bronnen, gevonden pagina’s, opgehaalde artikelen en de voortgang van de beoordeling. Vervolgens heb ik met ondersteuning van AI programmeertools de scraper en het dashboard ontwikkeld. Tijdens het bouwen werkte ik ook met de terminal om processen te starten en de voortgang te bekijken.
+
+Rijksoverheid en de Belastingdienst heb ik als eerste bronnen aangesloten. De scraper gebruikt onder andere sitemaps om pagina’s te vinden en haalt vervolgens artikelen op. Op het moment van mijn screenshots bevat de BronnenHub 5.535 artikelen: 3.929 van Rijksoverheid en 1.606 van de Belastingdienst. Ik houd gevonden pagina’s en opgehaalde artikelen apart bij. Een gevonden URL betekent namelijk nog niet dat de tekst ook is opgehaald of geschikt is voor RegelRoute.
+
+Daarna heb ik het dashboard ingericht met onderdelen voor Artikelen, Leeftijden, Onderwerpen, Bronnen, Beoordeling en Logboek. Hierdoor kan ik de verzameling vanuit verschillende kanten bekijken. Op de startpagina zie ik hoeveel artikelen beschikbaar zijn en wat nog beoordeeld moet worden. Het bronnenoverzicht laat zien wat per organisatie is verzameld. Zo kan ik volgen wat het systeem heeft gedaan en waar nog werk ligt.
+
+Ook heb ik uitgewerkt hoe agents later kunnen helpen bij de inhoudelijke beoordeling. Ik heb de taken verdeeld over rollen, zoals het lezen van artikelen, herkennen van uitspraken, beoordelen van bruikbaarheid en koppelen aan onderwerpen en leeftijden. Deze opzet staat als voorbeeldweergave in het dashboard. De agents zijn nog in ontwikkeling en hebben op het moment van de screenshots nog geen artikelen beoordeeld.
+
+De grootste uitdaging was het verschil tussen veel informatie verzamelen en een bruikbare verzameling opbouwen. De aantallen laten zien dat de scraper werkt, maar zeggen nog niet of alle artikelen bij mijn doelgroep passen. Daarom wil ik de beoordeling eerst op een kleine selectie testen en vergelijken met mijn eigen oordeel. Ik heb geleerd om de ontwikkeling in stappen op te delen en steeds zichtbaar te maken wat al werkt en wat nog moet worden uitgewerkt.`,
+    summary: 'Dashboard met 5.535 verzamelde artikelen: 3.929 van Rijksoverheid en 1.606 van de Belastingdienst.',
+    type: 'prototype',
+    platform: 'Bewijs toevoegen',
+    externalUrl: '#',
+    imageUrls: [
+      '/assets/evidence/sprint5/bronnenhub-beoordeling.png',
+      '/assets/evidence/sprint5/bronnenhub-artikelen.png',
+      '/assets/evidence/sprint5/bronnenhub-artikel-detail.png',
+      '/assets/evidence/sprint5/bronnenhub-leeftijden.png',
+      '/assets/evidence/sprint5/bronnenhub-onderwerpen.png',
+      '/assets/evidence/sprint5/bronnenhub-bronnen.png',
+    ],
+    sprintId: 5,
+    learningOutcomes: ['LU2', 'LU4', 'LU5'],
+    date: 'Sprint 5',
+  },
+  {
+    id: 'BEW-17',
+    title: 'Sprint 5 bewijs 3 — Automatische APA-verwijzingen',
+    description: `Voor de teksten van RegelRoute wil ik kunnen terugvinden waar de gebruikte informatie vandaan komt. Ook wil ik tijdens het schrijven direct weten hoe ik volgens APA naar een artikel verwijs. Omdat de BronnenHub inmiddels duizenden artikelen bevat, zou het veel tijd kosten om alle verwijzingen achteraf handmatig te maken. Daarom heb ik het maken van bronverwijzingen toegevoegd aan de verwerking van artikelen.
+
+Ik heb eerst bepaald welke verwijzingen ik nodig heb: een korte verwijzing voor in de tekst en een volledige vermelding voor de bronnenlijst. Vervolgens heb ik het systeem zo ingericht dat het hiervoor de beschikbare brongegevens gebruikt, zoals de organisatie, de titel van de pagina, de datum en de URL. Daarbij geldt dat ontbrekende gegevens niet mogen worden verzonnen.
+
+Daarna heb ik deze functie toegepast op de bestaande artikelen. Op het moment van mijn screenshot hebben alle 5.535 artikelen een gegenereerde verwijzing. Dit zijn de 3.929 artikelen van Rijksoverheid en de 1.606 artikelen van de Belastingdienst. Ook nieuwe artikelen krijgen standaard een verwijzing wanneer ze worden verwerkt. Daardoor hoef ik deze stap niet telkens opnieuw zelf uit te voeren.
+
+In het dashboard heb ik zichtbaar gemaakt hoeveel artikelen een verwijzing hebben. Dit overzicht is zowel voor de volledige verzameling als per bronorganisatie beschikbaar. Daarnaast heb ik een functie toegevoegd waarmee ik de bronnenlijst kan kopiëren. Wanneer ik een tekst schrijf, kan ik hieruit de bronnen gebruiken die ik daadwerkelijk heb geraadpleegd.
+
+Een aandachtspunt is dat een aanwezige verwijzing niet automatisch een juiste verwijzing is. Een ontbrekende datum of een verkeerd overgenomen paginatitel kan bijvoorbeeld invloed hebben op de uitkomst. Daarom blijft het nodig om voorbeelden te controleren aan de hand van de oorspronkelijke pagina en de APA-richtlijnen.
+
+Door deze functie te bouwen heb ik geleerd dat bronvermelding al tijdens het verzamelen van informatie kan worden meegenomen. Het scheelt terugkerend werk en helpt mij om mijn bronnen overzichtelijk te bewaren. Tegelijk blijf ik zelf verantwoordelijk voor de verwijzingen die ik uiteindelijk in mijn teksten gebruik.`,
+    summary: 'Automatisch gegenereerde verwijzingen voor alle 5.535 artikelen, inclusief een kopieerbare bronnenlijst.',
+    type: 'document',
+    platform: 'Bewijs toevoegen',
+    externalUrl: '#',
+    imageUrls: [
+      '/assets/evidence/sprint5/bronnenhub-apa-overzicht.png',
+      '/assets/evidence/sprint5/bronnenhub-apa-per-bron.png',
+    ],
+    sprintId: 5,
+    learningOutcomes: ['LU2', 'LU4'],
+    date: 'Sprint 5',
   },
 ];

@@ -138,24 +138,30 @@ export const SprintDetailPage: React.FC<SprintDetailPageProps> = ({ sprint, onBa
         )}
       </section>
 
-      {sprint.feedback && sprint.feedback.length > 0 && (
+      {sprint.feedback && (
         <section className="space-y-5">
           <div className="border-b border-[#1B2A24]/10 pb-4">
             <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#9C4A32]">Feedback</span>
             <h2 className="mt-2 font-serif text-2xl sm:text-3xl text-[#1B2A24]">Wat anderen teruggaven</h2>
           </div>
-          <div className="space-y-5">
-            {sprint.feedback.map((item) => (
-              <article key={`${item.date}-${item.from}`} className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-5 sm:p-7">
-                <div className="flex items-center gap-3 text-xs uppercase tracking-widest font-bold text-[#9C4A32]">
-                  <MessageSquareText className="w-4 h-4" />
-                  <span>{item.date} · {item.from}</span>
-                </div>
-                <p className="mt-4 text-sm leading-relaxed text-[#1B2A24]/85">{item.feedback}</p>
-                <p className="mt-4 border-l-2 border-[#9C4A32] pl-4 text-sm leading-relaxed text-[#1B2A24]/85"><strong>Mijn actie:</strong> {item.action}</p>
-              </article>
-            ))}
-          </div>
+          {sprint.feedback.length > 0 ? (
+            <div className="space-y-5">
+              {sprint.feedback.map((item) => (
+                <article key={`${item.date}-${item.from}`} className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-5 sm:p-7">
+                  <div className="flex items-center gap-3 text-xs uppercase tracking-widest font-bold text-[#9C4A32]">
+                    <MessageSquareText className="w-4 h-4" />
+                    <span>{item.date} · {item.from}</span>
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-[#1B2A24]/85">{item.feedback}</p>
+                  <p className="mt-4 border-l-2 border-[#9C4A32] pl-4 text-sm leading-relaxed text-[#1B2A24]/85"><strong>Mijn actie:</strong> {item.action}</p>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="bg-[#F3EDE5] border border-[#1B2A24]/10 p-5 text-sm text-[#1B2A24]/75">
+              Voor deze sprint is nog geen feedback ontvangen of vastgelegd.
+            </div>
+          )}
         </section>
       )}
 
