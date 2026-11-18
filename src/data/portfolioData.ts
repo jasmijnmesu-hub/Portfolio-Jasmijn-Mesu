@@ -998,7 +998,7 @@ Ik heb bewust verantwoord gewerkt: alleen mijn eigen stem is gebruikt, er staat 
   },
   {
     id: 'BEW-15',
-    title: 'Sprint 5 bewijs 1 — Onderzoek hergebruik en scraper',
+    title: 'Story 1: Ethiek in de BronnenHub',
     description: `Voor RegelRoute wil ik jongeren helpen met informatie over onder andere geld, werk, studie, wonen en zorg. Daarvoor heb ik betrouwbare bronnen nodig. Omdat het veel tijd kost om alle artikelen zelf te zoeken en bij te houden, heb ik onderzocht hoe een scraper dit werk kan ondersteunen. Daarbij wilde ik begrijpen hoe de techniek werkt en onder welke voorwaarden ik teksten van overheidswebsites mag verzamelen en gebruiken.
 
 Ik ben begonnen met het uitzoeken van de werking van een scraper. Ik heb geleerd hoe het systeem webpagina’s vindt, teksten ophaalt en deze opslaat. Daarbij heb ik gekeken naar sitemaps, waarin websites hun pagina’s overzichtelijk aanbieden, en robots.txt, waarin instructies voor geautomatiseerde bezoekers staan. Deze kennis hielp mij om beter te begrijpen wat mijn scraper doet en welke afspraken ik bij het bouwen moet meenemen.
@@ -1010,15 +1010,16 @@ Daarnaast heb ik nagedacht over de gevolgen van fouten voor de gebruikers van Re
 De grootste uitdaging was om verder te kijken dan de vraag of de scraper technisch werkt. Ik moest ook afwegen of mijn manier van verzamelen en verwerken verantwoord is. Hierdoor heb ik geleerd dat een betrouwbare bron alleen niet genoeg is. Ook mijn eigen verwerking moet zorgvuldig zijn. Met dit onderzoek onderbouw ik de keuzes voor de BronnenHub en laat ik zien hoe ik rekening houd met de mensen die de informatie uiteindelijk gaan gebruiken.`,
     summary: 'Onderzoek en onderbouwing van de keuzes voor verantwoord verzamelen en hergebruiken van overheidsinformatie.',
     type: 'document',
-    platform: 'Bewijs toevoegen',
+    platform: 'Infographic',
     externalUrl: '#',
+    imageUrl: '/assets/evidence/sprint5/ethiek-in-de-bronnenhub.png',
     sprintId: 5,
     learningOutcomes: ['LU3', 'LU5'],
     date: 'Sprint 5',
   },
   {
     id: 'BEW-16',
-    title: 'Sprint 5 bewijs 2 — RegelRoute BronnenHub dashboard',
+    title: 'Story 2: RegelRoute BronnenHub dashboard',
     description: `Voor RegelRoute heb ik een BronnenHub gebouwd waarin ik artikelen van officiële websites verzamel en beheer. De aanleiding was dat ik voor mijn website veel informatie nodig heb die verspreid staat over verschillende organisaties. Wanneer ik alles handmatig zou verzamelen, zou het lastig worden om overzicht te houden en later te controleren welke informatie nog bruikbaar is. Daarom wilde ik een systeem bouwen waarin het verzamelen en beheren samenkomen.
 
 Ik heb eerst bepaald welke informatie ik in het dashboard wilde kunnen zien. Daarbij ging het om de aangesloten bronnen, gevonden pagina’s, opgehaalde artikelen en de voortgang van de beoordeling. Vervolgens heb ik met ondersteuning van AI programmeertools de scraper en het dashboard ontwikkeld. Tijdens het bouwen werkte ik ook met de terminal om processen te starten en de voortgang te bekijken.
@@ -1048,7 +1049,7 @@ De grootste uitdaging was het verschil tussen veel informatie verzamelen en een 
   },
   {
     id: 'BEW-17',
-    title: 'Sprint 5 bewijs 3 — Automatische APA-verwijzingen',
+    title: 'Story 3: Automatische APA-verwijzingen',
     description: `Voor de teksten van RegelRoute wil ik kunnen terugvinden waar de gebruikte informatie vandaan komt. Ook wil ik tijdens het schrijven direct weten hoe ik volgens APA naar een artikel verwijs. Omdat de BronnenHub inmiddels duizenden artikelen bevat, zou het veel tijd kosten om alle verwijzingen achteraf handmatig te maken. Daarom heb ik het maken van bronverwijzingen toegevoegd aan de verwerking van artikelen.
 
 Ik heb eerst bepaald welke verwijzingen ik nodig heb: een korte verwijzing voor in de tekst en een volledige vermelding voor de bronnenlijst. Vervolgens heb ik het systeem zo ingericht dat het hiervoor de beschikbare brongegevens gebruikt, zoals de organisatie, de titel van de pagina, de datum en de URL. Daarbij geldt dat ontbrekende gegevens niet mogen worden verzonnen.
